@@ -20,6 +20,7 @@ class CreateCarsTable extends Migration
             $table->string('autocolumn_id', 36)->nullable();
             $table->string('spot_id', 36)->nullable();
             $table->string('brigade_id', 36)->nullable();
+            $table->string('bad_spot_id', 36)->nullable();
             $table->string('number', 16)->nullable();
             $table->tinyInteger('type')->nullable();
             $table->string('model', 32)->nullable();
@@ -42,8 +43,9 @@ class CreateCarsTable extends Migration
             $table->primary('id', 'pk-cars');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('SET NULL');
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('SET NULL');
-            $table->foreign('autocolumn_id')->references('id')->on('organizations')->onDelete('SET NULL');
-            $table->foreign('spot_id')->references('id')->on('organizations')->onDelete('SET NULL');
+            $table->foreign('autocolumn_id')->references('id')->on('autocolumns')->onDelete('SET NULL');
+            $table->foreign('bad_spot_id')->references('id')->on('bad_spots')->onDelete('SET NULL');
+            $table->foreign('spot_id')->references('id')->on('spots')->onDelete('SET NULL');
             $table->foreign('brigade_id')->references('id')->on('brigades')->onDelete('SET NULL');
         });
     }

@@ -31,7 +31,7 @@ class CreateSpotsTable extends Migration
             $table->primary('id', 'pk-spots');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('SET NULL');
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('SET NULL');
-            $table->foreign('autocolumn_id')->references('id')->on('organizations')->onDelete('SET NULL');
+            $table->foreign('autocolumn_id')->references('id')->on('autocolumns')->onDelete('SET NULL');
         });
     }
 

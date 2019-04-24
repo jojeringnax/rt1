@@ -19,6 +19,7 @@ class CreateStatisticsTable extends Migration
             $table->string('organization_id', 36)->nullable();
             $table->string('autocolumn_id', 36)->nullable();
             $table->string('spot_id', 36)->nullable();
+            $table->string('bad_spot_id', 36)->nullable();
             $table->string('brigade_id', 36)->nullable();
             $table->integer('applications_total')->default(0);
             $table->integer('applications_executed')->default(0);
@@ -40,8 +41,9 @@ class CreateStatisticsTable extends Migration
         Schema::table('statistics', function (Blueprint $table) {
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('SET NULL');
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('SET NULL');
-            $table->foreign('autocolumn_id')->references('id')->on('organizations')->onDelete('SET NULL');
-            $table->foreign('spot_id')->references('id')->on('organizations')->onDelete('SET NULL');
+            $table->foreign('autocolumn_id')->references('id')->on('autocolumns')->onDelete('SET NULL');
+            $table->foreign('bad_spot_id')->references('id')->on('bad_spots')->onDelete('SET NULL');
+            $table->foreign('spot_id')->references('id')->on('spots')->onDelete('SET NULL');
             $table->foreign('brigade_id')->references('id')->on('brigades')->onDelete('SET NULL');
         });
     }
