@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $id
  * @property string $company_id
  * @property string $organization_id
+ * @property string $autocolumn_id
  * @property string $name
  * @property string $town
  * @property string $description

@@ -4,50 +4,39 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class CarData
+ * @package App
+ *
+ * @property string $car_id
+ * @property string $driver_name
+ * @property string $phone_number
+ * @property string $start_time_plan
+ * @property string $start_time_fact
+ * @property string $end_time_plan
+ * @property float $work_time_plan
+ * @property float $work_time_fact
+ * @property integer $mileage
+ * @property integer $speed
+ * @property float $fuel_norm
+ * @property float $fuel_DUT
+ * @property string $driver_mark
+ * @property integer $violations_count
+ *
+ * @property Car $car
+ */
 class CarData extends Model
 {
     /**
      * @var string
      */
-    protected $table='cars';
+    protected $table='car_data';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function getOrganization()
+    public function getCar()
     {
-        return $this->hasOne(Organization::class, 'organization_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function getAutocolumn()
-    {
-        return $this->hasOne(Autocolumn::class, 'autocolumn_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function getBadSpot()
-    {
-        return $this->hasOne(BadSpot::class, 'bad_spot_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function getSpot()
-    {
-        return $this->hasOne(Spot::class, 'spot_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function getBrigade()
-    {
-        return $this->hasOne(Brigade::class, 'brigade_id', 'id');
+        return $this->hasOne(Car::class, 'car_id', 'id');
     }
 }

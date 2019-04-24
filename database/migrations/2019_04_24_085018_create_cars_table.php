@@ -23,19 +23,19 @@ class CreateCarsTable extends Migration
             $table->string('bad_spot_id', 36)->nullable();
             $table->string('number', 16)->nullable();
             $table->tinyInteger('type')->nullable();
-            $table->string('model', 32)->nullable();
+            $table->string('model', 128)->nullable();
             $table->string('description', 512)->nullable();
             $table->tinyInteger('status')->nullable();
             $table->boolean('inline')->nullable();
             $table->integer('year')->nullable();
-            $table->float('profitability')->nullable();
+            $table->float('profitability', 10)->nullable();
             $table->integer('technical_inspection_days')->nullable();
             $table->integer('battery_change_days')->nullable();
             $table->integer('tire_change_days')->nullable();
             $table->string('tire_season', 32)->nullable();
             $table->boolean('terminal')->default(0);
-            $table->float('x_pos')->nullable();
-            $table->float('y_pos')->nullable();
+            $table->float('x_pos',10)->nullable();
+            $table->float('y_pos',10)->nullable();
             $table->timestamps();
         });
 

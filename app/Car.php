@@ -48,6 +48,24 @@ class Car extends Model
     protected $table='cars';
 
     /**
+     * @var array
+     */
+    protected $guarded=['id'];
+
+    const STATUSES = [
+        'G' => 0,
+        'R' => 1,
+        'TO' => 2
+    ];
+
+    const TYPES = [
+        'Легковые ТС' => 0,
+        'Грузовые ТС' => 1,
+        'Автобусы' => 2,
+        'Спецтехника' => 3
+    ];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function getOrganization()

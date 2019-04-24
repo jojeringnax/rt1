@@ -18,8 +18,8 @@ class CreateOrganizationsTable extends Migration
             $table->string('company_id', 36)->nullable();
             $table->string('description', 512)->nullable();
             $table->string('address', 512)->nullable();
-            $table->float('x_pos')->nullable();
-            $table->float('y_pos')->nullable();
+            $table->float('x_pos', 8)->nullable();
+            $table->float('y_pos', 8)->nullable();
             $table->timestamps();
         });
 
