@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $id
  * @property string $company_id
  * @property string $organization_id
+ * @property string $autocolumn_id
  * @property string $bad_spot_id
  * @property string $spot_id
  * @property string $brigade_id
@@ -43,6 +44,16 @@ class Statistic extends Model
      * @var string
      */
     protected $table='statistics';
+
+    /**
+     * @var array
+     */
+    protected $guarded = [
+        'autocolumn_id',
+        'bad_spot_id',
+        'spot_id',
+        'brigade_id'
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
