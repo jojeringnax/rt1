@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\BadSpot;
+use App\Brigade;
 use App\Car;
 use App\Spot;
 use Illuminate\Console\Command;
@@ -70,18 +71,30 @@ class CarsCommand extends Command
                     if (isset($carsStatus->DivisionID)) {
                         $badSpot = BadSpot::find($carsStatus->DivisionID);
                         $spot = Spot::find($carsStatus->DivisionID);
+                        $brigade = Brigade::find($carsStatus->DivisionID);
                     }
                     $isForBadSpot = $badSpot !== null;
-                    if ($badSpot === null && $spot === null) {
+                    $isForBrigade = $brigade !== null;
+                    if ($badSpot === null && $spot === null && $brigade === null) {
                         $spotID = null;
                         $organizationID = null;
                         $autocolumnID = null;
                         $badSpotID = null;
+                        $brigadeID = null;
                     } else {
-                        $spotID = $isForBadSpot ? null : $carsStatus->DivisionID;
-                        $organizationID = $isForBadSpot ? $badSpot->organization_id : $spot->organization_id;;
-                        $autocolumnID = $isForBadSpot ? null : $spot->autocolumn_id;
-                        $badSpotID = $isForBadSpot ? $carsStatus->DivisionID : null;
+                        if ($isForBrigade) {
+                            $spotID = $brigade->spot_id;
+                            $organizationID = $brigade->organization_id;;
+                            $autocolumnID = $brigade->autocolumn_id;
+                            $badSpotID = $brigade->bad_spot_id;
+                            $brigadeID = $carsStatus->DivisionID;
+                        } else {
+                            $spotID = $isForBadSpot ? null : $carsStatus->DivisionID;
+                            $organizationID = $isForBadSpot ? $badSpot->organization_id : $spot->organization_id;;
+                            $autocolumnID = $isForBadSpot ? null : $spot->autocolumn_id;
+                            $badSpotID = $isForBadSpot ? $carsStatus->DivisionID : null;
+                            $brigadeID = null;
+                        }
                     }
                     $this->info($isForBadSpot ? 'Bad Spot :(' : 'Good Spot :)');
                     $this->info('Statuses found in SOAP-response');
@@ -91,6 +104,7 @@ class CarsCommand extends Command
                     $carModel->autocolumn_id = $autocolumnID;
                     $carModel->bad_spot_id = $badSpotID;
                     $carModel->spot_id = $spotID;
+                    $carModel->brigade_id = $brigadeID;
                     $carModel->status = isset($carsStatus->Status) ? Car::STATUSES[$carsStatus->Status]  : null;
                     $carModel->inline = isset($carsStatus->InLine) ? $carsStatus->InLine  : null;
                     $carModel->type = isset($car->Type) ? Car::TYPES[$car->Type]  : null;

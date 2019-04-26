@@ -61,6 +61,22 @@ class BrigadesCommand extends Command
             return false;
         }
         foreach ($brigades as $brigade) {
+            if (isset($brigade->ParentID)) {
+                $badSpot = BadSpot::find($brigade->ParentID);
+                $spot = Spot::find($brigade->ParentID);
+            }
+            $isForBadSpot = $badSpot !== null;
+            if ($badSpot === null && $spot === null) {
+                $spotID = null;
+                $organizationID = null;
+                $autocolumnID = null;
+                $badSpotID = null;
+            } else {
+                $spotID = $isForBadSpot ? null : $brigade->ParentID;
+                $organizationID = $isForBadSpot ? $badSpot->organization_id : $spot->organization_id;;
+                $autocolumnID = $isForBadSpot ? null : $spot->autocolumn_id;
+                $badSpotID = $isForBadSpot ? $brigade->ParentID : null;
+            }
             /**
              * @var $brigadeModel Brigade
              */
@@ -69,8 +85,10 @@ class BrigadesCommand extends Command
             $brigadeModel = Brigade::firstOrNew(['id' => $brigade->ID]);
             $brigadeModel->id = $brigade->ID;
             $brigadeModel->company_id = '113';
-            $brigadeModel->organization_id = $brigade->FirmsID;
-            $brigadeModel->autocolumn_id = $brigade->ParentID;
+            $brigadeModel->organization_id = $organizationID;
+            $brigadeModel->autocolumn_id = $autocolumnID;
+            $brigadeModel->bad_spot_id = $badSpotID;
+            $brigadeModel->spot_id = $spotID;
             $brigadeModel->name = $haveName ? $names['spots'][$brigade->ID][0] : null;
             $brigadeModel->town = $haveName ? $names['spots'][$brigade->ID][1] : null;
             $brigadeModel->description = $brigade->Description;
@@ -78,23 +96,6 @@ class BrigadesCommand extends Command
             $brigadeModel->x_pos = $brigade->XPos ? $brigade->XPos : null;
             $brigadeModel->y_pos = $brigade->YPos ? $brigade->YPos : null;
             $brigadeModel->save();
-        }
-        $spotIDs = Spot::all()->pluck('id');
-        /**
-         * @var Spot[] $brigades
-         */
-        $brigades = BadSpot::whereIn('autocolumn_id', $spotIDs)->all();
-        foreach ($brigades as $brigade) {
-            $brigadeModel = Brigade::firstOrNew(['id' => $brigade->id]);
-            $brigadeModel->id = $brigade->id;
-            $brigadeModel->company_id = '113';
-            $brigadeModel->organization_id = $brigade->FirmsID;
-            $brigadeModel->name = $haveName ? $names['spots'][$brigade->ID][0] : null;
-            $brigadeModel->town = $haveName ? $names['spots'][$brigade->ID][1] : null;
-            $brigadeModel->description = $brigade->description;
-            $brigadeModel->address = $brigade->address;
-            $brigadeModel->x_pos = $brigade->x_pos;
-            $brigadeModel->y_pos = $brigade->y_pos;
         }
         $this->info('Thank you for using our airlines');
         return true;
