@@ -33,6 +33,16 @@ class Autocolumn extends Model
     protected $table='autocolumns';
 
     /**
+     * @var string
+     */
+    protected $primaryKey='id';
+
+    /**
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * @var array
      */
     protected $guarded=[

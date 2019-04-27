@@ -48,6 +48,16 @@ class Car extends Model
     protected $table='cars';
 
     /**
+     * @var string
+     */
+    protected $primaryKey='id';
+
+    /**
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * @var array
      */
     protected $guarded=['id'];

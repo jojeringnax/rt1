@@ -18,5 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('organizations', function () {
-    return \App\Organization::where('x_pos', '!=', null)->get()->toJson();
+    return \App\Organization::all()->toArray();
 });

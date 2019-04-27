@@ -35,6 +35,16 @@ class BadSpot extends Model
     protected $table='bad_spots';
 
     /**
+     * @var string
+     */
+    protected $primaryKey='id';
+
+    /**
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * @var array
      */
     protected $guarded=[

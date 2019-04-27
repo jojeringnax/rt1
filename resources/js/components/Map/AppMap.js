@@ -1,77 +1,53 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { YMaps, Map, Clusterer, Placemark } from 'react-yandex-maps';
 import '../css/MapApp.css';
 import SideBar from "../SideBar/SideBar";
 import axios from "axios";
 
-export default class MapApp extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            map: false,
-            organizationsPoints: []
-        }
-    }
+const carTypes = {
+    light: 0,
+    truck: 1,
+    bus: 2,
+    spec: 3
+};
 
-    getOrganizations = () => {
-        axios.get('/api/organizations')
-            .then(res => {
-                console.log(res.data);
-                this.setState({organizationsPoints: res.data});
-            })
-            .catch(err => {
 
-            })
-    };
 
-    componentDidMount() {
-        this.getOrganizations();
-    }
+const MapApp = ({ points = [], level }) => (
+    <div className="app">
+        <SideBar />
+        <YMaps>
+            <div className="app-map">
+                <Map
+                    width={"100%"} height={"100vh"} defaultState={{
+                    center: [55.751574, 37.573856],
+                    zoom: 5,
+                    behaviors: ['default', 'scrollZoom'],
+                    controls: []
+                }}>
+                    {console.log(points)}
+                    {
+                        points.map(point => {
+                            console.log(point);
+                            return (
+                            <Placemark
+                                key={point.id}
+                                geometry={[point.point.x_pos, point.point.y_pos]}
+                                properties={{
+                                    hintContent: point.point.description,
+                                    balloonContentLayout: 'Это балун'
+                                }}
+                                modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
+                            />)
 
-    render() {
-        const carTypes = {
-            light: 0,
-            truck: 1,
-            bus: 2,
-            spec: 3
-        };
-        const widthMap = "100%";
-        const heightMap = "100vh";
-        const mapState = {
-            center: [55.751574, 37.573856],
-            zoom: 5,
-            behaviors: ['default', 'scrollZoom'],
-            controls: []
-        };
-        return(
-            <div className="app">
-                <SideBar />
-                <YMaps>
-                    <div className="app-map">
-                        <Map width={widthMap} height={heightMap} defaultState={mapState}>
-                                {
-                                    this.state.organizationsPoints.map(point => {
-                                        return <Placemark
-                                            key={point.description}
-                                            geometry={[point.x_pos, point.y_pos]}
-                                            properties= {{
-                                                hintContent: point.description,
-                                                balloonContentLayout: 'Это балун'
-                                            }}
-                                            modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
-                                        />
-                                    })
-                                }
-                        </Map>
-                    </div>
-                </YMaps>
+                        })
+                    }
+                </Map>
             </div>
-        )
-    }
-}
+        </YMaps>
+    </div>
+);
+
+export default MapApp;
 
 
-if (document.getElementById('root')) {
-    ReactDOM.render(<MapApp />, document.getElementById('root'));
-}

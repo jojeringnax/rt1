@@ -31,10 +31,19 @@ class Organization extends Model
     protected $table='organizations';
 
     /**
+     * @var string
+     */
+    protected $primaryKey='id';
+
+    /**
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * @var array
      */
     protected $guarded=[
-        'id',
         'company_id',
         'description',
         'address',

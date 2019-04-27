@@ -33,6 +33,16 @@ class CarData extends Model
     protected $table='car_data';
 
     /**
+     * @var string
+     */
+    protected $primaryKey='car_id';
+
+    /**
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function getCar()

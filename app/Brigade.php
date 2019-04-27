@@ -37,6 +37,16 @@ class Brigade extends Model
     protected $table='brigades';
 
     /**
+     * @var string
+     */
+    protected $primaryKey='id';
+
+    /**
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * @var array
      */
     protected $guarded=[
