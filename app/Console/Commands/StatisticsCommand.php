@@ -8,7 +8,6 @@ use App\Brigade;
 use App\Spot;
 use App\Statistic;
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 class StatisticsCommand extends Command
@@ -38,6 +37,9 @@ class StatisticsCommand extends Command
         $this->addOption('full','f',InputOption::VALUE_NONE,'Get all the statistics');
         $this->addOption('applications', 'a', InputOption::VALUE_NONE, 'Get only applications');
         $this->addOption('waybills', 'w', InputOption::VALUE_NONE, 'Get only waybills');
+        $this->addOption('tmchs', 't', InputOption::VALUE_NONE, 'Get only fuel/time');
+        $this->addOption('monitoring', 'm', InputOption::VALUE_NONE, 'Get only WB monitorings');
+        $this->addOption('DTPs', 'd', InputOption::VALUE_NONE, 'Get only accidents');
     }
 
 
@@ -88,6 +90,7 @@ class StatisticsCommand extends Command
      */
     private function saveApplications($client)
     {
+        $this->info('Applications processing');
         try {
             $applications = json_decode($client->GetRequests()->return);
             $this->info('Applications successfully received via SOAP');
@@ -115,6 +118,7 @@ class StatisticsCommand extends Command
      */
     public function saveWayBills($client)
     {
+        $this->info('Waybills processing');
         try {
             $waybills = json_decode($client->GetWayBillProcessing()->return);
             $this->info('Waybills successfully received via SOAP');
@@ -133,9 +137,81 @@ class StatisticsCommand extends Command
     }
 
     /**
+     * @param $client \SoapClient
+     * @return bool
+     */
+    public function saveTMCHs($client)
+    {
+        $this->info('Fuel and Time processing');
+        try {
+            $tmchs = json_decode($client->GetTMCH()->return);
+            $this->info('TMCHs successfully received via SOAP');
+        } catch (\Exception $exception) {
+            $this->error($exception->getMessage());
+            return false;
+        }
+        foreach ($tmchs as $tmch) {
+            $statistic = self::getStatisticModel($tmch->DivisionID);
+            $statistic->time = isset($tmch->Time) ? preg_replace('/,/','.', $tmch->Time) : 0;
+            $statistic->fuel = isset($tmch->Fuel) ? preg_replace('/,/','.', $tmch->Fuel) : 0;
+            $statistic->save();
+            $this->info('Statistic with id='.$statistic->id.' successfully saved');
+        }
+        return true;
+    }
+
+    /**
+     * @param $client \SoapClient
+     * @return bool
+     */
+    public function saveMonitorings($client)
+    {
+        $this->info('WB monitoring processing');
+        try {
+            $wbs = json_decode($client->GetWBMonitoring()->return);
+            $this->info('WB monitorings successfully received via SOAP');
+        } catch (\Exception $exception) {
+            $this->error($exception->getMessage());
+            return false;
+        }
+        foreach ($wbs as $wb) {
+            $statistic = self::getStatisticModel($wb->DivisionID);
+            $statistic->WB_M = isset($wb->CountM) ? preg_replace('/,/','.', $wb->CountM) : 0;
+            $statistic->WB_ALL = isset($wb->CountAll) ? preg_replace('/,/','.', $wb->CountAll) : 0;
+            $statistic->save();
+            $this->info('Statistic with id='.$statistic->id.' successfully saved');
+        }
+        return true;
+    }
+
+    /**
+     * @param $client \SoapClient
+     * @return bool
+     */
+    public function saveDTPs($client)
+    {
+        $this->info('Accidents monitoring processing');
+        try {
+            $accidents = json_decode($client->GetDTP()->return);
+            $this->info('Accidents successfully received via SOAP');
+        } catch (\Exception $exception) {
+            $this->error($exception->getMessage());
+            return false;
+        }
+        foreach ($accidents as $accident) {
+            $statistic = self::getStatisticModel($accident->DivisionID);
+            $statistic->accidents_total = isset($accident->CountAll) ? $accident->CountAll : 0;
+            $statistic->accidents_guilty = isset($accident->CountRT) ? $accident->CountRT : 0;
+            $statistic->save();
+            $this->info('Statistic with id='.$statistic->id.' successfully saved');
+        }
+        return true;
+    }
+
+    /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return boolean
      */
     public function handle()
     {
@@ -146,5 +222,15 @@ class StatisticsCommand extends Command
         if ($this->option('waybills') || $this->option('full')) {
             $this->saveWayBills($client);
         }
+        if ($this->option('tmchs') || $this->option('full')) {
+            $this->saveTMCHs($client);
+        }
+        if ($this->option('monitoring') || $this->option('full')) {
+            $this->saveMonitorings($client);
+        }
+        if ($this->option('DTPs') || $this->option('full')) {
+            $this->saveDTPs($client);
+        }
+        return true;
     }
 }
