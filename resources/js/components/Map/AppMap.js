@@ -26,18 +26,16 @@ const MapApp = ({ points = [], level }) => (
                     controls: []
                 }}>
                     {console.log(points)}
+
                     {
                         points.map(point => {
-                            console.log(point);
+                            console.log('---',point);
                             return (
                             <Placemark
                                 key={point.id}
                                 geometry={[point.point.x_pos, point.point.y_pos]}
                                 properties={{
-                                    hintContent: point.point.description,
-                                    balloonContentLayout: 'Это балун'
                                 }}
-                                modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
                             />)
 
                         })

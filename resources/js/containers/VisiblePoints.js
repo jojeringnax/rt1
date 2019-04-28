@@ -3,15 +3,15 @@ import { setMapLevel, clickPoint, setPoints } from "../actions";
 import axios from 'axios';
 import MapApp from "../components/Map/AppMap";
 
-const getPoints = async (level, id) => {
+const getPoints = (level, id) => {
 
     let points = [];
     switch(level) {
         case 'company':
             let insidePoints = [];
-            await axios.get('/api/organizations')
-                .then(  res => {
-                    res.data.forEach(point => {
+             axios.get('/api/organizations')
+                .then(  async res => {
+                    await res.data.forEach(point => {
                         points.push({
                             type: 'organization',
                             point: point
@@ -138,3 +138,4 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(MapApp)
+

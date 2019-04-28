@@ -12,8 +12,6 @@ const points = (state = [{
     type: 'organization'
 }], action) => {
     switch (action.type) {
-
-
         case 'CLICK_POINT':
             return 1;
         default:
