@@ -76,50 +76,50 @@ class Car extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function getOrganization()
+    public function organization()
     {
-        return $this->hasOne(Organization::class, 'organization_id', 'id');
+        return $this->belongsTo(Organization::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function autocolumn()
+    {
+        return $this->belongsTo(Autocolumn::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function badSpot()
+    {
+        return $this->belongsTo(BadSpot::class)->where('x_pos', '!=', null);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function spot()
+    {
+        return $this->belongsTo(Spot::class)->where('x_pos', '!=', null);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function brigade()
+    {
+        return $this->belongsTo(Brigade::class)->where('x_pos', '!=', null);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function getAutocolumn()
+    public function carData()
     {
-        return $this->hasOne(Autocolumn::class, 'autocolumn_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function getBadSpot()
-    {
-        return $this->hasOne(BadSpot::class, 'bad_spot_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function getSpot()
-    {
-        return $this->hasOne(Spot::class, 'spot_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function getBrigade()
-    {
-        return $this->hasOne(Brigade::class, 'brigade_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function getCarData()
-    {
-        return $this->hasOne(CarData::class, 'id', 'car_id');
+        return $this->hasOne(CarData::class);
     }
 }

@@ -56,6 +56,26 @@ class Statistic extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $fillable = [
+        'applications_total',
+        'applications_executed',
+        'applications_canceled',
+        'applications_sub',
+        'applications_ac',
+        'applications_mp',
+        'waybills_total',
+        'waybills_processed',
+        'accidents_total',
+        'accidents_guilty',
+        'WB_M',
+        'WB_ALL',
+        'fuel',
+        'time'
+    ];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function getOrganization()
@@ -93,5 +113,26 @@ class Statistic extends Model
     public function getBrigade()
     {
         return $this->hasOne(Brigade::class, 'brigade_id', 'id');
+    }
+
+    /**
+     * @param $divisionClass
+     * @param $divisionID
+     * @return Statistic
+     */
+    public static function getStatisticForDivision($divisionClass, $divisionID)
+    {
+        $division = $divisionClass::find($divisionID);
+        if ($division === null) {
+            return new self;
+        };
+        $statistics = $division->statistics;
+        $resultStatistic = new self;
+        foreach ($statistics as $statistic) {
+            foreach ($statistic->getFillable() as $attribute) {
+                $resultStatistic->$attribute += $statistic->$attribute;
+            }
+        }
+        return $resultStatistic;
     }
 }

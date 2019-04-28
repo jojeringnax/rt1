@@ -45,7 +45,7 @@ class CarData extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function getCar()
+    public function car()
     {
         return $this->hasOne(Car::class, 'car_id', 'id');
     }

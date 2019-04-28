@@ -57,44 +57,45 @@ class Autocolumn extends Model
         'y_pos'
     ];
 
+
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function getOrganization()
+    public function organization()
     {
-        return $this->hasOne(Organization::class, 'organization_id', 'id');
+        return $this->belongsTo(Organization::class)->where('x_pos', '!=', null);
     }
 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getSpots()
+    public function spots()
     {
-        return $this->hasMany(Spot::class, 'id', 'autocolumn_id');
+        return $this->hasMany(Spot::class)->where('x_pos', '!=', null);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getBrigades()
+    public function brigades()
     {
-        return $this->hasMany(Brigade::class, 'id', 'autocolumn_id');
+        return $this->hasMany(Brigade::class)->where('x_pos', '!=', null);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getCars()
+    public function cars()
     {
-        return $this->hasMany(Car::class, 'id', 'autocolumn_id');
+        return $this->hasMany(Car::class)->where('x_pos', '!=', null);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getStatistics()
+    public function statistics()
     {
-        return $this->hasMany(Statistic::class, 'id', 'autocolumn_id');
+        return $this->hasMany(Statistic::class);
     }
 }

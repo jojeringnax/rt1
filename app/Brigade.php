@@ -65,51 +65,51 @@ class Brigade extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function getOrganization()
+    public function organization()
     {
-        return $this->hasOne(Organization::class, 'organization_id', 'id');
+        return $this->belongsTo(Organization::class)->where('x_pos', '!=', null);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function getAutocolumn()
+    public function autocolumn()
     {
-        return $this->hasOne(Autocolumn::class, 'autocolumn_id', 'id');
+        return $this->belongsTo(Autocolumn::class)->where('x_pos', '!=', null);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function getBadSpot()
+    public function badSpot()
     {
-        return $this->hasOne(BadSpot::class, 'bad_spot_id', 'id');
+        return $this->belongsTo(BadSpot::class)->where('x_pos', '!=', null);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function getSpot()
+    public function spot()
     {
-        return $this->hasOne(Spot::class, 'spot_id', 'id');
+        return $this->belongsTo(Spot::class)->where('x_pos', '!=', null);
     }
 
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function getCars()
-    {
-        return $this->hasMany(Car::class, 'id', 'brigade_id');
-    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getStatistics()
+    public function cars()
     {
-        return $this->hasMany(Statistic::class, 'id', 'brigade_id');
+        return $this->hasMany(Car::class)->where('x_pos', '!=', null);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function statistics()
+    {
+        return $this->hasMany(Statistic::class);
     }
 }

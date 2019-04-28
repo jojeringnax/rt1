@@ -60,11 +60,11 @@ class BadSpot extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function getOrganization()
     {
-        return $this->hasOne(Organization::class, 'organization_id', 'id');
+        return $this->belongsTo(Organization::class)->where('x_pos', '!=', null);
     }
 
 
@@ -73,7 +73,7 @@ class BadSpot extends Model
      */
     public function getBrigades()
     {
-        return $this->hasMany(Brigade::class, 'id', 'bad_spot_id');
+        return $this->hasMany(Brigade::class)->where('x_pos', '!=', null);
     }
 
     /**
@@ -81,14 +81,30 @@ class BadSpot extends Model
      */
     public function getCars()
     {
-        return $this->hasMany(Car::class, 'id', 'bad_spot_id');
+        return $this->hasMany(Car::class)->where('x_pos', '!=', null);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getStatistics()
+    public function statistics()
     {
-        return $this->hasMany(Statistic::class, 'id', 'bad_spot_id');
+        return $this->hasMany(Statistic::class);
+    }
+
+    /**
+     * @return array
+     */
+    public static function getForOrganizationWithNumbers($organizationID)
+    {
+        $badSpots = self::where('x_pos', '!=', null)->where('organization_id', $organizationID)->get();
+        $resultArray = [];
+        foreach ($badSpots as $badSpot) {
+            $resultArray[] = [
+                'badSpot' => $badSpot,
+                'carsNumber' => Car::where('x_pos', '!=', null)->where('bad_spot_id', $badSpot->id)->count()
+            ];
+        }
+        return $resultArray;
     }
 }

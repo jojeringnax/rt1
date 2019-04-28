@@ -62,41 +62,41 @@ class Spot extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function getOrganization()
+    public function organization()
     {
-        return $this->hasOne(Organization::class, 'organization_id', 'id');
+        return $this->hasOne(Organization::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function getAutocolumn()
+    public function autocolumn()
     {
-        return $this->hasOne(Autocolumn::class, 'autocolumn_id', 'id');
+        return $this->hasOne(Autocolumn::class);
     }
 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getBrigades()
+    public function brigades()
     {
-        return $this->hasMany(Brigade::class, 'id', 'autocolumn_id');
+        return $this->hasMany(Brigade::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getCars()
+    public function cars()
     {
-        return $this->hasMany(Car::class, 'id', 'autocolumn_id');
+        return $this->hasMany(Car::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getStatistics()
+    public function statistics()
     {
-        return $this->hasMany(Statistic::class, 'id', 'autocolumn_id');
+        return $this->hasMany(Statistic::class);
     }
 }

@@ -51,18 +51,19 @@ class Organization extends Model
         'y_pos'
     ];
 
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getAutocolumns()
+    public function autocolumns()
     {
-        return $this->hasMany(Autocolumn::class, 'id', 'organization_id');
+        return $this->hasMany(Autocolumn::class)->where('x_pos', '!=', null);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getBadSpots()
+    public function badSpots()
     {
         return $this->hasMany(BadSpot::class, 'id', 'organization_id');
     }
@@ -70,7 +71,7 @@ class Organization extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getSpots()
+    public function spots()
     {
         return $this->hasMany(Spot::class, 'id', 'organization_id');
     }
@@ -78,7 +79,7 @@ class Organization extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getBrigades()
+    public function brigades()
     {
         return $this->hasMany(Brigade::class, 'id', 'organization_id');
     }
@@ -86,7 +87,7 @@ class Organization extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getCars()
+    public function cars()
     {
         return $this->hasMany(Car::class, 'id', 'organization_id');
     }
@@ -94,8 +95,25 @@ class Organization extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getStatistics()
+    public function statistics()
     {
-        return $this->hasMany(Statistic::class, 'id', 'organization_id');
+        return $this->hasMany(Statistic::class);
+    }
+
+
+    /**
+     * @return Organization[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public static function getAllWithNumbers()
+    {
+        $organizations = self::get();
+        $resultArray['bounds'] = Division::getBounds($organizations);
+        foreach ($organizations as $organization) {
+            $resultArray['divisions'][] = [
+                'organization' => $organization,
+                'carsNumber' => Car::where('x_pos', '!=', null)->where('organization_id', $organization->id)->count()
+            ];
+        }
+        return $resultArray;
     }
 }
