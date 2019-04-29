@@ -1,0 +1,69 @@
+.bb {
+  color: black;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  min-width: 250px;
+  margin-top: -80px;
+  z-index: 0;
+  margin-left: 75px;
+  position: relative; }
+  .bb .bb-num {
+    width: 60px;
+    height: 60px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../img/elipse.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10;
+    font-size: 0.8vh; }
+  .bb .bb-num-org {
+    width: 60px;
+    height: 60px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../img/elipse_firm.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10;
+    font-size: 0.8vh; }
+  .bb .bb-num-spot {
+    width: 60px;
+    height: 60px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../img/elipse_spot.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10;
+    font-size: 0.8vh; }
+  .bb .bb-name {
+    position: absolute;
+    margin-left: 25px;
+    z-index: 1;
+    min-width: 50px;
+    height: 40px;
+    background-color: white;
+    font-size: 0.56vh;
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    padding: 0 25px 0 45px;
+    box-shadow: 0 3px 10px rgba(4, 67, 154, 0.12);
+    text-align: left;
+    box-sizing: content-box;
+    flex-grow: 1; }
+
+/*# sourceMappingURL=MapPoints.css.map */

@@ -26,7 +26,7 @@
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
-        "react-redux": "^7.0.2",
+        "react-redux": "^7.0.3",
         "react-yandex-maps": "^3.0.2",
         "redux": "^4.0.1",
         "redux-thunk": "^2.3.0"
