@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setMapLevel, clickPoint, setPoints } from "../actions";
+import { setLevel, clickPoint, setPoints } from "../actions";
 import axios from 'axios';
 import MapApp from "../components/Map/AppMap";
 
@@ -9,16 +9,19 @@ const getPoints = (level, id) => {
     switch(level) {
         case 'company':
             let insidePoints = [];
-             axios.get('/api/organizations')
-                .then(  async res => {
-                    await res.data.forEach(point => {
-                        points.push({
-                            type: 'organization',
-                            point: point
+            return dispatch => {
+                axios.get('/api/organizations')
+                    .then(  async res => {
+                        await res.data.divisions.forEach(point => {
+                            points.push({
+                                type: 'organization',
+                                point: point
+                            });
                         });
-                    })
-                });
-            return points;
+                        dispatch(setPoints(points));
+                    });
+            };
+
 
         case 'organizations':
             axios.get('api/autocolumns/' + id)
@@ -110,27 +113,28 @@ const getPoints = (level, id) => {
         default:
             axios.get('/api/organizations')
                 .then( async res => {
-                    await res.data.forEach(point => {
+                    await res.data.divisions.forEach(point => {
                         points.push({
-                            type: 'organization',
+                            type: 'korolPidarov',
                             point: point
                         })
                     });
                 });
             return points;
-
     }
 };
 
 
 
+
+
 const mapStateToProps = state => ({
-    points: getPoints(state.level, state.id=null)
+    points: state.points,
+    level: state.level
 });
 
 const mapDispatchToProps = dispatch => ({
-    clickPoint: (id, pointType) => dispatch(clickPoint(id, pointType)),
-    setMapLevel: level => dispatch(setMapLevel(level)),
+    setLevel: level => dispatch(setLevel(level)),
     setPoints: points => dispatch(setPoints(points))
 });
 

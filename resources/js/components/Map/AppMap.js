@@ -3,6 +3,7 @@ import { YMaps, Map, Clusterer, Placemark } from 'react-yandex-maps';
 import '../css/MapApp.css';
 import SideBar from "../SideBar/SideBar";
 import axios from "axios";
+import {someFunction} from "../../actions";
 
 const carTypes = {
     light: 0,
@@ -13,8 +14,16 @@ const carTypes = {
 
 
 
-const MapApp = ({ points = [], level }) => (
+let divisions = [];
+const MapApp = ({ setPoints, setLevel, points, level }) => (
+
     <div className="app">
+        <button onClick={() => {setLevel('company')}}>Lol</button>
+        <button onClick={() => {setPoints([{
+            id: '141',
+            x_pos: 55.45,
+            y_pos: 66.09
+        }])}}>Points</button>
         <SideBar />
         <YMaps>
             <div className="app-map">
@@ -25,15 +34,14 @@ const MapApp = ({ points = [], level }) => (
                     behaviors: ['default', 'scrollZoom'],
                     controls: []
                 }}>
-                    {console.log(points)}
 
                     {
-                        points.map(point => {
-                            console.log('---',point);
+                        points.divisions.map(point => {
+                            console.log('---',point.organization);
                             return (
                             <Placemark
-                                key={point.id}
-                                geometry={[point.point.x_pos, point.point.y_pos]}
+                                key={point.organization.id}
+                                geometry={[point.organization.x_pos, point.organization.y_pos]}
                                 properties={{
                                 }}
                             />)

@@ -1,19 +1,13 @@
 import axios from "axios";
+import dispatch from "react-redux"
 
 
 
-const points = (state = [{
-    point: {
-        id:12,
-        x_pos:11.22,
-        y_pos: 50.2,
-        description: 'faf'
-    },
-    type: 'organization'
-}], action) => {
+
+const points = (state = {divisions: [], bounds: []}, action) => {
     switch (action.type) {
-        case 'CLICK_POINT':
-            return 1;
+        case 'SET_POINTS':
+            return action.points;
         default:
             return state
     }
