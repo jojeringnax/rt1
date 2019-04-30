@@ -7,6 +7,9 @@ import {someFunction} from "../../actions";
 import ReactDOMServer from "react-dom/server";
 import '../css/MapPoints.css';
 import Organization from "./divisions/Organization";
+import Autocolumn from "./divisions/Autocolumn";
+import BadSpot from "./divisions/BadSpot";
+import Spot from "./divisions/Spot";
 
 const carTypes = {
     light: 0,
@@ -18,23 +21,11 @@ const carTypes = {
 let divisions = [];
 
 class MapApp extends React.Component{
+
     constructor(props){
         super(props);
         this.state = {
             template: null
-        };
-
-        this.createTemplateLayoutFactory = (ymaps) => {
-            if (ymaps && !this.state.template) {
-                this.setState({
-                    template: ymaps.templateLayoutFactory.createClass(
-                        '<div class="bb">' +
-                        '<span class="bb-num-org">'+
-                        '</span> asd<span class="bb-name">' +
-                            '</span></div>'
-            ),
-                });
-            }
         };
     }
 
@@ -57,24 +48,88 @@ class MapApp extends React.Component{
                     >
                     <div className="app-map">
                         <Map
-                            onLoad={this.createTemplateLayoutFactory}
                             width={"100%"}
                             height={"100vh"}
                             defaultState={{
                                 center: [55.751574, 37.573856],
                                 zoom: 5,
                                 behaviors: ['default', 'scrollZoom'],
-                                controls: [],
+                                controls: []
                             }}
+                            state={{bounds: this.props.bounds}}
                             modules={["templateLayoutFactory", "layout.ImageWithContent"]}
                         >
                             {
-                                this.props.points.divisions.map(point => {
+                                this.props.organizations.divisions.map(organization => {
                                     return (
-                                        <Organization key={point.organization.id} date={point} template={this.state.template} />
+                                        <Organization
+                                            key={organization.organization.id}
+                                            id={organization.organization.id}
+                                            company_id={'113'}
+                                            description={organization.organization.description}
+                                            address={organization.organization.addess}
+                                            x_pos={organization.organization.x_pos}
+                                            y_pos={organization.organization.y_pos}
+                                            carsNumber={organization.carsNumber}
+                                        />
                                     )
                                 })
                             }
+                            {
+                                this.props.autocolumns.divisions.map(autocolumn => {
+                                    return (
+                                        <Autocolumn
+                                            key={autocolumn.autocolumn.id}
+                                            id={autocolumn.autocolumn.id}
+                                            company_id={'113'}
+                                            name={autocolumn.autocolumn.name}
+                                            description={autocolumn.autocolumn.description}
+                                            address={autocolumn.autocolumn.addess}
+                                            x_pos={autocolumn.autocolumn.x_pos}
+                                            y_pos={autocolumn.autocolumn.y_pos}
+                                            carsNumber={autocolumn.carsNumber}
+                                        />
+                                    )
+                                })
+                            }
+                            {
+                                this.props.badSpots.divisions.map(badSpot => {
+                                    return (
+                                        <BadSpot
+                                            key={badSpot.bad_spot.id}
+                                            id={badSpot.bad_spot.id}
+                                            company_id={'113'}
+                                            description={badSpot.bad_spot.description}
+                                            name={badSpot.bad_spot.name}
+                                            address={badSpot.bad_spot.addess}
+                                            x_pos={badSpot.bad_spot.x_pos}
+                                            y_pos={badSpot.bad_spot.y_pos}
+                                            carsNumber={badSpot.carsNumber}
+                                        />
+                                    )
+                                })
+                            }
+                            {
+                                this.props.spots.divisions.map(spot => {
+                                    return (
+                                        <Spot
+                                            key={spot.spot.id}
+                                            id={spot.spot.id}
+                                            company_id={'113'}
+                                            description={spot.spot.description}
+                                            name={spot.spot.name}
+                                            address={spot.spot.addess}
+                                            x_pos={spot.spot.x_pos}
+                                            y_pos={spot.spot.y_pos}
+                                            carsNumber={spot.carsNumber}
+                                        />
+                                    )
+                                })
+                            }
+
+
+
+
                         </Map>
                     </div>
                 </YMaps>

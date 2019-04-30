@@ -38,9 +38,9 @@ class Division extends Model
         }
         if ($xMax === $xMin && $yMax === $yMin) {
             $bounds = null;
-            $center = json_encode([$xMin, $yMin]);
+            $center = [$xMin, $yMin];
         } else {
-            $bounds = json_encode([[$xMin, $yMin], [$xMax, $yMax]]);
+            $bounds = [[$xMin, $yMin], [$xMax, $yMax]];
             $center = null;
         }
         return [
