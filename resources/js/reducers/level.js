@@ -6,14 +6,6 @@ const level = (state = Levels.company, action) => {
 
         case 'SET_LEVEL':
             return action.level;
-
-        case 'SET_POINTS':
-            return [
-                ...state,
-                {
-                    points: action.points
-                }
-            ];
         default:
             return state;
     }
