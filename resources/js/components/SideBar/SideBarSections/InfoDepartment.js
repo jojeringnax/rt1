@@ -38,23 +38,23 @@ class InfoDepartment extends React.Component{
                         </div>
                         <div id="" className="item-info">
                             <span id="" className="trans-auto">Всего, шт.</span>
-                            <span id="totTs" className="figures">311</span>
+                            <span id="totTs" className="figures">{this.props.statistic.carsTotal}</span>
                         </div>
                         <div className="item-info">
                             <span className="trans-auto">Готовы, шт.</span>
-                            <span id="OnReady" className="figures">4</span>
+                            <span id="OnReady" className="figures">{this.props.statistic.carsReady}</span>
                         </div>
                         <div className="item-info">
                             <span id="on-repair" className="trans-auto">На ремонте, шт.</span>
-                            <span id="OnRep" className="figures">3</span>
+                            <span id="OnRep" className="figures">{this.props.statistic.carsRepair}</span>
                         </div>
                         <div className="item-info">
                             <span id="on-to" className="trans-auto">На ТО, шт.</span>
-                            <span id="onTo" className="figures">4</span>
+                            <span id="onTo" className="figures">{this.props.statistic.carsTO}</span>
                         </div>
                         <div className="item-info">
                             <span id="on-line-department" className="trans-auto">На линии, шт.</span>
-                            <span id="OnLine" className="figures">124</span>
+                            <span id="OnLine" className="figures">{this.props.statistic.carsInline}</span>
                         </div>
                     </div>
 
@@ -71,7 +71,7 @@ class InfoDepartment extends React.Component{
                                 <span className="span-h3-filial"><img src={point_0} alt="point_0" className="img-transport"/></span>
                                 <span id="passenger-car" className="p-type-transport">Легковые</span>
                             </div>
-                            <span id="passCar" className="p-quantity">40</span>
+                            <span id="passCar" className="p-quantity">{this.props.statistic.carsLight}</span>
                         </div>
                         <hr className="hr-trans" />
                         <div id="truck" className="item-info transort-department">
@@ -79,7 +79,7 @@ class InfoDepartment extends React.Component{
                                 <span className="span-h3-filial"><img src={point_1} alt="point_1" className="img-transport"/></span>
                                 <span id="freight" className="p-type-transport">Грузовые</span>
                             </div>
-                            <span id="freightCar" className="p-quantity">221</span>
+                            <span id="freightCar" className="p-quantity">{this.props.statistic.carsTruck}</span>
                         </div>
                         <hr className="hr-trans" />
                         <div id="bus" className="item-info transort-department">
@@ -87,7 +87,7 @@ class InfoDepartment extends React.Component{
                                 <span className="span-h3-filial"><img src={point_2} alt="point_2" className="img-transport"/></span>
                                 <span className="p-type-transport">Автобусы</span>
                             </div>
-                            <span id="busCar" className="p-quantity">20</span>
+                            <span id="busCar" className="p-quantity">{this.props.statistic.carsBus}</span>
                         </div>
                         <hr className="hr-trans" />
                         <div id="spec" className="item-info transort-department">
@@ -95,7 +95,7 @@ class InfoDepartment extends React.Component{
                                 <span className="span-h3-filial"><img src={point_3} alt="point_3" className="img-transport"/></span>
                                 <span id="spec" className="p-type-transport">Спецтехника</span>
                             </div>
-                            <span id="specCar" className="p-quantity">12</span>
+                            <span id="specCar" className="p-quantity">{this.props.statistic.carsSpec}</span>
                         </div>
                         <hr className="hr-trans" />
                     </div>

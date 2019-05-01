@@ -11,7 +11,7 @@ import Organization from "./divisions/Organization";
 import Autocolumn from "./divisions/Autocolumn";
 import BadSpot from "./divisions/BadSpot";
 import Spot from "./divisions/Spot";
-import Car from "./divisions/Car";
+import Car from "../../containers/Car";
 
 const carTypes = {
     light: 0,
@@ -135,10 +135,6 @@ class MapApp extends React.Component{
                                     )
                                 })
                             }
-
-
-
-
                         </Map>
                     </div>
                 </YMaps>

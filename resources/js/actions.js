@@ -53,6 +53,12 @@ export const setStatisticDepartment = statistic => ({
 });
 
 
+export const setCarClicked = clicked => ({
+    type: 'SET_CAR_CLICKED',
+    clicked
+});
+
+
 
 export const Levels = {
     company: 'company',

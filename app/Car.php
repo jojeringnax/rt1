@@ -187,6 +187,7 @@ class Car extends Model
     public static function getCarsInfo($division)
     {
         $cars = $division->cars;
+
         $carsReady = 0;
         $carsRepair = 0;
         $carsTO = 0;
@@ -195,34 +196,38 @@ class Car extends Model
         $carsTruck = 0;
         $carsBus = 0;
         $carsSpec = 0;
-        foreach ($cars as $car) {
-            if ($car->type === Car::TYPES['Легковые ТС']) {
-                $carsLight++;
-            }
-            else if ($car->type === Car::TYPES['Грузовые ТС']) {
-                $carsTruck++;
-            }
-            else if ($car->type === Car::TYPES['Автобусы']) {
-                $carsBus++;
-            }
-            else if ($car->type === Car::TYPES['Спецтехника']) {
-                $carsSpec++;
-            }
-            if ($car->status === Car::STATUSES['G']) {
-                $carsReady++;
-            }
-            else if ($car->status === Car::STATUSES['R']) {
-                $carsRepair++;
-            }
-            else if ($car->status === Car::STATUSES['TO']) {
-                $carsTO++;
-            }
-            if ($car->inline) {
-                $carsInline++;
+        $carsTotal = 0;
+        if ($division->cars !== null) {
+            $carsTotal = count($cars);
+            foreach ($cars as $car) {
+                if ($car->type === Car::TYPES['Легковые ТС']) {
+                    $carsLight++;
+                }
+                else if ($car->type === Car::TYPES['Грузовые ТС']) {
+                    $carsTruck++;
+                }
+                else if ($car->type === Car::TYPES['Автобусы']) {
+                    $carsBus++;
+                }
+                else if ($car->type === Car::TYPES['Спецтехника']) {
+                    $carsSpec++;
+                }
+                if ($car->status === Car::STATUSES['G']) {
+                    $carsReady++;
+                }
+                else if ($car->status === Car::STATUSES['R']) {
+                    $carsRepair++;
+                }
+                else if ($car->status === Car::STATUSES['TO']) {
+                    $carsTO++;
+                }
+                if ($car->inline) {
+                    $carsInline++;
+                }
             }
         }
         return [
-            'totalCars' => count($cars),
+            'totalCars' => $carsTotal,
             'statuses' => [
                 'G' => $carsReady,
                 'R' => $carsRepair,

@@ -60,19 +60,19 @@ class Spot extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function organization()
     {
-        return $this->hasOne(Organization::class);
+        return $this->belongsTo(Organization::class)->where('x_pos', '!=', null);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function autocolumn()
     {
-        return $this->hasOne(Autocolumn::class);
+        return $this->belongsTo(Autocolumn::class)->where('x_pos', '!=', null);
     }
 
 
@@ -81,7 +81,7 @@ class Spot extends Model
      */
     public function brigades()
     {
-        return $this->hasMany(Brigade::class);
+        return $this->hasMany(Brigade::class)->where('x_pos', '!=', null);
     }
 
     /**
@@ -89,7 +89,7 @@ class Spot extends Model
      */
     public function cars()
     {
-        return $this->hasMany(Car::class);
+        return $this->hasMany(Car::class)->where('x_pos', '!=', null);
     }
 
     /**

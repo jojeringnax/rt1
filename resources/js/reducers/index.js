@@ -4,6 +4,7 @@ import level from './level'
 import {organizations, autocolumns, cars, brigades, badSpots, spots} from './divisions'
 import statisticDepartment from './statistics'
 import bounds from './bounds'
+import clicked from './clicked'
 
 export default combineReducers({
     points,
@@ -15,5 +16,6 @@ export default combineReducers({
     badSpots,
     spots,
     bounds,
-    statisticDepartment
+    statisticDepartment,
+    clicked
 })

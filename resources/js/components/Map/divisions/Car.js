@@ -3,21 +3,23 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
 import {store} from "../../../index";
-import {setLevel} from "../../../actions";
+import {setCarClicked, setLevel} from "../../../actions";
 
-class Car extends React.Component{
+class Car extends React.Component {
+
     constructor(props){
         super(props);
         this.state = {
             bounds: [],
-            templateBeforeClick: null,
-            templateAfterClick: null
+            template: null,
+            templateClicked: null,
+            clicked: this.props.clicked
         };
 
         this.createTemplateLayoutFactory = (ymaps) => {
             if (ymaps && !this.state.template) {
                 this.setState({
-                    templateBeforeClick:
+                    template:
                         ymaps.templateLayoutFactory.createClass(
                             '<div class="bb"><span class="' +
                             ((this.props.status !== 'R' && this.props.status !== 'TO') ? 'bb-num-car' : 'bb-num-car-inline') +
@@ -27,7 +29,7 @@ class Car extends React.Component{
                                 '/images/auto_icon/point_noIn_' + this.props.type + '.svg') +
                             '" alt="auto"></span></div>'
                         ),
-                    templateAfterClick:
+                    templateClicked:
                         ymaps.templateLayoutFactory.createClass(
                             '<div class="bb"><span class="' +
                             ((this.props.status !== 'R' && this.props.status !== 'TO') ? 'bb-num-car-white' : 'bb-num-car-inline_checked') +
@@ -42,8 +44,20 @@ class Car extends React.Component{
         };
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.clicked !== this.props.clicked) {
+            this.setState({
+                clicked: this.props.clicked
+            });
+        }
+    }
+
     handleClick = e => {
         store.dispatch(setLevel('car', this.props.id));
+        store.dispatch(setCarClicked(false));
+        this.setState({
+            clicked: true
+        });
     };
 
     render() {
@@ -65,8 +79,8 @@ class Car extends React.Component{
                     iconContentOffset: [-74, 83],
                     iconImageOffset: [-24, -24],
                     preset: 'islands#greenDotIconWithCaption',
-                    iconContentLayout: this.state.templateBeforeClick,
-                    contentLayout: this.state.templateBeforeClick
+                    iconContentLayout: !this.state.clicked ? this.state.template : this.state.templateClicked,
+                    contentLayout: !this.state.clicked ? this.state.template : this.state.templateClicked
                 }}
                 onClick={this.handleClick}
             />
