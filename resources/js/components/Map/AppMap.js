@@ -39,7 +39,7 @@ class MapApp extends React.Component{
                 {/*    x_pos: 55.45,*/}
                 {/*    y_pos: 66.09*/}
                 {/*}])}}>Points</button>*/}
-                <SideBar />
+                <SideBar level={this.props.level}/>
                 <YMaps
                     query={{
                         apikey: '27544797-3131-4759-9f4b-54f17c827eb2&lang=ru_RU',

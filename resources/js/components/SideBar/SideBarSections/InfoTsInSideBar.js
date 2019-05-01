@@ -1,10 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import user from "../../img/info_auto_icon/user.svg";
+import callAnswer from "../../img/info_auto_icon/call-answer.svg";
+import clock from "../../img/info_auto_icon/clock.svg";
+import speedometer from "../../img/info_auto_icon/speedometer.svg";
+import gasStation from "../../img/info_auto_icon/gas-station.svg";
+import star from "../../img/info_auto_icon/star.svg";
+import percentageDiscount from "../../img/info_auto_icon/percentage-discount.svg";
+import toolsAndUtensils from "../../img/info_auto_icon/tools-and-utensils.svg";
+import carWheel from "../../img/info_auto_icon/car-wheel.svg";
+
 
 class InfoTsInSideBar extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            show: this.props.show
+        };
+    }
+
+    componentDidMount() {
+        if(!this.state.show) {
+            document.getElementById('info-ts').classList.add('hide');
+        }else {
+            document.getElementById('info-ts').classList.remove('hide');
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        //console.log(prevProps, this.state, this.props);
+        if (prevProps.show !== this.props.show) {
+            this.setState({
+                show: this.props.show
+            });
+        }
+    }
+
     render() {
         return(
-            <div className="info-ts item-sideBar">
+            <div id="info-ts" className="info-ts item-sideBar">
                 <div className="title-ts d-flex justify-content-start">
                     <div>
                         <img id="img-ts" src="" alt="" />
@@ -21,7 +55,7 @@ class InfoTsInSideBar extends React.Component{
                         <div>
                             <div className="name-driver d-flex item-ts-data">
                                 <div className="d-flex align-items-start icon-ts">
-                                    <img src="yan/img/info_auto_icon/user.svg" alt="driver_icon"/>
+                                    <img src={user} alt="driver_icon"/>
                                 </div>
                                 <div className="d-flex flex-column align-items-start">
                                     <span className="title-driver-name title-ts-text">Водитель:</span>
@@ -30,7 +64,7 @@ class InfoTsInSideBar extends React.Component{
                             </div>
                             <div className="phone-driver d-flex align-items-start item-ts-data">
                                 <div className="d-flex align-items-start icon-ts">
-                                    <img src="yan/img/info_auto_icon/call-answer.svg" alt="phone_driver"/>
+                                    <img src={callAnswer} alt="phone_driver"/>
                                 </div>
                                 <div className="d-flex flex-column align-items-start" >
                                     <span className="title-ts-text title-driver-phone">Телефон:</span>
@@ -44,7 +78,7 @@ class InfoTsInSideBar extends React.Component{
                     <div className="work-time item-ts-data d-flex flex-column">
                         <div className="d-flex">
                             <div className="icon-ts">
-                                <img src="yan/img/info_auto_icon/clock.svg" alt="clock_icon"/>
+                                <img src={clock} alt="clock_icon"/>
                             </div>
                             <div className="d-flex flex-column align-items-start" >
                                 <div className="start flex flex-column">
@@ -74,7 +108,7 @@ class InfoTsInSideBar extends React.Component{
                         <div className="row-1 d-flex flex-row item-ts-data">
                             <div className="dada-ts-item d-flex">
                                 <div className="icon-ts">
-                                    <img src="yan/img/info_auto_icon/speedometer.svg" alt="" />
+                                    <img src={speedometer} alt="" />
                                 </div>
                                 <div className="d-flex flex-column align-items-start" >
                                     <span className="title-ts-text">Пробег, км:</span>
@@ -89,7 +123,7 @@ class InfoTsInSideBar extends React.Component{
                         <div className="row-2 d-flex flex-row item-ts-data">
                             <div className="dada-ts-item d-flex">
                                 <div className="icon-ts">
-                                    <img src="yan/img/info_auto_icon/gas-station.svg" alt=""/>
+                                    <img src={gasStation} alt="gasStation"/>
                                 </div>
                                 <div className="d-flex flex-column align-items-start">
                                     <span className="title-ts-text">Топливо по <br/>норме, л:</span>
@@ -104,7 +138,7 @@ class InfoTsInSideBar extends React.Component{
                         <div className="row-3 d-flex flex-row item-ts-data">
                             <div className="dada-ts-item d-flex">
                                 <div className="icon-ts">
-                                    <img src="yan/img/info_auto_icon/star.svg" alt=""/>
+                                    <img src={star} alt="star"/>
                                 </div>
                                 <div className="d-flex flex-column align-items-start" >
                                     <span className="title-ts-text">Количество <br/>нарушений:</span>
@@ -123,7 +157,7 @@ class InfoTsInSideBar extends React.Component{
                         <div className="row-1 d-flex flex-row item-ts-data">
                             <div className="dada-ts-item d-flex" >
                                 <div className="icon-ts">
-                                    <img src="yan/img/info_auto_icon/percentage-discount.svg" alt=""/>
+                                    <img src={percentageDiscount} alt="percentageDiscount_icon"/>
                                 </div>
                                 <div className="d-flex flex-column align-items-start ts-car-data">
                                     <span className="title-ts-text">Процент рентабельности за прошлый месяц:</span>
@@ -134,7 +168,7 @@ class InfoTsInSideBar extends React.Component{
                         <div className="row-2 d-flex flex-row item-ts-data">
                             <div className="dada-ts-item d-flex">
                                 <div className="icon-ts">
-                                    <img src="yan/img/info_auto_icon/tools-and-utensils.svg" alt=""/>
+                                    <img src={toolsAndUtensils} alt="toolsAndUtensils"/>
                                 </div>
                                 <div className="d-flex flex-column align-items-start ts-car-data">
                                     <span className="title-ts-text">Осталось км <br/> до ТО:</span>
@@ -149,7 +183,7 @@ class InfoTsInSideBar extends React.Component{
                         <div className="row-3 d-flex flex-row item-ts-data">
                             <div className="dada-ts-item d-flex">
                                 <div className="icon-ts">
-                                    <img src="yan/img/info_auto_icon/car-wheel.svg" alt=""/>
+                                    <img src={carWheel} alt="carWheel"/>
                                 </div>
                                 <div className="d-flex flex-column align-items-start ts-car-data">
                                     <span className="title-ts-text">Км до замены шин:</span>

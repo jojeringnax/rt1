@@ -1,14 +1,51 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import deliveryTruck from "../../img/delivery-truck.svg"
+import copy from "../../img/copy.svg";
+import pie from "../../img/pie.svg";
+import point_0 from "../../img/auto_icon/point_blue_0.svg"
+import point_1 from "../../img/auto_icon/point_blue_1.svg"
+import point_2 from "../../img/auto_icon/point_blue_2.svg"
+import point_3 from "../../img/auto_icon/point_blue_3.svg"
+
 
 class InfoDepartmentInSideBar extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            show: this.props.show
+        };
+    }
+
+    componentDidMount() {
+        if(!this.state.show) {
+            document.getElementById('info-department').classList.add('hide');
+        }else {
+            document.getElementById('info-department').classList.remove('hide');
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.show !== this.props.show) {
+            this.setState({
+                show: this.props.show
+            },() => {
+                if(!this.state.show) {
+                    document.getElementById('info-department').classList.add('hide');
+                }else {
+                    document.getElementById('info-department').classList.remove('hide');
+                }
+            });
+        }
+    }
+
     render() {
         return(
-            <div className="info-department item-sideBar">
+            <div id="info-department" className="info-department item-sideBar">
                 <div className="">
                     <div className="">
                         <div className="ts-title">
-                            <span className="img"><img src="yan/img/delivery-truck.svg" alt="#" className="span-yan/img-h3"/></span>
+                            <span className="img"><img src={deliveryTruck} alt="deliveryTruck" className="span-yan/img-h3"/></span>
                             <span id="tranport-means" className="ts-text h3-main">Транспортные средства</span>
                         </div>
                         <div id="" className="item-info">
@@ -43,7 +80,7 @@ class InfoDepartmentInSideBar extends React.Component{
                         <hr className="hr-trans" />
                         <div id="light" className="item-info transort-department">
                             <div className="transport-title">
-                                <span className="span-h3-filial"><img src="yan/img/auto_icon/point_blue_0.svg" alt="#" className="img-transport"/></span>
+                                <span className="span-h3-filial"><img src={point_0} alt="point_0" className="img-transport"/></span>
                                 <span id="passenger-car" className="p-type-transport">Легковые</span>
                             </div>
                             <span id="passCar" className="p-quantity">40</span>
@@ -51,7 +88,7 @@ class InfoDepartmentInSideBar extends React.Component{
                         <hr className="hr-trans" />
                         <div id="truck" className="item-info transort-department">
                             <div className="transport-title">
-                                <span className="span-h3-filial"><img src="yan/img/auto_icon/point_blue_1.svg" alt="#" className="img-transport"/></span>
+                                <span className="span-h3-filial"><img src={point_1} alt="point_1" className="img-transport"/></span>
                                 <span id="freight" className="p-type-transport">Грузовые</span>
                             </div>
                             <span id="freightCar" className="p-quantity">221</span>
@@ -59,7 +96,7 @@ class InfoDepartmentInSideBar extends React.Component{
                         <hr className="hr-trans" />
                         <div id="bus" className="item-info transort-department">
                             <div className="transport-title">
-                                <span className="span-h3-filial"><img src="yan/img/auto_icon/point_blue_2.svg" alt="#" className="img-transport"/></span>
+                                <span className="span-h3-filial"><img src={point_2} alt="point_2" className="img-transport"/></span>
                                 <span className="p-type-transport">Автобусы</span>
                             </div>
                             <span id="busCar" className="p-quantity">20</span>
@@ -67,7 +104,7 @@ class InfoDepartmentInSideBar extends React.Component{
                         <hr className="hr-trans" />
                         <div id="spec" className="item-info transort-department">
                             <div className="transport-title">
-                                <span className="span-h3-filial"><img src="yan/img/auto_icon/point_blue_3.svg" alt="#" className="img-transport"/></span>
+                                <span className="span-h3-filial"><img src={point_3} alt="point_3" className="img-transport"/></span>
                                 <span id="spec" className="p-type-transport">Спецтехника</span>
                             </div>
                             <span id="specCar" className="p-quantity">12</span>
@@ -79,7 +116,7 @@ class InfoDepartmentInSideBar extends React.Component{
                 <div className="">
                     <div id="request-department" className="">
                         <div className="request-title">
-                            <span className="img"><img src="yan/img/copy.svg" alt="#" className="span-yan/img-h3-2nd"/></span>
+                            <span className="img"><img src={copy} alt="copy" className="span-yan/img-h3-2nd"/></span>
                             <span id="title-request" className="text">Заявки</span>
                         </div>
                         <div className="item-info">
@@ -98,7 +135,7 @@ class InfoDepartmentInSideBar extends React.Component{
                 </div>
                 <div id="indicators-department" className="indicators-class">
                     <div className="indicators-title">
-                        <span className="img"><img src="yan/img/pie.svg" alt="#" className="span-yan/img-h3-3nd"/></span>
+                        <span className="img"><img src={pie} alt="pie" className="span-yan/img-h3-3nd"/></span>
                         <span id="h3-indicator" className="text">Показатели компании</span>
                     </div>
                     <div className="item-bar">

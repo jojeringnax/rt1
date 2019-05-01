@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import logo from "../../img/logo.svg";
 
 class HeadOfSideBar extends React.Component{
     render() {
@@ -7,7 +8,7 @@ class HeadOfSideBar extends React.Component{
             <div className="head-of-sidebar">
                 <div className="logo">
                     <div className="img-logo">
-                        <img src="yan/img/logo.svg" alt="Logo Русурс Транс" />
+                        <img src={logo} alt="Logo Русурс Транс" />
                     </div>
                 </div>
             </div>

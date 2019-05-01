@@ -1,63 +1,99 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import deliveryTruck from "../../img/delivery-truck.svg"
+import copy from "../../img/copy.svg";
+import pie from "../../img/pie.svg";
 
 class InfoCompanyInSideBar extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            show: this.props.show
+        };
+    }
+
+    componentDidMount() {
+        if(!this.state.show) {
+            document.getElementById('info-company').classList.add('hide');
+        }else {
+            document.getElementById('info-company').classList.remove('hide');
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        //console.log(prevProps, this.state, this.props);
+        if (prevProps.show !== this.props.show) {
+            this.setState({
+                show: this.props.show
+            },()=> {
+                if(!this.state.show) {
+                    document.getElementById('info-company').classList.add('hide');
+                }else {
+                    document.getElementById('info-company').classList.remove('hide');
+                }
+            });
+        }
+    }
+
+
     render() {
         return(
-            <div className="info-company item-sideBar">
+            <div id="info-company" className="info-company item-sideBar">
                 <div>
                     <div className="ts-title">
-                        <span className="img"><img src="yan/img/delivery-truck.svg" alt="#" className="" /></span>
-                        <span className="ts-text h3-main">Транспортные средства</span>
+                        <span className="img">
+                            <img src={deliveryTruck} alt="deliveryTruck" className="" />
+                        </span>
+                        <span className="ts-text">Транспортные средства</span>
                     </div>
                     <div className="item-info">
-                        <span className="trans-auto">Всего, шт.</span>
-                        <span id="compAmOfTs" className="figures"></span>
+                        <span className="item-info-title">Всего, шт.</span>
+                        <span id="compAmOfTs" className="figures">100</span>
                     </div>
                     <div className="item-info">
-                        <p className="trans-auto">Готовы, шт.</p>
-                        <span id="compReady" className="figures"></span>
+                        <span className="item-info-title">Готовы, шт.</span>
+                        <span id="compReady" className="figures">100</span>
                     </div>
                     <div className="item-info">
-                        <span className="trans-auto">На ремонте, шт.</span>
-                        <span id="compOnRep" className="figures"></span>
+                        <span className="item-info-title">На ремонте, шт.</span>
+                        <span id="compOnRep" className="figures">100</span>
                     </div>
                     <div className="item-info">
-                        <span className="trans-auto">На ТО, шт.</span>
-                        <span id="compOnTo" className="figures"></span>
+                        <span className="item-info-title">На ТО, шт.</span>
+                        <span id="compOnTo" className="figures">100</span>
                     </div>
                     <div className="item-info">
                         <span className="trans-auto">На линии, шт.</span>
-                        <span id="compOnLine" className="figures"></span>
+                        <span id="compOnLine" className="figures">100</span>
                     </div>
                 </div>
 
                 <div id="request" className="">
                     <div className="request-title">
-                        <span className="img"><img src="yan/img/copy.svg" alt="#" className="span-yan/img-h3-2nd" /></span>
+                        <span className="img"><img src={copy} alt="copy" className="span-yan/img-h3-2nd" /></span>
                         <span className="text">Заявки</span>
                     </div>
                     <div className="item-info">
                         <span className="trans-auto">Выполнено, шт.</span>
-                        <span id="comp_applications_executed" className="figures"></span>
+                        <span id="comp_applications_executed" className="figures">100</span>
                     </div>
                     <div className="item-info">
                         <span className="trans-auto">Отменено, шт.</span>
-                        <span id="comp_applications_canceled" className="figures"></span>
+                        <span id="comp_applications_canceled" className="figures">100</span>
                     </div>
                     <div className="item-info">
                         <span className="trans-auto">Переданы на СП, шт.</span>
-                        <span id="comp_applications_sub" className="figures"></span>
+                        <span id="comp_applications_sub" className="figures">100</span>
                     </div>
                 </div>
 
                 <div id="indicators" className="indicators-class">
                     <div className="indicators-title">
-                        <span className="img"><img src="yan/img/pie.svg" alt="#" className="span-yan/img-h3-3nd" /></span>
+                        <span className="img"><img src={pie} alt="pie" className="span-yan/img-h3-3nd" /></span>
                         <span className="text">Показатели компании</span>
                     </div>
                     <div className="item-bar">
-                        <div className="cirk" >
+                        <div className="circle-block" >
                             <span id="comp_applications_ac_per" className="p-bar">60%</span>
                             <div id="comp_applications_ac" className="circle"></div>
                         </div>
@@ -66,7 +102,7 @@ class InfoCompanyInSideBar extends React.Component{
                         </div>
                     </div>
                     <div className="item-bar">
-                        <div className="cirk" >
+                        <div className="circle-block" >
                             <span id="comp_waybills_total_per" className="p-bar">30%</span>
                             <div id="comp_waybills_total" className="circle"></div>
                         </div>
@@ -75,7 +111,7 @@ class InfoCompanyInSideBar extends React.Component{
                         </div>
                     </div>
                     <div className="item-bar">
-                        <div className="cirk" >
+                        <div className="circle-block" >
                             <p id="comp_accidents_total_per" className="p-bar">90%</p>
                             <div id="comp_accidents_total" className="circle"></div>
                         </div>
@@ -84,7 +120,7 @@ class InfoCompanyInSideBar extends React.Component{
                         </div>
                     </div>
                     <div className="item-bar">
-                        <div className="cirk" >
+                        <div className="circle-block" >
                             <span id="comp_WB_M_per" className="p-bar">100%</span>
                             <div id="comp_WB_M" className="circle"></div>
                         </div>

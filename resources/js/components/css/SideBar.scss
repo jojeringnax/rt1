@@ -1,15 +1,21 @@
 @charset "UTF-8";
-
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 * {
   font-size: 1.1vh;
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
+}
+
+.figures {
+  color: #949494;
 }
 
 .sideBar {
   width: 20%;
   height: 100vh;
+  padding: 2vh 3vh 3vh 3vh;
+  overflow: hidden;
 }
 
 .head-of-sidebar {
@@ -17,16 +23,260 @@
 }
 
 .nav-sidebar {
-  height: 6vh;
+  max-height: 6vh;
 }
 
 .item-sideBar {
   height: 89vh;
 }
 
+.hide {
+  display: none;
+}
+/*================headOfSideBar===================*/
+
+.head-of-sidebar {
+  .logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 50px;
+  }
+
+  .img-logo {
+    display: flex;
+    justify-content: flex-start;
+    width: 75%;
+    img {
+      width: 80%;
+    }
+  }
+}
+
+/*================main information===================*/
+
 .item-info {
   display: flex;
   justify-content: space-between;
   width: 100%;
   margin-top: 5px;
+}
+
+.ts-title {
+  display: flex;
+  margin-top: 1.5vh;
+  margin-bottom: 1.2vh;
+  span.img {
+    display: flex;
+    align-items: center;
+    img {
+      height: 1.5vh;
+    }
+
+  }
+  span.ts-text {
+    font-size: 1.5vh;
+    font-weight: bold;
+    color: #79849F;
+    margin-left: 15px;
+  }
+}
+
+.request-title {
+  display: flex;
+  margin-top: 2.2vh;
+  margin-bottom: 1.2vh;
+  span.img {
+    display: flex;
+    align-items: center;
+    img {
+      height: 1.5vh;
+    }
+  }
+
+  span.text {
+    font-size: 1.5vh;
+    font-weight: bold;
+    color: #79849F;
+    margin-left: 15px;
+  }
+}
+
+.indicators-title {
+  display: flex;
+  margin-top: 2.2vh;
+  margin-bottom: 1.2vh;
+  span.img {
+    display: flex;
+    align-items: center;
+    img {
+      height: 1.5vh;
+    }
+  }
+
+  span.text {
+    font-size: 1.5vh;
+    font-weight: bold;
+    color: #79849F;
+    margin-left: 15px;
+  }
+
+}
+
+.item-bar {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  //width: 200px;
+
+  .ilia {
+    width: 5vh;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .circle-block {
+    width: 6.5vh;
+    margin-left: 0 !important;
+    height: 6.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.p-bar {
+  position: absolute;
+}
+
+.indic-bot {
+  margin-top: 3.5vh;
+  display: flex;
+  justify-content: flex-start;
+  &:first-child {
+    margin-left: 0;
+  }
+
+  .div-meanings {
+    margin-left: 3vh;
+  }
+}
+
+.div-bar-text {
+  margin-left: 40px;
+}
+
+.span-h3-filial {
+  img {
+    height: 2vh;
+  }
+  .p-type-transport {
+    font-size: 1.5vh;
+  }
+}
+
+/*=================ts-info=========================*/
+
+/*==================ts-data======================*/
+
+.title-ts-text {
+  font-size: 1.1vh;
+  display: block;
+  line-height: 1;
+}
+
+.text-ts {
+  display: block;
+  position: relative;
+  font-size: 1.4vh;
+  font-weight: bold;
+  &.cross-out {
+    text-decoration: line-through;
+  }
+
+  &.blue-color {
+    color: #004781;
+  }
+}
+.list {
+  padding: 0.8vh 1.5vh 1.5vh 1.5vh;
+  li {
+    margin-top: 0.6vh;
+    list-style-type: none;
+    .car-baloon {
+      img {
+        width: 2vh;
+        margin-right: 2vh;
+      }
+    }
+  }
+
+}
+
+.isDisabled {
+  pointer-events: none;
+}
+
+.active-transport {
+  background-color: #004781 !important;
+  color: white !important;
+  .transport-title {
+    p {
+      color: white !important;
+    }
+  }
+}
+
+.item-ts-data {
+  margin-top: 2.2vh;
+}
+
+
+.ts-hr {
+  margin-top: 2.6vh;
+  margin-bottom: 2.6vh;
+  width: 90%;
+}
+
+.dada-ts-item {
+  width: 170px;
+}
+
+@media screen and (min-width: 3000px) {
+
+  .dada-ts-item {
+    min-width: 350px;
+    margin-right: 1.2vh;
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.title-ts {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1.5vh;
+  .title-ts-text {
+    font-size: 14px;
+
+  }
+}
+
+.text-level-menu {
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 }
