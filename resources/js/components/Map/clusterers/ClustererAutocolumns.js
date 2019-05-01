@@ -5,8 +5,8 @@ import {store} from '../../../index'
 
 class ClustererAutocolumns extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             layout: null,
             balloonContentLayout: null
@@ -41,10 +41,16 @@ class ClustererAutocolumns extends React.Component {
             <Clusterer
                 onLoad={this.createTemplateLayoutFactory}
                 options={{
-                    preset: 'islands#invertedVioletClusterIcons',
-                    groupByCoordinates: false,
+                    clusterBalloonContentLayout: this.state.balloonContentLayout,
+                    clusterIcons: [{
+                        href: '',
+                        size: [62, 62],
+                        offset: [-26, -26]
+                    }],
+                    gridSize: 4,
+                    clusterIconContentLayout: this.state.layout,
+                    zoomMargin : [50,50,50,50]
                 }}
-                children={this.props.children}
             />
         )
     }
