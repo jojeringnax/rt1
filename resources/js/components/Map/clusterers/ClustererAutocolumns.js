@@ -1,7 +1,9 @@
 import { Clusterer } from 'react-yandex-maps';
 import React from "react";
 import {store} from '../../../index'
-
+import Autocolumn from "../divisions/Autocolumn";
+import { createStore } from 'redux'
+import '../../css/MapPoints.css'
 
 class ClustererAutocolumns extends React.Component {
 
@@ -16,16 +18,16 @@ class ClustererAutocolumns extends React.Component {
             if (ymaps && !this.state.template) {
                 this.setState({
                     layout: ymaps.templateLayoutFactory.createClass(
-                        '<div class="bb-cluster-car"><span class="bb-num">{{ properties.geoObjects.length }}</span></div>'
+                        '<div class="bb-cluster-car"><span class="bb-num"></span></div>'
                     )});
                 this.setState({
                     balloonContentLayout: ymaps.templateLayoutFactory.createClass([
                         '<ul class=list>',
                         '{% for geoObject in properties.geoObjects %}',
                         '{% if geoObject.carsTotal == 0 %}',
-                        '<li>{{ geoObject.name }} ({{ geoObject.carsTotal }})</li>',
+                        '<li></li>',
                         '{% else %}',
-                        '<li><a onclick="" href=# class="list_item car-baloon">{{ geoObject.name }} ({{ geoObject.carsTotal }})</a></li>',
+                        '<li><a onclick="" href=# class="list_item car-baloon"></a></li>',
                         '{% endif %}',
                         '{% endfor %}',
                         '</ul>'
@@ -37,6 +39,7 @@ class ClustererAutocolumns extends React.Component {
 
 
     render() {
+        console.log('---props', store.getState().carsNumber)
         return (
             <Clusterer
                 onLoad={this.createTemplateLayoutFactory}
@@ -47,11 +50,30 @@ class ClustererAutocolumns extends React.Component {
                         size: [62, 62],
                         offset: [-26, -26]
                     }],
-                    gridSize: 4,
+                    gridSize: 400,
                     clusterIconContentLayout: this.state.layout,
                     zoomMargin : [50,50,50,50]
                 }}
-            />
+            >
+                {
+                    store.getState().autocolumns.divisions.map(autocolumn => {
+                        return (
+                            <Autocolumn
+                                key={autocolumn.autocolumn.id}
+                                id={autocolumn.autocolumn.id}
+                                company_id={'113'}
+                                name={autocolumn.autocolumn.name}
+                                description={autocolumn.autocolumn.description}
+                                address={autocolumn.autocolumn.addess}
+                                x_pos={autocolumn.autocolumn.x_pos}
+                                y_pos={autocolumn.autocolumn.y_pos}
+                                carsNumber={autocolumn.carsNumber}
+                            />
+                        )
+                    })
+                }
+
+            </Clusterer>
         )
     }
 }

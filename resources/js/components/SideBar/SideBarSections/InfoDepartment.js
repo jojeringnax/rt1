@@ -7,7 +7,8 @@ import point_0 from "../../img/auto_icon/point_blue_0.svg"
 import point_1 from "../../img/auto_icon/point_blue_1.svg"
 import point_2 from "../../img/auto_icon/point_blue_2.svg"
 import point_3 from "../../img/auto_icon/point_blue_3.svg"
-
+import 'react-circular-progressbar/dist/styles.css';
+import CircularProgressbar from 'react-circular-progressbar';
 
 class InfoDepartment extends React.Component{
     constructor(props){
@@ -132,7 +133,18 @@ class InfoDepartment extends React.Component{
                                     (this.props.statistic.applications_ac/this.props.statistic.applications_total).toFixed(2)*100
                                 }%
                             </span>
-                            <div id="applications_ac" className="circle"></div>
+                            <CircularProgressbar
+                                percentage={(this.props.statistic.applications_ac/this.props.statistic.applications_total).toFixed(2)*100}
+                                text={""}
+                                styles={{
+                                    path: {
+                                        stroke: "#27AE60",
+                                        strokeLinecap: 'butt',
+                                        transition: 'stroke-dashoffset 3s ease 1s',
+                                    }
+                                }}
+                            />
+                            {/*<div id="applications_ac" className="circle"></div>*/}
                         </div>
                         <div className="div-bar-text">
                             <span id="filed" className="p-bar-text">Поданы через АС<br/>"Авто-Контроль", %</span>
@@ -140,12 +152,26 @@ class InfoDepartment extends React.Component{
                     </div>
                     <div className="item-bar">
                         <div className="ilia" >
+                            {console.log('---acc', this.props.statistic.waybills_processed,this.props.statistic.waybills_total, (this.props.statistic.waybills_processed/this.props.statistic.waybills_total).toFixed(2)*100)}
                             <span id="waybills_total_per" className="p-bar">
                                 {
+                                    (this.props.statistic.waybills_processed  === 0 && this.props.statistic.waybills_total === 0) ? 0 :
                                     (this.props.statistic.waybills_processed/this.props.statistic.waybills_total).toFixed(2)*100
                                 }%
                             </span>
-                            <div id="waybills_total" className="circle"></div>
+                            <CircularProgressbar
+                                percentage={ (this.props.statistic.waybills_processed  === 0 && this.props.statistic.waybills_total === 0) ? 0 :
+                                    (this.props.statistic.waybills_processed/this.props.statistic.waybills_total).toFixed(2)*100}
+                                text={""}
+                                styles={{
+                                    path: {
+                                        stroke: "#27AE60",
+                                        strokeLinecap: 'butt',
+                                        transition: 'stroke-dashoffset 3s ease 1s',
+                                    }
+                                }}
+                            />
+                            {/*<div id="waybills_total" className="circle"></div>*/}
                         </div>
                         <div className="div-bar-text">
                             <span id="processed" className="p-bar-text-str">Обработано ПЛ, %</span>
@@ -158,8 +184,20 @@ class InfoDepartment extends React.Component{
                                 (this.props.statistic.accidents_guilty  === 0 && this.props.statistic.accidents_total === 0) ? 0 :
                                     (this.props.statistic.accidents_guilty/this.props.statistic.accidents_total).toFixed(2)*100
                                 }%
-                                </span>
-                            <div id="accidents_total" className="circle"></div>
+                            </span>
+                            <CircularProgressbar
+                                percentage={(this.props.statistic.accidents_guilty  === 0 && this.props.statistic.accidents_total === 0) ? 0 :
+                                    (this.props.statistic.accidents_guilty/this.props.statistic.accidents_total).toFixed(2)*100}
+                                text={""}
+                                styles={{
+                                    path: {
+                                        stroke: "#27AE60",
+                                        strokeLinecap: 'butt',
+                                        transition: 'stroke-dashoffset 3s ease 1s',
+                                    }
+                                }}
+                            />
+                            {/*<div id="accidents_total" className="circle"></div>*/}
                         </div>
                         <div className="div-bar-text">
                             <span id="dtp" className="p-bar-text">ДТП по вине<br/>компании, %</span>
@@ -172,7 +210,18 @@ class InfoDepartment extends React.Component{
                                     (this.props.statistic.WB_M/this.props.statistic.WB_ALL).toFixed(2)*100
                                 }%
                             </p>
-                            <div id="WB_M" className="circle"></div>
+                            <CircularProgressbar
+                                percentage={(this.props.statistic.WB_M/this.props.statistic.WB_ALL).toFixed(2)*100}
+                                text={""}
+                                styles={{
+                                    path: {
+                                        stroke: "#27AE60",
+                                        strokeLinecap: 'butt',
+                                        transition: 'stroke-dashoffset 3s ease 1s',
+                                    }
+                                }}
+                            />
+                            {/*<div id="WB_M" className="circle"></div>*/}
                         </div>
                         <div className="div-bar-text">
                             <p id="" className="p-bar-text">Принятый пробег<br/>по БСМТ, %</p>

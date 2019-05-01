@@ -77,25 +77,7 @@ class MapApp extends React.Component{
                                     )
                                 })
                             }
-                            <ClustererAutocolumns>
-                            {
-                                this.props.autocolumns.divisions.map(autocolumn => {
-                                    return (
-                                        <Autocolumn
-                                            key={autocolumn.autocolumn.id}
-                                            id={autocolumn.autocolumn.id}
-                                            company_id={'113'}
-                                            name={autocolumn.autocolumn.name}
-                                            description={autocolumn.autocolumn.description}
-                                            address={autocolumn.autocolumn.addess}
-                                            x_pos={autocolumn.autocolumn.x_pos}
-                                            y_pos={autocolumn.autocolumn.y_pos}
-                                            carsNumber={autocolumn.carsNumber}
-                                        />
-                                    )
-                                })
-                            }
-                            </ClustererAutocolumns>
+                            <ClustererAutocolumns />
                             {
                                 this.props.badSpots.divisions.map(badSpot => {
                                     return (

@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import deliveryTruck from "../../img/delivery-truck.svg"
 import copy from "../../img/copy.svg";
 import pie from "../../img/pie.svg";
+import 'react-circular-progressbar/dist/styles.css';
+import CircularProgressbar from 'react-circular-progressbar';
 
 class InfoCompany extends React.Component{
     constructor(props){
@@ -80,7 +82,18 @@ class InfoCompany extends React.Component{
                     <div className="item-bar">
                         <div className="circle-block" >
                             <span id="comp_applications_ac_per" className="p-bar">60%</span>
-                            <div id="comp_applications_ac" className="circle"></div>
+                            {/*<div id="comp_applications_ac" className="circle"></div>*/}
+                            <CircularProgressbar
+                                percentage={60}
+                                text={""}
+                                styles={{
+                                    path: {
+                                        stroke: "#27AE60",
+                                        strokeLinecap: 'butt',
+                                        transition: 'stroke-dashoffset 3s ease 1s',
+                                    }
+                                }}
+                            />
                         </div>
                         <div className="div-bar-text">
                             <span id="filed" className="p-bar-text">Поданы через АС<br/>"Авто-Контроль", %</span>
@@ -89,7 +102,17 @@ class InfoCompany extends React.Component{
                     <div className="item-bar">
                         <div className="circle-block" >
                             <span id="comp_waybills_total_per" className="p-bar">30%</span>
-                            <div id="comp_waybills_total" className="circle"></div>
+                            <CircularProgressbar
+                                percentage={30}
+                                text={""}
+                                styles={{
+                                    path: {
+                                        stroke: "#27AE60",
+                                        strokeLinecap: 'butt',
+                                        transition: 'stroke-dashoffset 3s ease 1s',
+                                    }
+                                }}
+                            />
                         </div>
                         <div className="div-bar-text">
                             <span id="processed" className="p-bar-text-str">Обработано ПЛ, %</span>
@@ -98,7 +121,17 @@ class InfoCompany extends React.Component{
                     <div className="item-bar">
                         <div className="circle-block" >
                             <p id="comp_accidents_total_per" className="p-bar">90%</p>
-                            <div id="comp_accidents_total" className="circle"></div>
+                            <CircularProgressbar
+                                percentage={90}
+                                text={""}
+                                styles={{
+                                    path: {
+                                        stroke: "#27AE60",
+                                        strokeLinecap: 'butt',
+                                        transition: 'stroke-dashoffset 3s ease 1s',
+                                    }
+                                }}
+                            />
                         </div>
                         <div className="div-bar-text">
                             <span id="dtp" className="p-bar-text">ДТП по вине<br/>компании, %</span>
@@ -107,7 +140,17 @@ class InfoCompany extends React.Component{
                     <div className="item-bar">
                         <div className="circle-block" >
                             <span id="comp_WB_M_per" className="p-bar">100%</span>
-                            <div id="comp_WB_M" className="circle"></div>
+                            <CircularProgressbar
+                                percentage={100}
+                                text={""}
+                                styles={{
+                                    path: {
+                                        stroke: "#27AE60",
+                                        strokeLinecap: 'butt',
+                                        transition: 'stroke-dashoffset 3s ease 1s',
+                                    }
+                                }}
+                            />
                         </div>
                         <div className="div-bar-text">
                             <span id="mileage-bsmt" className="p-bar-text">Принятый пробег<br/>по БСМТ, %</span>

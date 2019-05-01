@@ -74,6 +74,27 @@
     box-sizing: content-box;
     flex-grow: 1;
   }
+}
 
-
+.bb-cluster-car {
+  color: black;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  .bb-num {
+    width: 60px;
+    height: 60px;
+    color: #004781;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../img/elipse_white.svg");
+    background-size: 100%;
+    background-position: center;
+    z-index: 10;
+    font-size: 1vh;
+  }
 }
