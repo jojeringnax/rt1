@@ -39,7 +39,6 @@ class ClustererAutocolumns extends React.Component {
 
 
     render() {
-        console.log('---props', store.getState().carsNumber)
         return (
             <Clusterer
                 onLoad={this.createTemplateLayoutFactory}

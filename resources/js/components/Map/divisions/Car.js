@@ -50,6 +50,7 @@ class Car extends React.Component {
                 clicked: this.props.clicked
             });
         }
+
     }
 
     handleClick = e => {
@@ -58,6 +59,7 @@ class Car extends React.Component {
         this.setState({
             clicked: true
         });
+        this.props.functionClicked();
     };
 
     render() {

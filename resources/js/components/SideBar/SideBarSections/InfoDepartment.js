@@ -152,7 +152,7 @@ class InfoDepartment extends React.Component{
                     </div>
                     <div className="item-bar">
                         <div className="ilia" >
-                            {console.log('---acc', this.props.statistic.waybills_processed,this.props.statistic.waybills_total, (this.props.statistic.waybills_processed/this.props.statistic.waybills_total).toFixed(2)*100)}
+
                             <span id="waybills_total_per" className="p-bar">
                                 {
                                     (this.props.statistic.waybills_processed  === 0 && this.props.statistic.waybills_total === 0) ? 0 :

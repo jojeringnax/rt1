@@ -12,6 +12,7 @@ import Autocolumn from "./divisions/Autocolumn";
 import BadSpot from "./divisions/BadSpot";
 import Spot from "./divisions/Spot";
 import Car from "../../containers/Car";
+import {store} from "../../index";
 
 const carTypes = {
     light: 0,
@@ -23,24 +24,26 @@ const carTypes = {
 let divisions = [];
 
 class MapApp extends React.Component{
-
     constructor(props){
         super(props);
         this.state = {
-            template: null
+            template: null,
+            clickedCar: false
         };
+
+        this.clickedCars = () => {
+            this.setState({clickedCar:true})
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('ApppMappp',prevProps)
     }
 
 
     render() {
         return(
             <div className="app">
-                {/*<button onClick={() => {setLevel('company')}}>Lol</button>*/}
-                {/*<button onClick={() => {setPoints([{*/}
-                {/*    id: '141',*/}
-                {/*    x_pos: 55.45,*/}
-                {/*    y_pos: 66.09*/}
-                {/*}])}}>Points</button>*/}
                 <SideBar level={this.props.level}/>
                 <YMaps
                     query={{
@@ -131,6 +134,8 @@ class MapApp extends React.Component{
                                             description={car.description}
                                             x_pos={car.x_pos}
                                             y_pos={car.y_pos}
+                                            clicked={(car.id === store.getState().level.id) ? 1 : 0}
+                                            functionClicked={this.clickedCars}
                                         />
                                     )
                                 })

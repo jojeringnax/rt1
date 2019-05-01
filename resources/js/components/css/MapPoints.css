@@ -87,4 +87,86 @@
     z-index: 10;
     font-size: 1vh; }
 
+.bb-num-car-white {
+  width: 60px;
+  height: 60px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../img/elipse.svg");
+  background-size: 100%;
+  background-position: center;
+  z-index: 10;
+  font-size: 1vh; }
+  .bb-num-car-white svg {
+    width: 130%; }
+
+.bb-num-car-inline {
+  width: 60px;
+  height: 60px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../img/auto_icon/ellipse_noIn.svg");
+  background-size: 100%;
+  background-position: center;
+  z-index: 10;
+  font-size: 1vh; }
+  .bb-num-car-inline svg {
+    width: 130%; }
+
+.bb-num-car-inline_checked {
+  width: 60px;
+  height: 60px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../img/auto_icon/ellipse_noIn_checked.svg");
+  background-size: 100%;
+  background-position: center;
+  z-index: 10;
+  font-size: 1vh; }
+  .bb-num-car-inline_checked svg {
+    width: 130%; }
+
+.bb-num-car {
+  width: 60px;
+  height: 60px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../img/elipse_white.svg");
+  background-size: 100%;
+  background-position: center;
+  z-index: 10;
+  font-size: 1vh; }
+  .bb-num-car svg {
+    width: 130%; }
+
+.bb-cluster {
+  color: black;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  z-index: 0; }
+  .bb-cluster .bb-num {
+    width: 60px;
+    height: 60px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../img/elipse.svg");
+    background-size: 100%;
+    background-position: center;
+    z-index: 10;
+    font-size: 1vh; }
+
 /*# sourceMappingURL=MapPoints.css.map */

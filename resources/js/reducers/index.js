@@ -16,6 +16,5 @@ export default combineReducers({
     badSpots,
     spots,
     bounds,
-    statisticDepartment,
-    clicked
+    statisticDepartment
 })
