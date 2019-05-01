@@ -9,7 +9,8 @@ const mapStateToProps = state => ({
     badSpots: state.badSpots,
     spots: state.spots,
     brigades: state.brigades,
-    bounds: state.bounds
+    bounds: state.bounds,
+    cars: state.cars
 });
 
 

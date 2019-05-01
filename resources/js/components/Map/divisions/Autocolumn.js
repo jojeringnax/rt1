@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
 import {store} from "../../../index";
-import {setSpots, setAutocolumns, setBadSpots, setBounds} from "../../../actions";
+import {setSpots, setAutocolumns, setBadSpots, setBounds, setLevel} from "../../../actions";
 
 class Autocolumn extends React.Component{
 
@@ -35,7 +35,8 @@ class Autocolumn extends React.Component{
         store.dispatch(setAutocolumns({divisions: []}));
         store.dispatch(setBadSpots({divisions: []}));
         store.dispatch(setSpots({divisions: this.state.children}));
-        store.dispatch(setBounds(this.state.bounds))
+        store.dispatch(setBounds(this.state.bounds));
+        store.dispatch(setLevel('autocolumn', this.props.id))
     };
 
 

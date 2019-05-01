@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
+import {store} from "../../../index";
+import {setSpots, setBounds, setBrigades, setCars, setLevel} from "../../../actions";
 
 class Spot extends React.Component{
     constructor(props) {
@@ -30,7 +32,11 @@ class Spot extends React.Component{
 
 
     handleClick = (e) => {
-
+        store.dispatch(setBounds(this.state.bounds));
+        store.dispatch(setSpots({divisions: []}));
+        store.dispatch(setBrigades({divisions: this.state.children.brigades}));
+        store.dispatch(setCars(this.state.children.cars));
+        store.dispatch(setLevel('spot', this.props.id))
     };
 
 
@@ -39,7 +45,13 @@ class Spot extends React.Component{
         axios.get(url)
             .then(res => {
                 this.setState({
-                    children:res.data
+                    bounds:res.data.bounds.bounds
+                });
+                this.setState({
+                    children: {
+                        brigades: res.data.divisions,
+                        cars: res.data.cars
+                    }
                 })
             })
     }

@@ -1,7 +1,7 @@
 import HeadOfSideBar from "../../SideBar/SideBar";
 import React from "react";
 import { Clusterer, Placemark } from 'react-yandex-maps';
-import {setAutocolumns, setBounds, setOrganizations, setBadSpots} from "../../../actions";
+import {setAutocolumns, setBounds, setOrganizations, setBadSpots, setLevel} from "../../../actions";
 import {store} from "../../../index";
 import axios from "axios";
 
@@ -36,6 +36,7 @@ class Organization extends React.Component {
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setBadSpots({divisions: this.state.children.badSpots}));
         store.dispatch(setAutocolumns({divisions: this.state.children.autocolumns}));
+        store.dispatch(setLevel('organization', this.props.id))
     };
 
 

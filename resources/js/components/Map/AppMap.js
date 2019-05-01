@@ -10,6 +10,7 @@ import Organization from "./divisions/Organization";
 import Autocolumn from "./divisions/Autocolumn";
 import BadSpot from "./divisions/BadSpot";
 import Spot from "./divisions/Spot";
+import Car from "./divisions/Car";
 
 const carTypes = {
     light: 0,
@@ -122,6 +123,29 @@ class MapApp extends React.Component{
                                             x_pos={spot.spot.x_pos}
                                             y_pos={spot.spot.y_pos}
                                             carsNumber={spot.carsNumber}
+                                        />
+                                    )
+                                })
+                            }
+
+                            {
+                                this.props.cars.map(car => {
+                                    return (
+                                        <Car
+                                            key={car.id}
+                                            id={car.id}
+                                            company_id={'113'}
+                                            organization_id={car.organization_id}
+                                            autocolumn_id={car.autocolumn_id}
+                                            bad_spot_id={car.bad_spot_id}
+                                            spot_id={car.spot_id}
+                                            brigade_id={car.brigade_id}
+                                            number={car.number}
+                                            type={car.type}
+                                            model={car.model}
+                                            description={car.description}
+                                            x_pos={car.x_pos}
+                                            y_pos={car.y_pos}
                                         />
                                     )
                                 })

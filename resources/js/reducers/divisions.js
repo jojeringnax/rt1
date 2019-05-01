@@ -44,7 +44,7 @@ export const brigades = (state = {divisions: []}, action) => {
     }
 };
 
-export const cars = (state = {cars: []}, action) => {
+export const cars = (state = [], action) => {
     switch (action.type) {
         case 'SET_CARS':
             return action.cars;

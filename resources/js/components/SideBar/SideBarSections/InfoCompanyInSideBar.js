@@ -12,25 +12,10 @@ class InfoCompanyInSideBar extends React.Component{
         };
     }
 
-    componentDidMount() {
-        if(!this.state.show) {
-            document.getElementById('info-company').classList.add('hide');
-        }else {
-            document.getElementById('info-company').classList.remove('hide');
-        }
-    }
-
     componentDidUpdate(prevProps, prevState) {
-        //console.log(prevProps, this.state, this.props);
         if (prevProps.show !== this.props.show) {
             this.setState({
                 show: this.props.show
-            },()=> {
-                if(!this.state.show) {
-                    document.getElementById('info-company').classList.add('hide');
-                }else {
-                    document.getElementById('info-company').classList.remove('hide');
-                }
             });
         }
     }
@@ -38,7 +23,7 @@ class InfoCompanyInSideBar extends React.Component{
 
     render() {
         return(
-            <div id="info-company" className="info-company item-sideBar">
+            <div id="info-company" className={"info-company item-sideBar" + (this.state.show ? '' : ' hide')}>
                 <div>
                     <div className="ts-title">
                         <span className="img">

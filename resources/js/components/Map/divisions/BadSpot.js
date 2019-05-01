@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
 import {store} from "../../../index";
-import {setBadSpots, setBrigades, setCars} from "../../../actions";
+import {setBadSpots, setBounds, setBrigades, setCars, setLevel} from "../../../actions";
 
 class BadSpot extends React.Component{
     constructor(props) {
@@ -32,7 +32,11 @@ class BadSpot extends React.Component{
 
 
     handleClick = (e) => {
-        //
+        store.dispatch(setBounds(this.state.bounds));
+        store.dispatch(setBadSpots({divisions: []}));
+        store.dispatch(setBrigades({divisions: this.state.children.brigades}));
+        store.dispatch(setLevel('badSpot', this.props.id));
+        store.dispatch(setCars(this.state.children.cars));
     };
 
 
@@ -41,7 +45,13 @@ class BadSpot extends React.Component{
         axios.get(url)
             .then(res => {
                 this.setState({
-                    children:res.data
+                    bounds:res.data.bounds.bounds
+                });
+                this.setState({
+                    children: {
+                        brigades: res.data.divisions,
+                        cars: res.data.cars
+                    }
                 })
             })
     }

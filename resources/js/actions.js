@@ -1,8 +1,9 @@
 import axios from "axios";
 
-export const setLevel = level => ({
+export const setLevel = (level, id=null) => ({
     type: 'SET_LEVEL',
-    level
+    level,
+    id
 });
 
 export const clickPoint = (id, pointType) => (

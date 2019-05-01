@@ -19,13 +19,6 @@ class InfoTsInSideBar extends React.Component{
         };
     }
 
-    componentDidMount() {
-        if(!this.state.show) {
-            document.getElementById('info-ts').classList.add('hide');
-        }else {
-            document.getElementById('info-ts').classList.remove('hide');
-        }
-    }
 
     componentDidUpdate(prevProps, prevState) {
         //console.log(prevProps, this.state, this.props);
@@ -38,7 +31,7 @@ class InfoTsInSideBar extends React.Component{
 
     render() {
         return(
-            <div id="info-ts" className="info-ts item-sideBar">
+            <div id="info-ts" className={"info-ts item-sideBar" + (this.state.show ? '' : ' hide')}>
                 <div className="title-ts d-flex justify-content-start">
                     <div>
                         <img id="img-ts" src="" alt="" />

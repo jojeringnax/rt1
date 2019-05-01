@@ -6,7 +6,7 @@ import InfoDepartmentInSideBar from "./SideBarSections/InfoDepartmentInSideBar";
 import InfoTsInSideBar from "./SideBarSections/InfoTsInSideBar";
 import HeadOfSideBar from "./SideBarSections/HeadOfSideBar";
 import NavigationInSideBar from "./SideBarSections/NavigationInSideBar";
-import {setLevel, setPoints, setStatistic} from "../../actions";
+import {setLevel, setStatistic} from "../../actions";
 import {store} from "../../index";
 import axios from "axios";
 
@@ -20,15 +20,10 @@ class SideBar extends React.Component{
         }
 }
     componentDidMount() {
-        this.setState({infoCompany: this.props.level ==="company"})
         this.setState({
-            infoDepartment: this.props.level === "organization" ||
-                this.props.level === "autocolumn" ||
-                this.props.level === "badSpot" ||
-                this.props.level === "brigade"
-        });
-
-        this.setState({infoTS: this.props.level ==="car"})
+            infoCompany: this.props.level.level === 'company',
+            infoDepartment: ['organization', 'spot', 'badSpot', 'autocolumn', 'brigade'].includes(this.props.level.level),
+            infoTS: this.props.level.level === 'car'})
 
 
         // let url = '/api/' + this.props.level + '/statistics';
@@ -40,16 +35,11 @@ class SideBar extends React.Component{
 
     componentDidUpdate(prevProps, prevState) {
         //console.log(prevProps, this.state, this.props);
-        if (prevProps.level !== this.props.level) {
-            this.setState({infoCompany: this.props.level ==="company"})
-            this.setState({
-                infoDepartment: this.props.level === "organization" ||
-                    this.props.level === "autocolumn" ||
-                    this.props.level === "badSpot" ||
-                    this.props.level === "brigade"
-            });
-
-            this.setState({infoTS: this.props.level ==="car"})
+        if (prevProps.level.level !== this.props.level.level) {
+            this.setState({infoCompany: this.props.level.level === 'company'});
+            this.setState({infoDepartment: ['organization', 'spot', 'badSpot', 'autocolumn', 'brigade'].
+                includes(this.props.level.level)});
+            this.setState({infoTS: this.props.level.level === 'car'});
         }
     }
 

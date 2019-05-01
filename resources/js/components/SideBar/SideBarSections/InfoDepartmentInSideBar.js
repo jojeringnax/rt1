@@ -17,31 +17,18 @@ class InfoDepartmentInSideBar extends React.Component{
         };
     }
 
-    componentDidMount() {
-        if(!this.state.show) {
-            document.getElementById('info-department').classList.add('hide');
-        }else {
-            document.getElementById('info-department').classList.remove('hide');
-        }
-    }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.show !== this.props.show) {
             this.setState({
                 show: this.props.show
-            },() => {
-                if(!this.state.show) {
-                    document.getElementById('info-department').classList.add('hide');
-                }else {
-                    document.getElementById('info-department').classList.remove('hide');
-                }
             });
         }
     }
 
     render() {
         return(
-            <div id="info-department" className="info-department item-sideBar">
+            <div id="info-department" className={"info-department item-sideBar" + (this.state.show ? '' : ' hide')}>
                 <div className="">
                     <div className="">
                         <div className="ts-title">
