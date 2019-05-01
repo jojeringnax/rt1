@@ -17,13 +17,20 @@ use Psy\Util\Json;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
 /**
- *  ORGANIZATIONS AND ORGANIZATION INFOS
-*/
+ * GENERAL APIs
+ */
+
     Route::get('organizations', function () {
         return Json::encode(\App\Organization::getAllWithNumbers());
     });
+    Route::get('statistics', function () {
+        return \App\Statistic::getCommonStatistic()->toJson();
+    });
+
+/**
+ *  ORGANIZATIONS AND ORGANIZATION INFOS
+ */
 
     Route::get('organization/{id}/children', function ($id) {
         return Json::encode(\App\Division::getChildrenForDivision(\App\Organization::class,$id));

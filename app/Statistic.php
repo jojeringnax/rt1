@@ -75,44 +75,19 @@ class Statistic extends Model
         'time'
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function getOrganization()
-    {
-        return $this->hasOne(Organization::class, 'organization_id', 'id');
-    }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return Statistic
      */
-    public function getAutocolumn()
-    {
-        return $this->hasOne(Autocolumn::class, 'autocolumn_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function getBadSpot()
-    {
-        return $this->hasOne(BadSpot::class, 'bad_spot_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function getSpot()
-    {
-        return $this->hasOne(Spot::class, 'spot_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function getBrigade()
-    {
-        return $this->hasOne(Brigade::class, 'brigade_id', 'id');
+    public static function getCommonStatistic() {
+        $statistics = self::all();
+        $resultStatistic = new self;
+        foreach ($statistics as $statistic) {
+            foreach ($statistic->getFillable() as $attribute) {
+                $resultStatistic->$attribute += $statistic->$attribute;
+            }
+        }
+        return $resultStatistic;
     }
 
     /**
