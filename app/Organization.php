@@ -89,7 +89,7 @@ class Organization extends Model
      */
     public function cars()
     {
-        return $this->hasMany(Car::class, 'id', 'organization_id');
+        return $this->hasMany(Car::class)->where('x_pos', '!=',null);
     }
 
     /**

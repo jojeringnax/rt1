@@ -122,4 +122,119 @@ class Car extends Model
     {
         return $this->hasOne(CarData::class);
     }
+
+    /**
+     * @return array
+     */
+    public static function getCarsCommonInfo()
+    {
+        $cars = self::where('x_pos', '!=', null)->get();
+        $carsReady = 0;
+        $carsRepair = 0;
+        $carsTO = 0;
+        $carsInline = 0;
+        $carsLight = 0;
+        $carsTruck = 0;
+        $carsBus = 0;
+        $carsSpec = 0;
+        foreach ($cars as $car) {
+            if ($car->type === Car::TYPES['Легковые ТС']) {
+                $carsLight++;
+            }
+            else if ($car->type === Car::TYPES['Грузовые ТС']) {
+                $carsTruck++;
+            }
+            else if ($car->type === Car::TYPES['Автобусы']) {
+                $carsBus++;
+            }
+            else if ($car->type === Car::TYPES['Спецтехника']) {
+                $carsSpec++;
+            }
+            if ($car->status === Car::STATUSES['G']) {
+                $carsReady++;
+            }
+            else if ($car->status === Car::STATUSES['R']) {
+                $carsRepair++;
+            }
+            else if ($car->status === Car::STATUSES['TO']) {
+                $carsTO++;
+            }
+            if ($car->inline) {
+                $carsInline++;
+            }
+        }
+        return [
+            'totalCars' => count($cars),
+            'statuses' => [
+                'G' => $carsReady,
+                'R' => $carsRepair,
+                'TO' => $carsTO,
+                'inline' => $carsInline
+            ],
+            'types' => [
+                'light' => $carsLight,
+                'truck' => $carsTruck,
+                'bus' => $carsBus,
+                'spec' => $carsSpec
+            ]
+        ];
+    }
+
+    /**
+     * @param $division
+     * @return array
+     */
+    public static function getCarsInfo($division)
+    {
+        $cars = $division->cars;
+        $carsReady = 0;
+        $carsRepair = 0;
+        $carsTO = 0;
+        $carsInline = 0;
+        $carsLight = 0;
+        $carsTruck = 0;
+        $carsBus = 0;
+        $carsSpec = 0;
+        foreach ($cars as $car) {
+            if ($car->type === Car::TYPES['Легковые ТС']) {
+                $carsLight++;
+            }
+            else if ($car->type === Car::TYPES['Грузовые ТС']) {
+                $carsTruck++;
+            }
+            else if ($car->type === Car::TYPES['Автобусы']) {
+                $carsBus++;
+            }
+            else if ($car->type === Car::TYPES['Спецтехника']) {
+                $carsSpec++;
+            }
+            if ($car->status === Car::STATUSES['G']) {
+                $carsReady++;
+            }
+            else if ($car->status === Car::STATUSES['R']) {
+                $carsRepair++;
+            }
+            else if ($car->status === Car::STATUSES['TO']) {
+                $carsTO++;
+            }
+            if ($car->inline) {
+                $carsInline++;
+            }
+        }
+        return [
+            'totalCars' => count($cars),
+            'statuses' => [
+                'G' => $carsReady,
+                'R' => $carsRepair,
+                'TO' => $carsTO,
+                'inline' => $carsInline
+            ],
+            'types' => [
+                'light' => $carsLight,
+                'truck' => $carsTruck,
+                'bus' => $carsBus,
+                'spec' => $carsSpec
+            ]
+        ];
+    }
 }

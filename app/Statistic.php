@@ -76,6 +76,7 @@ class Statistic extends Model
     ];
 
 
+
     /**
      * @return Statistic
      */
@@ -87,8 +88,20 @@ class Statistic extends Model
                 $resultStatistic->$attribute += $statistic->$attribute;
             }
         }
+        $carsInfo = Car::getCarsCommonInfo();
+        $resultStatistic['carsTotal'] = $carsInfo['totalCars'];
+        $resultStatistic['carsLight'] = $carsInfo['types']['light'];
+        $resultStatistic['carsTruck'] = $carsInfo['types']['truck'];
+        $resultStatistic['carsBus'] = $carsInfo['types']['bus'];
+        $resultStatistic['carsSpec'] = $carsInfo['types']['spec'];
+        $resultStatistic['carsReady'] = $carsInfo['statuses']['G'];
+        $resultStatistic['carsRepair'] = $carsInfo['statuses']['R'];
+        $resultStatistic['carsTO'] = $carsInfo['statuses']['TO'];
+        $resultStatistic['carsInline'] = $carsInfo['statuses']['inline'];
         return $resultStatistic;
     }
+
+
 
     /**
      * @param $divisionClass
@@ -108,6 +121,16 @@ class Statistic extends Model
                 $resultStatistic->$attribute += $statistic->$attribute;
             }
         }
+        $carsInfo = Car::getCarsInfo($division);
+        $resultStatistic['carsTotal'] = $carsInfo['totalCars'];
+        $resultStatistic['carsLight'] = $carsInfo['types']['light'];
+        $resultStatistic['carsTruck'] = $carsInfo['types']['truck'];
+        $resultStatistic['carsBus'] = $carsInfo['types']['bus'];
+        $resultStatistic['carsSpec'] = $carsInfo['types']['spec'];
+        $resultStatistic['carsReady'] = $carsInfo['statuses']['G'];
+        $resultStatistic['carsRepair'] = $carsInfo['statuses']['R'];
+        $resultStatistic['carsTO'] = $carsInfo['statuses']['TO'];
+        $resultStatistic['carsInline'] = $carsInfo['statuses']['inline'];
         return $resultStatistic;
     }
 }
