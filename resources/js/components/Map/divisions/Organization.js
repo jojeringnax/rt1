@@ -1,7 +1,14 @@
 import HeadOfSideBar from "../../SideBar/SideBar";
 import React from "react";
-import { Clusterer, Placemark } from 'react-yandex-maps';
-import {setAutocolumns, setBounds, setOrganizations, setBadSpots, setLevel} from "../../../actions";
+import { Placemark } from 'react-yandex-maps';
+import {
+    setAutocolumns,
+    setBounds,
+    setOrganizations,
+    setBadSpots,
+    setLevel,
+    setStatisticDepartment
+} from "../../../actions";
 import {store} from "../../../index";
 import axios from "axios";
 
@@ -12,7 +19,8 @@ class Organization extends React.Component {
         this.state = {
             children: [],
             bounds: [],
-            template: props.template,
+            template: null,
+            statistic: {}
         };
 
         this.createTemplateLayoutFactory = (ymaps) => {
@@ -36,13 +44,13 @@ class Organization extends React.Component {
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setBadSpots({divisions: this.state.children.badSpots}));
         store.dispatch(setAutocolumns({divisions: this.state.children.autocolumns}));
-        store.dispatch(setLevel('organization', this.props.id))
+        store.dispatch(setStatisticDepartment(this.state.statistic));
+        store.dispatch(setLevel('organization', this.props.id));
     };
 
 
     componentDidMount() {
-        let url = '/api/organization/' + this.props.id + '/children';
-        axios.get(url)
+        axios.get('/api/organization/' + this.props.id + '/children')
             .then(res => {
                 this.setState({
                     bounds: res.data.bounds.bounds
@@ -61,6 +69,12 @@ class Organization extends React.Component {
                         badSpots: badSpots,
                         autocolumns: autocolumns
                     }
+                });
+            });
+        axios.get('api/organization/' + this.props.id + '/statistic')
+            .then(res => {
+                this.setState({
+                    statistic: res.data
                 });
             });
     }

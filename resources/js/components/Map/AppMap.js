@@ -1,11 +1,12 @@
 import React from 'react';
-import { YMaps, Map, Clusterer, Placemark } from 'react-yandex-maps';
+import { YMaps, Map } from 'react-yandex-maps';
 import '../css/MapApp.css';
 import SideBar from "../SideBar/SideBar";
 import axios from "axios";
 import {someFunction} from "../../actions";
 import ReactDOMServer from "react-dom/server";
 import '../css/MapPoints.css';
+import ClustererAutocolumns from './clusterers/ClustererAutocolumns'
 import Organization from "./divisions/Organization";
 import Autocolumn from "./divisions/Autocolumn";
 import BadSpot from "./divisions/BadSpot";
@@ -76,6 +77,7 @@ class MapApp extends React.Component{
                                     )
                                 })
                             }
+                            <ClustererAutocolumns>
                             {
                                 this.props.autocolumns.divisions.map(autocolumn => {
                                     return (
@@ -93,6 +95,7 @@ class MapApp extends React.Component{
                                     )
                                 })
                             }
+                            </ClustererAutocolumns>
                             {
                                 this.props.badSpots.divisions.map(badSpot => {
                                     return (

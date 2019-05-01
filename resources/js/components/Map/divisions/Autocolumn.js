@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
 import {store} from "../../../index";
-import {setSpots, setAutocolumns, setBadSpots, setBounds, setLevel} from "../../../actions";
+import {setSpots, setAutocolumns, setBadSpots, setBounds, setLevel, setStatisticDepartment} from "../../../actions";
 
 class Autocolumn extends React.Component{
 
@@ -12,6 +12,7 @@ class Autocolumn extends React.Component{
             children: [],
             bounds: [],
             template: props.template,
+            statistic: {}
         };
 
         this.createTemplateLayoutFactory = (ymaps) => {
@@ -36,7 +37,8 @@ class Autocolumn extends React.Component{
         store.dispatch(setBadSpots({divisions: []}));
         store.dispatch(setSpots({divisions: this.state.children}));
         store.dispatch(setBounds(this.state.bounds));
-        store.dispatch(setLevel('autocolumn', this.props.id))
+        store.dispatch(setLevel('autocolumn', this.props.id));
+        store.dispatch(setStatisticDepartment(this.state.statistic));
     };
 
 
@@ -48,7 +50,13 @@ class Autocolumn extends React.Component{
                     children: res.data.divisions,
                     bounds: res.data.bounds.bounds
                 })
-            })
+            });
+        axios.get('api/autocolumn/' + this.props.id + '/statistic')
+            .then(res => {
+                this.setState({
+                    statistic: res.data
+                });
+            });
     }
 
     render () {

@@ -1,14 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "../css/SideBar.css"
-import InfoCompanyInSideBar from "./SideBarSections/InfoCompanyInSideBar";
-import InfoDepartmentInSideBar from "./SideBarSections/InfoDepartmentInSideBar";
-import InfoTsInSideBar from "./SideBarSections/InfoTsInSideBar";
-import HeadOfSideBar from "./SideBarSections/HeadOfSideBar";
+import InfoCompany from "./SideBarSections/InfoCompany";
+import InfoDepartment from "../../containers/InfoDepartment";
+import InfoTs from "./SideBarSections/InfoTs";
+import Head from "./SideBarSections/Head";
 import NavigationInSideBar from "./SideBarSections/NavigationInSideBar";
-import {setLevel, setStatistic} from "../../actions";
-import {store} from "../../index";
-import axios from "axios";
 
 class SideBar extends React.Component{
     constructor(props) {
@@ -46,12 +43,11 @@ class SideBar extends React.Component{
     render() {
         return(
             <div className="sideBar">
-                <button onClick={()=>{store.dispatch(setLevel("autocolumn"))}}>Click</button>
-                <HeadOfSideBar />
+                <Head />
                 <NavigationInSideBar />
-                <InfoCompanyInSideBar show={this.state.infoCompany} />
-                <InfoDepartmentInSideBar show={this.state.infoDepartment} />
-                <InfoTsInSideBar show={this.state.infoTS} />
+                <InfoCompany show={this.state.infoCompany} />
+                <InfoDepartment show={this.state.infoDepartment} />
+                <InfoTs show={this.state.infoTS} />
             </div>
         );
 

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import logo from "../../img/logo.svg";
 
-class HeadOfSideBar extends React.Component{
+class Head extends React.Component{
     render() {
         return(
             <div className="head-of-sidebar">
@@ -16,4 +16,4 @@ class HeadOfSideBar extends React.Component{
     }
 }
 
-export default HeadOfSideBar;
+export default Head;

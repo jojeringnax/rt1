@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
 import {store} from "../../../index";
-import {setSpots, setBounds, setBrigades, setCars, setLevel} from "../../../actions";
+import {setSpots, setBounds, setBrigades, setCars, setLevel, setStatisticDepartment} from "../../../actions";
 
 class Spot extends React.Component{
     constructor(props) {
@@ -12,6 +12,7 @@ class Spot extends React.Component{
             children: [],
             bounds: [],
             template: props.template,
+            statistic: {}
         };
 
         this.createTemplateLayoutFactory = (ymaps) => {
@@ -36,7 +37,8 @@ class Spot extends React.Component{
         store.dispatch(setSpots({divisions: []}));
         store.dispatch(setBrigades({divisions: this.state.children.brigades}));
         store.dispatch(setCars(this.state.children.cars));
-        store.dispatch(setLevel('spot', this.props.id))
+        store.dispatch(setLevel('spot', this.props.id));
+        store.dispatch(setStatisticDepartment(this.state.statistic));
     };
 
 
@@ -53,7 +55,13 @@ class Spot extends React.Component{
                         cars: res.data.cars
                     }
                 })
-            })
+            });
+        axios.get('api/spot/' + this.props.id + '/statistic')
+            .then(res => {
+                this.setState({
+                    statistic: res.data
+                });
+            });
     }
 
     render () {

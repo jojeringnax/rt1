@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
 import {store} from "../../../index";
-import {setBadSpots, setBounds, setBrigades, setCars, setLevel} from "../../../actions";
+import {setBadSpots, setBounds, setBrigades, setCars, setLevel, setStatisticDepartment} from "../../../actions";
 
 class BadSpot extends React.Component{
     constructor(props) {
@@ -12,6 +12,7 @@ class BadSpot extends React.Component{
             children: [],
             bounds: [],
             template: props.template,
+            statistic: {}
         };
 
         this.createTemplateLayoutFactory = (ymaps) => {
@@ -37,6 +38,7 @@ class BadSpot extends React.Component{
         store.dispatch(setBrigades({divisions: this.state.children.brigades}));
         store.dispatch(setLevel('badSpot', this.props.id));
         store.dispatch(setCars(this.state.children.cars));
+        store.dispatch(setStatisticDepartment(this.state.statistic));
     };
 
 
@@ -54,6 +56,12 @@ class BadSpot extends React.Component{
                     }
                 })
             })
+        axios.get('api/bad_spot/' + this.props.id + '/statistic')
+            .then(res => {
+                this.setState({
+                    statistic: res.data
+                });
+            });
     }
 
     render () {

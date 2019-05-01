@@ -11,7 +11,7 @@ import toolsAndUtensils from "../../img/info_auto_icon/tools-and-utensils.svg";
 import carWheel from "../../img/info_auto_icon/car-wheel.svg";
 
 
-class InfoTsInSideBar extends React.Component{
+class InfoTs extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -195,4 +195,4 @@ class InfoTsInSideBar extends React.Component{
     }
 }
 
-export default InfoTsInSideBar;
+export default InfoTs;

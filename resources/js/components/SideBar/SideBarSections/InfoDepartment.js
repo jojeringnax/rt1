@@ -9,7 +9,7 @@ import point_2 from "../../img/auto_icon/point_blue_2.svg"
 import point_3 from "../../img/auto_icon/point_blue_3.svg"
 
 
-class InfoDepartmentInSideBar extends React.Component{
+class InfoDepartment extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -108,15 +108,15 @@ class InfoDepartmentInSideBar extends React.Component{
                         </div>
                         <div className="item-info">
                             <span className="trans-auto">Выполнено, шт.</span>
-                            <span id="applications_executed" className="figures">311</span>
+                            <span id="applications_executed" className="figures">{this.props.statistic.applications_executed}</span>
                         </div>
                         <div className="item-info">
                             <span className="trans-auto">Отменено, шт.</span>
-                            <span id="applications_canceled" className="figures">124</span>
+                            <span id="applications_canceled" className="figures">{this.props.statistic.applications_canceled}</span>
                         </div>
                         <div className="item-info">
                             <span id="" className="trans-auto">Переданы на СП, шт.</span>
-                            <span id="applications_sub" className="figures">3</span>
+                            <span id="applications_sub" className="figures">{this.props.statistic.applications_sub}</span>
                         </div>
                     </div>
                 </div>
@@ -127,7 +127,11 @@ class InfoDepartmentInSideBar extends React.Component{
                     </div>
                     <div className="item-bar">
                         <div className="ilia" >
-                            <span id="applications_ac_per" className="p-bar">60%</span>
+                            <span id="applications_ac_per" className="p-bar">
+                                {
+                                    (this.props.statistic.applications_ac/this.props.statistic.applications_total).toFixed(2)*100
+                                }%
+                            </span>
                             <div id="applications_ac" className="circle"></div>
                         </div>
                         <div className="div-bar-text">
@@ -136,7 +140,11 @@ class InfoDepartmentInSideBar extends React.Component{
                     </div>
                     <div className="item-bar">
                         <div className="ilia" >
-                            <span id="waybills_total_per" className="p-bar">30%</span>
+                            <span id="waybills_total_per" className="p-bar">
+                                {
+                                    (this.props.statistic.waybills_processed/this.props.statistic.waybills_total).toFixed(2)*100
+                                }%
+                            </span>
                             <div id="waybills_total" className="circle"></div>
                         </div>
                         <div className="div-bar-text">
@@ -145,7 +153,12 @@ class InfoDepartmentInSideBar extends React.Component{
                     </div>
                     <div className="item-bar">
                         <div className="ilia">
-                            <span id="accidents_total_per" className="p-bar">90%</span>
+                            <span id="accidents_total_per" className="p-bar">
+                                {
+                                (this.props.statistic.accidents_guilty  === 0 && this.props.statistic.accidents_total === 0) ? 0 :
+                                    (this.props.statistic.accidents_guilty/this.props.statistic.accidents_total).toFixed(2)*100
+                                }%
+                                </span>
                             <div id="accidents_total" className="circle"></div>
                         </div>
                         <div className="div-bar-text">
@@ -154,7 +167,11 @@ class InfoDepartmentInSideBar extends React.Component{
                     </div>
                     <div className="item-bar">
                         <div className="ilia" >
-                            <p id="WB_M_per" className="p-bar">100%</p>
+                            <p id="WB_M_per" className="p-bar">
+                                {
+                                    (this.props.statistic.WB_M/this.props.statistic.WB_ALL).toFixed(2)*100
+                                }%
+                            </p>
                             <div id="WB_M" className="circle"></div>
                         </div>
                         <div className="div-bar-text">
@@ -164,7 +181,7 @@ class InfoDepartmentInSideBar extends React.Component{
                 </div>
                 <div className="indic-bot">
                     <div className="div-pr25">
-                        <span id="lmch-2" className="p-meanings-2nd"><span id="fuel" className="span-figures-2nd">5,1</span> л\мч<br/>ТМЧ</span>
+                        <span id="lmch-2" className="p-meanings-2nd"><span id="fuel" className="span-figures-2nd">{(this.props.statistic.fuel/this.props.statistic.time).toFixed(2)}</span> л\мч<br/>ТМЧ</span>
                         </div>
                     <div className="div-meanings">
                         <span id="" className="p-meanings-2nd"><span id="terminals" className="span-figures-2nd">110</span><br/>Терминалов</span>
@@ -175,4 +192,4 @@ class InfoDepartmentInSideBar extends React.Component{
     }
 }
 
-export default InfoDepartmentInSideBar;
+export default InfoDepartment;

@@ -1,13 +1,13 @@
 import axios from "axios";
 import dispatch from "react-redux"
 
-const statistics = (state = [], action) => {
+const statisticDepartment = (state = [], action) => {
     switch (action.type) {
-        case 'SET_STATISTICS':
-            return action.statistics;
+        case 'SET_STATISTIC_DEPARTMENT':
+            return action.statistic;
         default:
             return state
     }
 };
 
-export default statistics
+export default statisticDepartment

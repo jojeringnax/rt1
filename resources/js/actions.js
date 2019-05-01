@@ -6,22 +6,6 @@ export const setLevel = (level, id=null) => ({
     id
 });
 
-export const clickPoint = (id, pointType) => (
-    {
-        type: 'CLICK_POINT',
-        id,
-        pointType
-    }
-);
-
-export function someFunction(dispatch) {
-        axios.get('/api/organizations')
-            .then((res) => {
-                dispatch(setOrganizations(res.data));
-                dispatch(setBounds(res.data.bounds.bounds));
-            });
-}
-
 
 export const setPoints = points => ({
     type: 'SET_POINTS',
@@ -63,6 +47,13 @@ export const setBounds = bounds => ({
     bounds
 });
 
+export const setStatisticDepartment = statistic => ({
+    type: 'SET_STATISTIC_DEPARTMENT',
+    statistic
+});
+
+
+
 export const Levels = {
     company: 'company',
     organization: 'organization',
@@ -72,3 +63,13 @@ export const Levels = {
     brigade: 'brigade',
     car: 'car'
 };
+
+
+
+export function setOrganizationsPreload(dispatch) {
+    axios.get('/api/organizations')
+        .then((res) => {
+            dispatch(setOrganizations(res.data));
+            dispatch(setBounds(res.data.bounds.bounds));
+        });
+}

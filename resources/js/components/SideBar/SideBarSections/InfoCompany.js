@@ -4,7 +4,7 @@ import deliveryTruck from "../../img/delivery-truck.svg"
 import copy from "../../img/copy.svg";
 import pie from "../../img/pie.svg";
 
-class InfoCompanyInSideBar extends React.Component{
+class InfoCompany extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -128,4 +128,4 @@ class InfoCompanyInSideBar extends React.Component{
     }
 }
 
-export default InfoCompanyInSideBar;
+export default InfoCompany;
