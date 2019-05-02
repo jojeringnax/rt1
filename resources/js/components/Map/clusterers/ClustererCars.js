@@ -1,25 +1,30 @@
-import { Clusterer } from 'react-yandex-maps';
+import {Clusterer, Placemark} from 'react-yandex-maps';
 import React from "react";
 import {store} from '../../../index'
-import Autocolumn from "../divisions/Autocolumn";
-import { createStore } from 'redux'
+import {setLevel} from '../../../actions'
 import '../../css/MapPoints.css'
 
-class ClustererAutocolumns extends React.Component {
+import Car from "../divisions/Car";
+
+class ClustererBrigades extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             layout: null,
-            balloonContentLayout: null
+            balloonContentLayout: null,
+            clickedCar: false
+        };
+
+        this.clickedCars = () => {
+            this.setState({clickedCar:true})
         };
 
         this.createTemplateLayoutFactory = (ymaps) => {
             if (ymaps && !this.state.template) {
                 this.setState({
                     layout: ymaps.templateLayoutFactory.createClass([
-                        '<div class="bb-cluster-car">',
-                        '<span class="bb-num">',
+                        '<div class="bb-cluster-car"><span class="bb-num">',
                         '{{ properties.geoObjects.length }}',
                         '</span></div>'
                     ].join(''))});
@@ -27,17 +32,16 @@ class ClustererAutocolumns extends React.Component {
                     balloonContentLayout: ymaps.templateLayoutFactory.createClass([
                         '<ul class=list>',
                         '{% for geoObject in properties.geoObjects %}',
-                        '{% if geoObject.carsTotal == 0 %}',
-                        '<li>',
-                        '{{ geoObject.name }}',
-                        '({{ geoObject.carsTotal }})',
-                        '</li>',
-                        '{% else %}',
-                        '<li><a onclick="" href=# class="list_item car-baloon">',
-                        '{{ geoObject.name }}',
-                        '{{ geoObject.carsTotal }}',
+                        '<li><a onclick="',
+                        'store.dispatch(setLevel({level: \'car\', id: \'{{geoObject.id}}\'})',
+                        'href=# id="',
+                        '{{geoObject.id}}',
+                        '" class="list_item car-baloon">',
+                        '<img src="yan/img/auto_icon/point_blue_','' +
+                        '{{geoObject.type}}',
+                        '.svg" alt="">',
+                        '{{ geoObject.properties.balloonContentHeader|raw }}',
                         '</a></li>',
-                        '{% endif %}',
                         '{% endfor %}',
                         '</ul>'
                     ].join(''))
@@ -58,24 +62,23 @@ class ClustererAutocolumns extends React.Component {
                         size: [62, 62],
                         offset: [-26, -26]
                     }],
-                    gridSize: 4,
+                    gridSize: 1024,
                     clusterIconContentLayout: this.state.layout,
                     zoomMargin : [50,50,50,50]
                 }}
             >
                 {
-                    store.getState().autocolumns.divisions.map(autocolumn => {
+                    store.getState().cars.map(car => {
                         return (
-                            <Autocolumn
-                                key={autocolumn.autocolumn.id}
-                                id={autocolumn.autocolumn.id}
-                                company_id={'113'}
-                                name={autocolumn.autocolumn.name}
-                                description={autocolumn.autocolumn.description}
-                                address={autocolumn.autocolumn.addess}
-                                x_pos={autocolumn.autocolumn.x_pos}
-                                y_pos={autocolumn.autocolumn.y_pos}
-                                carsNumber={autocolumn.carsNumber}
+                            <Car
+                                key={car.id}
+                                id={car.id}
+                                x_pos={car.x_pos}
+                                y_pos={car.y_pos}
+                                clicked={(car.id === store.getState().level.id) ? 1 : 0}
+                                type={car.type}
+                                status={car.status}
+                                functionClicked={this.clickedCars}
                             />
                         )
                     })
@@ -86,4 +89,4 @@ class ClustererAutocolumns extends React.Component {
     }
 }
 
-export default ClustererAutocolumns;
+export default ClustererBrigades;

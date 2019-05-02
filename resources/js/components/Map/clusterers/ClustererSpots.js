@@ -1,11 +1,10 @@
 import { Clusterer } from 'react-yandex-maps';
 import React from "react";
 import {store} from '../../../index'
-import Autocolumn from "../divisions/Autocolumn";
-import { createStore } from 'redux'
 import '../../css/MapPoints.css'
+import Spot from "../divisions/Spot";
 
-class ClustererAutocolumns extends React.Component {
+class ClustererSpots extends React.Component {
 
     constructor(props) {
         super(props);
@@ -64,18 +63,18 @@ class ClustererAutocolumns extends React.Component {
                 }}
             >
                 {
-                    store.getState().autocolumns.divisions.map(autocolumn => {
+                    store.getState().spots.divisions.map(spot => {
                         return (
-                            <Autocolumn
-                                key={autocolumn.autocolumn.id}
-                                id={autocolumn.autocolumn.id}
+                            <Spot
+                                key={spot.spot.id}
+                                id={spot.spot.id}
                                 company_id={'113'}
-                                name={autocolumn.autocolumn.name}
-                                description={autocolumn.autocolumn.description}
-                                address={autocolumn.autocolumn.addess}
-                                x_pos={autocolumn.autocolumn.x_pos}
-                                y_pos={autocolumn.autocolumn.y_pos}
-                                carsNumber={autocolumn.carsNumber}
+                                name={spot.spot.name}
+                                description={spot.spot.description}
+                                address={spot.spot.addess}
+                                x_pos={spot.spot.x_pos}
+                                y_pos={spot.spot.y_pos}
+                                carsNumber={spot.carsNumber}
                             />
                         )
                     })
@@ -86,4 +85,4 @@ class ClustererAutocolumns extends React.Component {
     }
 }
 
-export default ClustererAutocolumns;
+export default ClustererSpots;

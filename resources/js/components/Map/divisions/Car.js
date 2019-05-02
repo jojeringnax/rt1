@@ -68,13 +68,18 @@ class Car extends React.Component {
                 onLoad={this.createTemplateLayoutFactory}
                 geometry={[this.props.x_pos, this.props.y_pos]}
                 properties={{
-                    iconCaption : 'asd'
+                    balloonContent: this.props.description,
+                    balloonContentHeader: this.props.model,
+                    balloonContentBody: this.props.number,
+                    balloonContentFooter: this.props.status,
+                    clusterCaption: 'placemark ' + this.props.id
                 }}
                 modules={[
                     "geoObject.addon.hint"
                 ]}
 
                 options={{
+                    hasBalloon: false,
                     iconLayout: 'default#imageWithContent',
                     iconImageHref: '',
                     iconImageSize: [62, 67.5],

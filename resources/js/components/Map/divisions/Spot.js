@@ -53,8 +53,8 @@ class Spot extends React.Component{
                 });
                 this.setState({
                     children: {
-                        brigades: res.data.divisions,
-                        cars: res.data.cars
+                        brigades: res.data.hasOwnProperty('divisions') ? res.data.divisions : [],
+                        cars: res.data.hasOwnProperty('cars') ? res.data.cars : []
                     }
                 })
             });

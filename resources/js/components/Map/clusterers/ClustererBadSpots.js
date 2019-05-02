@@ -1,11 +1,10 @@
 import { Clusterer } from 'react-yandex-maps';
 import React from "react";
 import {store} from '../../../index'
-import Autocolumn from "../divisions/Autocolumn";
-import { createStore } from 'redux'
 import '../../css/MapPoints.css'
+import BadSpot from "../divisions/BadSpot";
 
-class ClustererAutocolumns extends React.Component {
+class ClustererBadSpots extends React.Component {
 
     constructor(props) {
         super(props);
@@ -13,6 +12,8 @@ class ClustererAutocolumns extends React.Component {
             layout: null,
             balloonContentLayout: null
         };
+
+
 
         this.createTemplateLayoutFactory = (ymaps) => {
             if (ymaps && !this.state.template) {
@@ -64,18 +65,18 @@ class ClustererAutocolumns extends React.Component {
                 }}
             >
                 {
-                    store.getState().autocolumns.divisions.map(autocolumn => {
+                    store.getState().badSpots.divisions.map(badSpot => {
                         return (
-                            <Autocolumn
-                                key={autocolumn.autocolumn.id}
-                                id={autocolumn.autocolumn.id}
+                            <BadSpot
+                                key={badSpot.bad_spot.id}
+                                id={badSpot.bad_spot.id}
                                 company_id={'113'}
-                                name={autocolumn.autocolumn.name}
-                                description={autocolumn.autocolumn.description}
-                                address={autocolumn.autocolumn.addess}
-                                x_pos={autocolumn.autocolumn.x_pos}
-                                y_pos={autocolumn.autocolumn.y_pos}
-                                carsNumber={autocolumn.carsNumber}
+                                name={badSpot.bad_spot.name}
+                                description={badSpot.bad_spot.description}
+                                address={badSpot.bad_spot.addess}
+                                x_pos={badSpot.bad_spot.x_pos}
+                                y_pos={badSpot.bad_spot.y_pos}
+                                carsNumber={badSpot.carsNumber}
                             />
                         )
                     })
@@ -86,4 +87,4 @@ class ClustererAutocolumns extends React.Component {
     }
 }
 
-export default ClustererAutocolumns;
+export default ClustererBadSpots;

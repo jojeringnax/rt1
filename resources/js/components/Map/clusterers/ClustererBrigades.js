@@ -1,11 +1,11 @@
 import { Clusterer } from 'react-yandex-maps';
 import React from "react";
 import {store} from '../../../index'
-import Autocolumn from "../divisions/Autocolumn";
-import { createStore } from 'redux'
 import '../../css/MapPoints.css'
 
-class ClustererAutocolumns extends React.Component {
+import Brigade from "../divisions/Brigade";
+
+class ClustererBrigades extends React.Component {
 
     constructor(props) {
         super(props);
@@ -64,18 +64,18 @@ class ClustererAutocolumns extends React.Component {
                 }}
             >
                 {
-                    store.getState().autocolumns.divisions.map(autocolumn => {
+                    store.getState().brigades.divisions.map(brigade => {
                         return (
-                            <Autocolumn
-                                key={autocolumn.autocolumn.id}
-                                id={autocolumn.autocolumn.id}
+                            <Brigade
+                                key={brigade.brigade.id}
+                                id={brigade.brigade.id}
                                 company_id={'113'}
-                                name={autocolumn.autocolumn.name}
-                                description={autocolumn.autocolumn.description}
-                                address={autocolumn.autocolumn.addess}
-                                x_pos={autocolumn.autocolumn.x_pos}
-                                y_pos={autocolumn.autocolumn.y_pos}
-                                carsNumber={autocolumn.carsNumber}
+                                name={brigade.brigade.name}
+                                description={brigade.brigade.description}
+                                address={brigade.brigade.addess}
+                                x_pos={brigade.brigade.x_pos}
+                                y_pos={brigade.brigade.y_pos}
+                                carsNumber={brigade.carsNumber}
                             />
                         )
                     })
@@ -86,4 +86,4 @@ class ClustererAutocolumns extends React.Component {
     }
 }
 
-export default ClustererAutocolumns;
+export default ClustererBrigades;

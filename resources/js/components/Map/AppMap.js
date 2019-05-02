@@ -13,6 +13,10 @@ import BadSpot from "./divisions/BadSpot";
 import Spot from "./divisions/Spot";
 import Car from "../../containers/Car";
 import {store} from "../../index";
+import ClustererBadSpots from "./clusterers/ClustererBadSpots";
+import ClustererSpots from "./clusterers/ClustererSpots";
+import ClustererBrigades from "./clusterers/ClustererBrigades";
+import ClustererCars from './clusterers/ClustererCars';
 
 const carTypes = {
     light: 0,
@@ -36,9 +40,6 @@ class MapApp extends React.Component{
         }
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log('ApppMappp',prevProps)
-    }
 
 
     render() {
@@ -81,65 +82,12 @@ class MapApp extends React.Component{
                                 })
                             }
                             <ClustererAutocolumns />
-                            {
-                                this.props.badSpots.divisions.map(badSpot => {
-                                    return (
-                                        <BadSpot
-                                            key={badSpot.bad_spot.id}
-                                            id={badSpot.bad_spot.id}
-                                            company_id={'113'}
-                                            description={badSpot.bad_spot.description}
-                                            name={badSpot.bad_spot.name}
-                                            address={badSpot.bad_spot.addess}
-                                            x_pos={badSpot.bad_spot.x_pos}
-                                            y_pos={badSpot.bad_spot.y_pos}
-                                            carsNumber={badSpot.carsNumber}
-                                        />
-                                    )
-                                })
-                            }
-                            {
-                                this.props.spots.divisions.map(spot => {
-                                    return (
-                                        <Spot
-                                            key={spot.spot.id}
-                                            id={spot.spot.id}
-                                            company_id={'113'}
-                                            description={spot.spot.description}
-                                            name={spot.spot.name}
-                                            address={spot.spot.addess}
-                                            x_pos={spot.spot.x_pos}
-                                            y_pos={spot.spot.y_pos}
-                                            carsNumber={spot.carsNumber}
-                                        />
-                                    )
-                                })
-                            }
+                            <ClustererBadSpots />
+                            <ClustererSpots />
+                            <ClustererBrigades/>
+                            <ClustererCars />
 
-                            {
-                                this.props.cars.map(car => {
-                                    return (
-                                        <Car
-                                            key={car.id}
-                                            id={car.id}
-                                            company_id={'113'}
-                                            organization_id={car.organization_id}
-                                            autocolumn_id={car.autocolumn_id}
-                                            bad_spot_id={car.bad_spot_id}
-                                            spot_id={car.spot_id}
-                                            brigade_id={car.brigade_id}
-                                            number={car.number}
-                                            type={car.type}
-                                            model={car.model}
-                                            description={car.description}
-                                            x_pos={car.x_pos}
-                                            y_pos={car.y_pos}
-                                            clicked={(car.id === store.getState().level.id) ? 1 : 0}
-                                            functionClicked={this.clickedCars}
-                                        />
-                                    )
-                                })
-                            }
+
                         </Map>
                     </div>
                 </YMaps>
