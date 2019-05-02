@@ -40,6 +40,9 @@ class Organization extends React.Component {
 
 
     handleClick = (e) => {
+        if(this.state.children.autocolumns === [] && this.state.children.badSpots === []) {
+            return alert('Нет ни автоколонн, ни участков у данной организации');
+        }
         store.dispatch(setOrganizations({divisions:[]}));
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setBadSpots({divisions: this.state.children.badSpots}));

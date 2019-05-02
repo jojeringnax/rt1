@@ -33,6 +33,9 @@ class Spot extends React.Component{
 
 
     handleClick = (e) => {
+        if (this.state.children.brigades === [] && this.state.children.cars === []) {
+            return alert('Нет ни бригад, ни автомобилей у данного участка');
+        }
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setSpots({divisions: []}));
         store.dispatch(setBrigades({divisions: this.state.children.brigades}));

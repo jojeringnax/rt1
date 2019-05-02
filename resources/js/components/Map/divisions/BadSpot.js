@@ -33,6 +33,9 @@ class BadSpot extends React.Component{
 
 
     handleClick = (e) => {
+        if (this.state.children.brigades === [] && this.state.children.cars === []) {
+            return alert('Нет ни бригад, ни автомобилей на данном участке');
+        }
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setBadSpots({divisions: []}));
         store.dispatch(setBrigades({divisions: this.state.children.brigades}));

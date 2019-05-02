@@ -37,6 +37,9 @@ class Brigade extends React.Component{
     }
 
     handleClick = (e) => {
+        if (this.state.children === []) {
+            return alert('Нет машин в данной бригаде');
+        }
         store.dispatch(setBrigades({divisions: []}));
         store.dispatch(setCars(this.state.children));
         store.dispatch(setBounds(this.state.bounds));

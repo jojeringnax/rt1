@@ -33,6 +33,9 @@ class Autocolumn extends React.Component{
 
 
     handleClick = (e) => {
+        if (this.state.children === []) {
+            return alert('Нет участков у данной автоколонны');
+        }
         store.dispatch(setAutocolumns({divisions: []}));
         store.dispatch(setBadSpots({divisions: []}));
         store.dispatch(setSpots({divisions: this.state.children}));
