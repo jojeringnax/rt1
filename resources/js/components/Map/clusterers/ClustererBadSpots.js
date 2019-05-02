@@ -3,6 +3,15 @@ import React from "react";
 import {store} from '../../../index'
 import '../../css/MapPoints.css'
 import BadSpot from "../divisions/BadSpot";
+import {
+    setAutocolumns,
+    setBadSpots,
+    setBounds,
+    setBrigades,
+    setCars,
+    setLevel,
+    setStatisticDepartment
+} from "../../../actions";
 
 class ClustererBadSpots extends React.Component {
 
@@ -11,6 +20,19 @@ class ClustererBadSpots extends React.Component {
         this.state = {
             layout: null,
             balloonContentLayout: null
+        };
+
+        this.handleClick = (id,bounds, children, statistic) => {
+            if (children.brigades === [] && children.cars === []) {
+                return alert('Нет ни бригад, ни автомобилей на данном участке');
+            }
+            store.dispatch(setBounds(bounds));
+            store.dispatch(setBadSpots({divisions: []}));
+            store.dispatch(setAutocolumns({divisions: []}));
+            store.dispatch(setBrigades({divisions: children.brigades}));
+            store.dispatch(setLevel('badSpot', id));
+            store.dispatch(setCars(children.cars));
+            store.dispatch(setStatisticDepartment(statistic));
         };
 
 
@@ -28,15 +50,20 @@ class ClustererBadSpots extends React.Component {
                     balloonContentLayout: ymaps.templateLayoutFactory.createClass([
                         '<ul class=list>',
                         '{% for geoObject in properties.geoObjects %}',
-                        '{% if geoObject.carsTotal == 0 %}',
+                        '{% if geoObject.properties.carsNumber == 0 %}',
                         '<li>',
-                        '{{ geoObject.name }}',
-                        '({{ geoObject.carsTotal }})',
+                        '{{ geoObject.properties.description }}',
+                        ' ({{ geoObject.properties.carsNumber }})',
                         '</li>',
                         '{% else %}',
-                        '<li><a onclick="" href=# class="list_item car-baloon">',
-                        '{{ geoObject.name }}',
-                        '{{ geoObject.carsTotal }}',
+                        '<li><a onclick="this.handleClick(',
+                        '{{geoObject.properties.id}},',
+                        '{{geoObject.properties.bounds}},',
+                        '{{geoObject.properties.children}},',
+                        '{{geoObject.properties.statistic}}',
+                        ')" href=# class="list_item car-baloon">',
+                        '{{ geoObject.properties.description }}',
+                        ' ({{ geoObject.properties.carsNumber }})',
                         '</a></li>',
                         '{% endif %}',
                         '{% endfor %}',

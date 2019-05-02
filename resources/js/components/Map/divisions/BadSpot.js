@@ -3,7 +3,15 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
 import {store} from "../../../index";
-import {setBadSpots, setBounds, setBrigades, setCars, setLevel, setStatisticDepartment} from "../../../actions";
+import {
+    setAutocolumns,
+    setBadSpots,
+    setBounds,
+    setBrigades,
+    setCars,
+    setLevel,
+    setStatisticDepartment
+} from "../../../actions";
 
 class BadSpot extends React.Component{
     constructor(props) {
@@ -38,6 +46,7 @@ class BadSpot extends React.Component{
         }
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setBadSpots({divisions: []}));
+        store.dispatch(setAutocolumns({divisions: []}));
         store.dispatch(setBrigades({divisions: this.state.children.brigades}));
         store.dispatch(setLevel('badSpot', this.props.id));
         store.dispatch(setCars(this.state.children.cars));
@@ -73,7 +82,13 @@ class BadSpot extends React.Component{
                 onLoad={this.createTemplateLayoutFactory}
                 geometry={[this.props.x_pos, this.props.y_pos]}
                 properties={{
-                    iconCaption : 'asd'
+                    iconCaption : 'asd',
+                    carsNumber: this.props.carsNumber,
+                    description: this.props.description,
+                    children: this.state.children,
+                    statistic: this.state.statistic,
+                    id: this.props.id,
+                    bounds: this.state.bounds
                 }}
                 modules={[
                     "geoObject.addon.hint"
