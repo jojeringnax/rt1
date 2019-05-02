@@ -40,21 +40,23 @@ class BadSpot extends React.Component{
 
 
 
-    handleClick = (e) => {
+    handleClick = e => {
         if (this.state.children.brigades === [] && this.state.children.cars === []) {
-            return alert('Нет ни бригад, ни автомобилей на данном участке');
+            return alert("Нет ни бригад, ни автомобилей на данном участке");
         }
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setBadSpots({divisions: []}));
         store.dispatch(setAutocolumns({divisions: []}));
         store.dispatch(setBrigades({divisions: this.state.children.brigades}));
-        store.dispatch(setLevel('badSpot', this.props.id));
+        store.dispatch(setLevel("badSpot", this.props.id));
         store.dispatch(setCars(this.state.children.cars));
         store.dispatch(setStatisticDepartment(this.state.statistic));
     };
 
 
     componentDidMount() {
+        window.onclick.badspots[this.props.id] = this.handleClick;
+        console.log(window.onclick);
         let url = '/api/bad_spot/' + this.props.id + '/children';
         axios.get(url)
             .then(res => {
@@ -88,7 +90,8 @@ class BadSpot extends React.Component{
                     children: this.state.children,
                     statistic: this.state.statistic,
                     id: this.props.id,
-                    bounds: this.state.bounds
+                    bounds: this.state.bounds,
+                    handleClick: this.handleClick
                 }}
                 modules={[
                     "geoObject.addon.hint"

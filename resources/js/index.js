@@ -10,6 +10,13 @@ import {setPoints, setOrganizationsPreload} from "./actions";
 
 
 export let store = createStore(rootReducer, applyMiddleware(thunk) && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+window.onclick = {
+    autocolumns: {},
+    badspots: {},
+    spots: {},
+    brigades: {},
+    cars: {}
+};
 
 ReactDOM.render(
     <Provider store={store}>
