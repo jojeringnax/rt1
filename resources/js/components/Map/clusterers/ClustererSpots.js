@@ -61,6 +61,9 @@ class ClustererSpots extends React.Component {
                     clusterIconContentLayout: this.state.layout,
                     zoomMargin : [50,50,50,50]
                 }}
+                modules={[
+                    "clusterer.addon.balloon"
+                ]}
             >
                 {
                     store.getState().spots.divisions.map(spot => {

@@ -144,7 +144,6 @@ class InfoDepartment extends React.Component{
                                     }
                                 }}
                             />
-                            {/*<div id="applications_ac" className="circle"></div>*/}
                         </div>
                         <div className="div-bar-text">
                             <span id="filed" className="p-bar-text">Поданы через АС<br/>"Авто-Контроль", %</span>
@@ -171,7 +170,6 @@ class InfoDepartment extends React.Component{
                                     }
                                 }}
                             />
-                            {/*<div id="waybills_total" className="circle"></div>*/}
                         </div>
                         <div className="div-bar-text">
                             <span id="processed" className="p-bar-text-str">Обработано ПЛ, %</span>

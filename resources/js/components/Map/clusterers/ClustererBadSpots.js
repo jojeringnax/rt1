@@ -1,4 +1,4 @@
-import { Clusterer } from 'react-yandex-maps';
+import {Clusterer, Placemark} from 'react-yandex-maps';
 import React from "react";
 import {store} from '../../../index'
 import '../../css/MapPoints.css'
@@ -63,6 +63,9 @@ class ClustererBadSpots extends React.Component {
                     clusterIconContentLayout: this.state.layout,
                     zoomMargin : [50,50,50,50]
                 }}
+                modules={[
+                    "clusterer.addon.balloon"
+                ]}
             >
                 {
                     store.getState().badSpots.divisions.map(badSpot => {
