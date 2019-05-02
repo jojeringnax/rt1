@@ -46,6 +46,7 @@ class Autocolumn extends React.Component{
 
 
     componentDidMount() {
+        window.onclick.autocolumns[this.props.id] = this.handleClick;
         let url = '/api/autocolumn/' + this.props.id + '/children';
         axios.get(url)
             .then(res => {
@@ -68,7 +69,13 @@ class Autocolumn extends React.Component{
                 onLoad={this.createTemplateLayoutFactory}
                 geometry={[this.props.x_pos, this.props.y_pos]}
                 properties={{
-                    iconCaption : 'asd'
+                    carsNumber: this.props.carsNumber,
+                    description: this.props.description,
+                    children: this.state.children,
+                    statistic: this.state.statistic,
+                    id: this.props.id,
+                    bounds: this.state.bounds,
+                    handleClick: this.handleClick
                 }}
                 modules={[
                     "geoObject.addon.hint"

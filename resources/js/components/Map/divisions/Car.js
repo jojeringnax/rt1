@@ -50,7 +50,6 @@ class Car extends React.Component {
                 clicked: this.props.clicked
             });
         }
-
     }
 
     handleClick = e => {
@@ -62,6 +61,10 @@ class Car extends React.Component {
         this.props.functionClicked();
     };
 
+    componentDidMount() {
+        window.onclick.cars[this.props.id] = this.handleClick;
+    }
+
     render() {
         return(
             <Placemark
@@ -72,7 +75,13 @@ class Car extends React.Component {
                     balloonContentHeader: this.props.model,
                     balloonContentBody: this.props.number,
                     balloonContentFooter: this.props.status,
-                    clusterCaption: 'placemark ' + this.props.id
+                    clusterCaption: 'placemark ' + this.props.id,
+                    id: this.props.id,
+                    handleClick: this.handleClick,
+                    type: this.props.type,
+                    model: this.props.model,
+                    number: this.props.number,
+                    description: this.props.description
                 }}
                 modules={[
                     "geoObject.addon.hint"

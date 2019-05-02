@@ -17,6 +17,7 @@ import ClustererBadSpots from "./clusterers/ClustererBadSpots";
 import ClustererSpots from "./clusterers/ClustererSpots";
 import ClustererBrigades from "./clusterers/ClustererBrigades";
 import ClustererCars from './clusterers/ClustererCars';
+import BackButton from "../BackButton";
 
 const carTypes = {
     light: 0,
@@ -53,6 +54,7 @@ class MapApp extends React.Component{
                     version={"2.1"}
                     >
                     <div className="app-map">
+                        <BackButton />
                         <Map
                             width={"100%"}
                             height={"100vh"}

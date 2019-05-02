@@ -32,15 +32,12 @@ class ClustererBrigades extends React.Component {
                     balloonContentLayout: ymaps.templateLayoutFactory.createClass([
                         '<ul class=list>',
                         '{% for geoObject in properties.geoObjects %}',
-                        '<li><a onclick="',
-                        'store.dispatch(setLevel({level: \'car\', id: \'{{geoObject.id}}\'})',
-                        'href=# id="',
-                        '{{geoObject.id}}',
-                        '" class="list_item car-baloon">',
-                        '<img src="yan/img/auto_icon/point_blue_','' +
-                        '{{geoObject.type}}',
+                        '<li><a onclick="window.onclick.cars[\'{{geoObject.properties.id}}\']()"',
+                        ' href=# class="list_item car-baloon">',
+                        '<img src="images/auto_icon/point_blue_','' +
+                        '{{geoObject.properties.type}}',
                         '.svg" alt="">',
-                        '{{ geoObject.properties.balloonContentHeader|raw }}',
+                        '{{ geoObject.properties.model }}',
                         '</a></li>',
                         '{% endfor %}',
                         '</ul>'
@@ -71,12 +68,15 @@ class ClustererBrigades extends React.Component {
                     store.getState().cars.map(car => {
                         return (
                             <Car
+                                type={car.type}
+                                model={car.model}
+                                number={car.number}
+                                description={car.description}
                                 key={car.id}
                                 id={car.id}
                                 x_pos={car.x_pos}
                                 y_pos={car.y_pos}
                                 clicked={(car.id === store.getState().level.id) ? 1 : 0}
-                                type={car.type}
                                 status={car.status}
                                 functionClicked={this.clickedCars}
                             />

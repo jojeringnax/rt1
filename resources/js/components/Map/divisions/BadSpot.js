@@ -84,7 +84,6 @@ class BadSpot extends React.Component{
                 onLoad={this.createTemplateLayoutFactory}
                 geometry={[this.props.x_pos, this.props.y_pos]}
                 properties={{
-                    iconCaption : 'asd',
                     carsNumber: this.props.carsNumber,
                     description: this.props.description,
                     children: this.state.children,

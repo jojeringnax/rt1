@@ -5,4 +5,10 @@
 .app {
   display: flex; }
 
+#btn-back {
+  width: 10vh;
+  height: 3vh;
+  position: absolute;
+  z-index: 213123; }
+
 /*# sourceMappingURL=MapApp.css.map */
