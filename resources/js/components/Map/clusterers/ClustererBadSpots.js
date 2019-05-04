@@ -56,7 +56,7 @@ class ClustererBadSpots extends React.Component {
                         ' ({{ geoObject.properties.carsNumber }})',
                         '</li>',
                         '{% else %}',
-                        '<li><a onclick="window.onclick.badspots[\'{{geoObject.properties.id}}\']()"',
+                        '<li><a onclick="window.onclick.badSpot[\'{{geoObject.properties.id}}\']()"',
                         ' href=# class="list_item car-baloon">',
                         '{{ geoObject.properties.description }}',
                         ' ({{ geoObject.properties.carsNumber }})',

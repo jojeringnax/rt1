@@ -125,8 +125,8 @@ class CarsCommand extends Command
             foreach ($carsPositions as $carsPosition) {
                 if ($carsPosition->CarsID === $car->ID) {
                     $this->info('Coordinates found in SOAP-response');
-                    $carModel->x_pos = preg_replace('/,/', '.', $carsPosition->XPos);
-                    $carModel->y_pos = preg_replace('/,/', '.', $carsPosition->YPos);
+                    $carModel->x_pos = preg_replace('/,/', '.', $carsPosition->YPos);
+                    $carModel->y_pos = preg_replace('/,/', '.', $carsPosition->XPos);
                 } else {
                     continue;
                 }

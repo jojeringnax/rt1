@@ -3,7 +3,15 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
 import {store} from "../../../index";
-import {setSpots, setBounds, setBrigades, setCars, setLevel, setStatisticDepartment} from "../../../actions";
+import {
+    setSpots,
+    setBounds,
+    setBrigades,
+    setCars,
+    setLevel,
+    setStatisticDepartment,
+    setStructure
+} from "../../../actions";
 
 class Spot extends React.Component{
     constructor(props) {
@@ -33,8 +41,9 @@ class Spot extends React.Component{
 
 
     handleClick = (e) => {
-        if (this.state.children.brigades === [] && this.state.children.cars === []) {
-            return alert('Нет ни бригад, ни автомобилей у данного участка');
+        if (this.state.children.brigades.length === 0 && this.state.children.cars.length === 0) {
+            alert('Нет ни бригад, ни автомобилей у данного участка');
+            return false;
         }
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setSpots({divisions: []}));
@@ -42,18 +51,17 @@ class Spot extends React.Component{
         store.dispatch(setCars(this.state.children.cars));
         store.dispatch(setLevel('spot', this.props.id));
         store.dispatch(setStatisticDepartment(this.state.statistic));
-        //console.log('props', this.props);
-        //console.log('states', this.state)
+        store.dispatch(setStructure('spot', this.props.id));
     };
 
 
     componentDidMount() {
-        window.onclick.spots[this.props.id] = this.handleClick;
+        window.onclick.spot[this.props.id] = this.handleClick;
         let url = '/api/spot/' + this.props.id + '/children';
         axios.get(url)
             .then(res => {
                 this.setState({
-                    bounds:res.data.bounds.bounds
+                    bounds: res.data.bounds.bounds
                 });
                 this.setState({
                     children: {

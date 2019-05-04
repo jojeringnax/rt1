@@ -62,7 +62,7 @@ class BadSpot extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function getOrganization()
+    public function organization()
     {
         return $this->belongsTo(Organization::class)->where('x_pos', '!=', null);
     }
@@ -71,7 +71,7 @@ class BadSpot extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getBrigades()
+    public function brigades()
     {
         return $this->hasMany(Brigade::class)->where('x_pos', '!=', null);
     }
@@ -79,7 +79,7 @@ class BadSpot extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function getCars()
+    public function cars()
     {
         return $this->hasMany(Car::class)->where('x_pos', '!=', null);
     }

@@ -2,7 +2,15 @@ import React from 'react';
 import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
 import {store} from "../../../index";
-import {setSpots, setAutocolumns, setBadSpots, setBounds, setLevel, setStatisticDepartment} from "../../../actions";
+import {
+    setSpots,
+    setAutocolumns,
+    setBadSpots,
+    setBounds,
+    setLevel,
+    setStatisticDepartment,
+    setStructure
+} from "../../../actions";
 
 class Autocolumn extends React.Component{
 
@@ -33,8 +41,9 @@ class Autocolumn extends React.Component{
 
 
     handleClick = (e) => {
-        if (this.state.children === []) {
-            return alert('Нет участков у данной автоколонны');
+        if (this.state.children.length === 0) {
+            alert('Нет участков у данной автоколонны');
+            return false;
         }
         store.dispatch(setAutocolumns({divisions: []}));
         store.dispatch(setBadSpots({divisions: []}));
@@ -42,11 +51,12 @@ class Autocolumn extends React.Component{
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setLevel('autocolumn', this.props.id));
         store.dispatch(setStatisticDepartment(this.state.statistic));
+        store.dispatch(setStructure('autocolumn', this.props.id));
     };
 
 
     componentDidMount() {
-        window.onclick.autocolumns[this.props.id] = this.handleClick;
+        window.onclick.autocolumn[this.props.id] = this.handleClick;
         let url = '/api/autocolumn/' + this.props.id + '/children';
         axios.get(url)
             .then(res => {

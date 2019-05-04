@@ -7,7 +7,7 @@ import {
     setOrganizations,
     setBadSpots,
     setLevel,
-    setStatisticDepartment
+    setStatisticDepartment, setStructure
 } from "../../../actions";
 import {store} from "../../../index";
 import axios from "axios";
@@ -40,8 +40,9 @@ class Organization extends React.Component {
 
 
     handleClick = (e) => {
-        if(this.state.children.autocolumns === [] && this.state.children.badSpots === []) {
-            return alert('Нет ни автоколонн, ни участков у данной организации');
+        if(this.state.children.autocolumns.length === 0 && this.state.children.badSpots.length === 0) {
+            alert('Нет ни автоколонн, ни участков у данной организации');
+            return false;
         }
         store.dispatch(setOrganizations({divisions:[]}));
         store.dispatch(setBounds(this.state.bounds));
@@ -49,10 +50,12 @@ class Organization extends React.Component {
         store.dispatch(setAutocolumns({divisions: this.state.children.autocolumns}));
         store.dispatch(setStatisticDepartment(this.state.statistic));
         store.dispatch(setLevel('organization', this.props.id));
+        store.dispatch(setStructure('organization', this.props.id));
     };
 
 
     componentDidMount() {
+        window.onclick.organization[this.props.id] = this.handleClick;
         axios.get('/api/organization/' + this.props.id + '/children')
             .then(res => {
                 this.setState({
