@@ -5,12 +5,14 @@ import copy from "../../img/copy.svg";
 import pie from "../../img/pie.svg";
 import 'react-circular-progressbar/dist/styles.css';
 import CircularProgressbar from 'react-circular-progressbar';
+import axios from 'axios';
 
 class InfoCompany extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            show: this.props.show
+            show: this.props.show,
+            statistic: {}
         };
     }
 
@@ -19,13 +21,28 @@ class InfoCompany extends React.Component{
             this.setState({
                 show: this.props.show
             });
+            axios.get('api/statistics')
+                .then(res => {
+                    this.setState({
+                        statistic: res.data
+                    });
+                });
         }
+    }
+
+    componentDidMount() {
+        axios.get('api/statistics')
+            .then(res => {
+                this.setState({
+                    statistic: res.data
+                });
+            });
     }
 
 
     render() {
         return(
-            <div id="info-company" className={"info-company item-sideBar" + (this.state.show ? '' : ' hide')}>
+            <div id="info-company" className={"istatisticDepartmentnfo-company item-sideBar" + (this.state.show ? '' : ' hide')}>
                 <div>
                     <div className="ts-title">
                         <span className="img">
@@ -35,23 +52,23 @@ class InfoCompany extends React.Component{
                     </div>
                     <div className="item-info">
                         <span className="item-info-title">Всего, шт.</span>
-                        <span id="compAmOfTs" className="figures">100</span>
+                        <span id="compAmOfTs" className="figures">{this.state.statistic.carsTotal}</span>
                     </div>
                     <div className="item-info">
                         <span className="item-info-title">Готовы, шт.</span>
-                        <span id="compReady" className="figures">100</span>
+                        <span id="compReady" className="figures">{this.state.statistic.carsReady}</span>
                     </div>
                     <div className="item-info">
                         <span className="item-info-title">На ремонте, шт.</span>
-                        <span id="compOnRep" className="figures">100</span>
+                        <span id="compOnRep" className="figures">{this.state.statistic.carsRepair}</span>
                     </div>
                     <div className="item-info">
                         <span className="item-info-title">На ТО, шт.</span>
-                        <span id="compOnTo" className="figures">100</span>
+                        <span id="compOnTo" className="figures">{this.state.statistic.carsTO}</span>
                     </div>
                     <div className="item-info">
                         <span className="trans-auto">На линии, шт.</span>
-                        <span id="compOnLine" className="figures">100</span>
+                        <span id="compOnLine" className="figures">{this.state.statistic.carsInline}</span>
                     </div>
                 </div>
 
@@ -62,15 +79,15 @@ class InfoCompany extends React.Component{
                     </div>
                     <div className="item-info">
                         <span className="trans-auto">Выполнено, шт.</span>
-                        <span id="comp_applications_executed" className="figures">100</span>
+                        <span id="comp_applications_executed" className="figures">{this.state.statistic.applications_total}</span>
                     </div>
                     <div className="item-info">
                         <span className="trans-auto">Отменено, шт.</span>
-                        <span id="comp_applications_canceled" className="figures">100</span>
+                        <span id="comp_applications_canceled" className="figures">{this.state.statistic.applications_canceled}</span>
                     </div>
                     <div className="item-info">
                         <span className="trans-auto">Переданы на СП, шт.</span>
-                        <span id="comp_applications_sub" className="figures">100</span>
+                        <span id="comp_applications_sub" className="figures">{this.state.statistic.applications_sub}</span>
                     </div>
                 </div>
 
@@ -81,10 +98,16 @@ class InfoCompany extends React.Component{
                     </div>
                     <div className="item-bar">
                         <div className="circle-block" >
-                            <span id="comp_applications_ac_per" className="p-bar">60%</span>
+                            <span id="comp_applications_ac_per" className="p-bar">
+                                {
+                                    (this.state.statistic.applications_ac/this.state.statistic.applications_total).toFixed(2)*100
+                                }%
+                            </span>
                             {/*<div id="comp_applications_ac" className="circle"></div>*/}
                             <CircularProgressbar
-                                percentage={60}
+                                percentage={
+                                        (this.state.statistic.applications_ac/this.state.statistic.applications_total).toFixed(2)*100
+                                }
                                 text={""}
                                 styles={{
                                     path: {
@@ -101,9 +124,17 @@ class InfoCompany extends React.Component{
                     </div>
                     <div className="item-bar">
                         <div className="circle-block" >
-                            <span id="comp_waybills_total_per" className="p-bar">30%</span>
+                            <span id="comp_waybills_total_per" className="p-bar">
+                                {
+                                    (this.state.statistic.waybills_processed  === 0 && this.state.statistic.waybills_total === 0) ? 0 :
+                                        (this.state.statistic.waybills_processed/this.state.statistic.waybills_total).toFixed(2)*100
+                                }%
+                            </span>
                             <CircularProgressbar
-                                percentage={30}
+                                percentage={
+                                    (this.state.statistic.waybills_processed  === 0 && this.state.statistic.waybills_total === 0) ? 0 :
+                                        (this.state.statistic.waybills_processed/this.state.statistic.waybills_total).toFixed(2)*100
+                                }
                                 text={""}
                                 styles={{
                                     path: {
@@ -120,9 +151,17 @@ class InfoCompany extends React.Component{
                     </div>
                     <div className="item-bar">
                         <div className="circle-block" >
-                            <p id="comp_accidents_total_per" className="p-bar">90%</p>
+                            <p id="comp_accidents_total_per" className="p-bar">
+                                {
+                                    (this.state.statistic.accidents_guilty  === 0 && this.state.statistic.accidents_total === 0) ? 0 :
+                                        (this.state.statistic.accidents_guilty/this.state.statistic.accidents_total).toFixed(2)*100
+                                }%
+                            </p>
                             <CircularProgressbar
-                                percentage={90}
+                                percentage={
+                                    (this.state.statistic.accidents_guilty  === 0 && this.state.statistic.accidents_total === 0) ? 0 :
+                                        (this.state.statistic.accidents_guilty/this.state.statistic.accidents_total).toFixed(2)*100
+                                }
                                 text={""}
                                 styles={{
                                     path: {
@@ -139,9 +178,17 @@ class InfoCompany extends React.Component{
                     </div>
                     <div className="item-bar">
                         <div className="circle-block" >
-                            <span id="comp_WB_M_per" className="p-bar">100%</span>
+                            <span id="comp_WB_M_per" className="p-bar">
+                                {
+                                    (this.state.statistic.WB_M === 0 || this.state.statistic.WB_ALL ===0) ? 0 :
+                                        ((this.state.statistic.WB_M/this.state.statistic.WB_ALL).toFixed(2)*100)
+                                }%
+                            </span>
                             <CircularProgressbar
-                                percentage={100}
+                                percentage={
+                                    (this.state.statistic.WB_M === 0 || this.state.statistic.WB_ALL ===0) ? 0 :
+                                        ((this.state.statistic.WB_M/this.state.statistic.WB_ALL).toFixed(2)*100)
+                                }
                                 text={""}
                                 styles={{
                                     path: {
@@ -159,7 +206,12 @@ class InfoCompany extends React.Component{
 
                     <div className="indic-bot">
                         <div className="div-pr25">
-                            <span id="lmch-2" className="p-meanings-2nd"><span id="comp_fuel" className="span-figures-2nd">5,1</span> л\мч<br/>ТМЧ</span>
+                            <span id="lmch-2" className="p-meanings-2nd"><span id="comp_fuel" className="span-figures-2nd">
+                                {
+                                    (this.state.statistic.fuel === 0 && this.state.statistic.time === 0) ? 0 :
+                                    ((this.state.statistic.fuel/this.state.statistic.time).toFixed(2))
+                                }
+                            </span> л\мч<br/>ТМЧ</span>
                         </div>{/*END__INFO_COMPANY*/}
                         <div className="div-meanings">
                             <span id="" className="p-meanings-2nd"><span id="comp_terminals" className="span-figures-2nd">110</span><br/>Терминалов</span>

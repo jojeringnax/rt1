@@ -89,7 +89,6 @@ class MapApp extends React.Component{
                             <ClustererBrigades/>
                             <ClustererCars />
 
-
                         </Map>
                     </div>
                 </YMaps>

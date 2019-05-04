@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import points from './points'
 import level from './level'
 import {organizations, autocolumns, cars, brigades, badSpots, spots} from './divisions'
-import statisticDepartment from './statistics'
+import {statisticDepartment, statisticCar, statisticCompany} from './statistics'
 import bounds from './bounds'
 import clicked from './clicked'
 
@@ -16,5 +16,7 @@ export default combineReducers({
     badSpots,
     spots,
     bounds,
-    statisticDepartment
+    statisticDepartment,
+    statisticCompany,
+    statisticCar
 })

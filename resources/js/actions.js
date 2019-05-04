@@ -6,7 +6,6 @@ export const setLevel = (level, id=null) => ({
     id
 });
 
-
 export const setPoints = points => ({
     type: 'SET_POINTS',
     points
@@ -52,13 +51,20 @@ export const setStatisticDepartment = statistic => ({
     statistic
 });
 
+export const setStatisticCompany = statistic => ({
+    type: 'SET_STATISTIC_COMPANY',
+    statistic
+});
+
+export const setStatisticCar = statistic => ({
+    type: 'SET_STATISTIC_CAR',
+    statistic
+});
 
 export const setCarClicked = clicked => ({
     type: 'SET_CAR_CLICKED',
     clicked
 });
-
-
 
 export const Levels = {
     company: 'company',
@@ -69,8 +75,6 @@ export const Levels = {
     brigade: 'brigade',
     car: 'car'
 };
-
-
 
 export function setOrganizationsPreload(dispatch) {
     axios.get('/api/organizations')
