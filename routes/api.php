@@ -96,6 +96,14 @@ Route::get('car/{id}/data', function ($id) {
     return \App\CarData::getCarData($id);
 });
 
+Route::get('ss/{id}', function ($id) {
+    return \App\BadSpot::find($id)->cars;
+});
+
+Route::get('cc/{id}', function ($id) {
+    return \App\Car::find($id)->badSpot;
+});
+
 
 
 
