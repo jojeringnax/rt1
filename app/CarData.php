@@ -83,16 +83,17 @@ class CarData extends Model
             'DriverMark',
             'ViolationsCount'
         ];
+
         foreach ($keys as $key) {
-            $$key = (isset($carsData->$key) || $carsData->$key === '') ? $carsData->$key : null;
+            $$key = (isset($carsData->$key)) ? $carsData->$key : null;
         }
-        $StartTimePlan = (isset($carsData->StartTimePlan) || $carsData->StartTimePlan === '') ?
+        $StartTimePlan = (isset($carsData->StartTimePlan)) ?
             date('Y-m-d H:i:s', strtotime($carsData->StartTimePlan)) :
             null;
-        $EndTimePlan = (isset($carsData->EndTimePlan) || $carsData->EndTimePlan === '') ?
+        $EndTimePlan = (isset($carsData->EndTimePlan)) ?
             date('Y-m-d H:i:s', strtotime($carsData->EndTimePlan)) :
             null;
-        $StartTimeFact = (isset($carsData->StartTimeFact) || $carsData->StartTimeFact === '') ?
+        $StartTimeFact = (isset($carsData->StartTimeFact)) ?
             date('Y-m-d H:i:s', strtotime($carsData->StartTimeFact)) :
             null;
         $carsDataModel = self::firstOrNew(['car_id' => $carID]);

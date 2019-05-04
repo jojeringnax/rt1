@@ -31,7 +31,7 @@ class InfoCompany extends React.Component{
     }
 
     componentDidMount() {
-        axios.get('api/statistics')
+        axios.get('/api/statistics')
             .then(res => {
                 this.setState({
                     statistic: res.data

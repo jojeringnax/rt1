@@ -205,11 +205,15 @@ class InfoDepartment extends React.Component{
                         <div className="ilia" >
                             <p id="WB_M_per" className="p-bar">
                                 {
-                                    (this.props.statistic.WB_M/this.props.statistic.WB_ALL).toFixed(2)*100
+                                    (this.props.statistic.WB_M  === 0 && this.props.statistic.WB_M === 0) ? 0 :
+                                    (this.props.statistic.WB_M/this.props.statistic.WB_M).toFixed(2)*100
                                 }%
                             </p>
                             <CircularProgressbar
-                                percentage={(this.props.statistic.WB_M/this.props.statistic.WB_ALL).toFixed(2)*100}
+                                percentage={
+                                    (this.props.statistic.WB_M  === 0 && this.props.statistic.WB_M === 0) ? 0 :
+                                        (this.props.statistic.WB_M/this.props.statistic.WB_M).toFixed(2)*100
+                                }
                                 text={""}
                                 styles={{
                                     path: {
