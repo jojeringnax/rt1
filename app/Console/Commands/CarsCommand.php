@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\BadSpot;
 use App\Brigade;
 use App\Car;
+use App\Soap;
 use App\Spot;
 use Illuminate\Console\Command;
 
@@ -43,7 +44,7 @@ class CarsCommand extends Command
     {
         ini_set('memory_limit', '1000M');
         ini_set('max_execution_time', '0');
-        $client = new \SoapClient('http://d.rg24.ru:5601/PUP_WS/ws/PUP.1cws?wsdl');
+        $client = app(Soap::class);
         try {
             $cars = json_decode($client->getCars()->return);
             $carsStatuses = json_decode($client->getGarsStatus()->return);

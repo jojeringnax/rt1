@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Company;
 use App\Organization;
+use App\Soap;
 use Illuminate\Console\Command;
 
 class OrganizationsCommand extends Command
@@ -48,7 +49,7 @@ class OrganizationsCommand extends Command
         } else {
             $this->info('Company already exist');
         }
-        $client = new \SoapClient('http://d.rg24.ru:5601/PUP_WS/ws/PUP.1cws?wsdl');
+        $client = app(Soap::class);
         try {
             $organizations = json_decode($client->getOrganization()->return);
             $this->info('Organizations successfully received via SOAP');

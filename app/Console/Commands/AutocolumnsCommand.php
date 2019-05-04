@@ -4,7 +4,9 @@ namespace App\Console\Commands;
 
 use App\Autocolumn;
 use App\Company;
+use App\Soap;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\App;
 
 class AutocolumnsCommand extends Command
 {
@@ -41,7 +43,7 @@ class AutocolumnsCommand extends Command
     {
         $names = require_once (storage_path('names.php'));
         if (Company::find('113') === null) $this->call('organizations:fill');
-        $client = new \SoapClient('http://d.rg24.ru:5601/PUP_WS/ws/PUP.1cws?wsdl');
+        $client = app(Soap::class);
         try {
             $divisions = json_decode($client->getDivision()->return);
             foreach ($divisions as $division) {

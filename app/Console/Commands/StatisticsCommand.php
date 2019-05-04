@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Autocolumn;
 use App\BadSpot;
 use App\Brigade;
+use App\Soap;
 use App\Spot;
 use App\Statistic;
 use Illuminate\Console\Command;
@@ -215,7 +216,7 @@ class StatisticsCommand extends Command
      */
     public function handle()
     {
-        $client = new \SoapClient('http://d.rg24.ru:5601/PUP_WS/ws/PUP.1cws?wsdl');
+        $client = app(Soap::class);
         if ($this->option('applications') || $this->option('full')) {
             $this->saveApplications($client);
         }

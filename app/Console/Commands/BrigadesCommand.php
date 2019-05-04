@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\BadSpot;
 use App\Brigade;
 use App\Company;
+use App\Soap;
 use App\Spot;
 use Illuminate\Console\Command;
 
@@ -43,7 +44,7 @@ class BrigadesCommand extends Command
     {
         $names = require_once (storage_path('names.php'));
         if (Company::find('113') === null) $this->call('organizations:fill');
-        $client = new \SoapClient('http://d.rg24.ru:5601/PUP_WS/ws/PUP.1cws?wsdl');
+        $client = app(Soap::class);
         try {
             $divisions = json_decode($client->getDivision()->return);
             foreach ($divisions as $division) {

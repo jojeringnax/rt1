@@ -88,6 +88,14 @@ Route::get('brigade/{id}/statistic', function ($id) {
     return \App\Statistic::getStatisticForDivision(\App\Brigade::class, $id)->toJson();
 });
 
+/**
+ * CAR DATA
+ */
+
+Route::get('car/{id}/data', function ($id) {
+    return \App\CarData::getCarData($id);
+});
+
 
 
 
