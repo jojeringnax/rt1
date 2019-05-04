@@ -6,16 +6,24 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import axios from "axios";
-import {setPoints, setOrganizationsPreload} from "./actions";
+import {setPoints, setOrganizationsPreload, setAutocolumns, resetApp} from "./actions";
 
 
 export let store = createStore(rootReducer, applyMiddleware(thunk) && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
 window.onclick = {
-    autocolumns: {},
-    badspots: {},
-    spots: {},
-    brigades: {},
-    cars: {}
+    company: {
+        113: () => {
+            store.dispatch(resetApp());
+            setOrganizationsPreload(store.dispatch);
+        }
+    },
+    organization:{},
+    autocolumn: {},
+    badSpot: {},
+    spot: {},
+    brigade: {},
+    car: {}
 };
 
 ReactDOM.render(

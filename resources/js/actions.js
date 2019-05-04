@@ -1,5 +1,9 @@
 import axios from "axios";
 
+export const resetApp = () => ({
+    type: 'RESET_APP'
+});
+
 export const setLevel = (level, id=null) => ({
     type: 'SET_LEVEL',
     level,
@@ -83,3 +87,9 @@ export function setOrganizationsPreload(dispatch) {
             dispatch(setBounds(res.data.bounds.bounds));
         });
 }
+
+export const setStructure = (division, id) => ({
+    type: 'SET_STRUCTURE',
+    division,
+    id
+});

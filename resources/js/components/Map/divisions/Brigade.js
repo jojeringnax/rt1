@@ -8,7 +8,7 @@ import {
     setBrigades, setCars,
     setLevel,
     setSpots,
-    setStatisticDepartment
+    setStatisticDepartment, setStructure
 } from "../../../actions";
 
 class Brigade extends React.Component{
@@ -37,7 +37,7 @@ class Brigade extends React.Component{
     }
 
     handleClick = (e) => {
-        if (this.state.children == []) {
+        if (this.state.children.length === 0) {
             alert('Нет машин в данной бригаде');
             return false;
         }
@@ -46,6 +46,7 @@ class Brigade extends React.Component{
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setLevel('brigade', this.props.id));
         store.dispatch(setStatisticDepartment(this.state.statistic));
+        store.dispatch(setStructure('brigade', this.props.id));
     };
 
     componentDidMount() {

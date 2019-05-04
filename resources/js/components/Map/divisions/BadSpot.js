@@ -10,7 +10,7 @@ import {
     setBrigades,
     setCars,
     setLevel,
-    setStatisticDepartment
+    setStatisticDepartment, setStructure
 } from "../../../actions";
 
 class BadSpot extends React.Component{
@@ -41,8 +41,9 @@ class BadSpot extends React.Component{
 
 
     handleClick = e => {
-        if (this.state.children.brigades === [] && this.state.children.cars === []) {
-            return alert("Нет ни бригад, ни автомобилей на данном участке");
+        if (this.state.children.brigades.length === 0 && this.state.children.cars.length === 0) {
+            alert("Нет ни бригад, ни автомобилей на данном участке");
+            return false;
         }
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setBadSpots({divisions: []}));
@@ -51,12 +52,12 @@ class BadSpot extends React.Component{
         store.dispatch(setLevel("badSpot", this.props.id));
         store.dispatch(setCars(this.state.children.cars));
         store.dispatch(setStatisticDepartment(this.state.statistic));
+        store.dispatch(setStructure('badSpot', this.props.id));
     };
 
 
     componentDidMount() {
-        window.onclick.badspots[this.props.id] = this.handleClick;
-        console.log(window.onclick);
+        window.onclick.badSpot[this.props.id] = this.handleClick;
         let url = '/api/bad_spot/' + this.props.id + '/children';
         axios.get(url)
             .then(res => {

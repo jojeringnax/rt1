@@ -21,17 +21,9 @@ class SideBar extends React.Component{
             infoCompany: this.props.level.level === 'company',
             infoDepartment: ['organization', 'spot', 'badSpot', 'autocolumn', 'brigade'].includes(this.props.level.level),
             infoTS: this.props.level.level === 'car'})
-
-
-        // let url = '/api/' + this.props.level + '/statistics';
-        // axios.get(url)
-        //     .then((res) => {
-        //         store.dispatch(setStatistic(res.data));
-        //     });
     }
 
     componentDidUpdate(prevProps, prevState) {
-        //console.log(prevProps, this.state, this.props);
         if (prevProps.level.level !== this.props.level.level) {
             this.setState({infoCompany: this.props.level.level === 'company'});
             this.setState({infoDepartment: ['organization', 'spot', 'badSpot', 'autocolumn', 'brigade'].

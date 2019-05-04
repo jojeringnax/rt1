@@ -33,7 +33,7 @@ class ClustererAutocolumns extends React.Component {
                         ' ({{ geoObject.properties.carsNumber }})',
                         '</li>',
                         '{% else %}',
-                        '<li><a onclick="window.onclick.autocolumns[\'{{geoObject.properties.id}}\']()"',
+                        '<li><a onclick="window.onclick.autocolumn[\'{{geoObject.properties.id}}\']()"',
                         ' href=# class="list_item car-baloon">',
                         '{{ geoObject.properties.description }}',
                         ' ({{ geoObject.properties.carsNumber }})',

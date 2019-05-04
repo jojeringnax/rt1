@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
 import {store} from "../../../index";
-import {setCarClicked, setLevel, setStatisticCar} from "../../../actions";
+import {setCarClicked, setLevel, setStatisticCar, setStructure} from "../../../actions";
 
 class Car extends React.Component {
 
@@ -56,6 +56,7 @@ class Car extends React.Component {
         store.dispatch(setLevel('car', this.props.id));
         store.dispatch(setCarClicked(false));
         store.dispatch(setStatisticCar({}));
+        store.dispatch(setStructure('car', this.props.id));
         this.setState({
             clicked: true
         });
@@ -63,7 +64,7 @@ class Car extends React.Component {
     };
 
     componentDidMount() {
-        window.onclick.cars[this.props.id] = this.handleClick;
+        window.onclick.car[this.props.id] = this.handleClick;
         let url =
         axios.get()
     }

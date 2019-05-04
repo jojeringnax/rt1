@@ -30,7 +30,6 @@ class InfoTs extends React.Component{
     }
 
     render() {
-        console.log('props-ts',this.props);
         return(
             <div id="info-ts" className={"info-ts item-sideBar" + (this.state.show ? '' : ' hide')}>
                 <div className="title-ts d-flex justify-content-start">

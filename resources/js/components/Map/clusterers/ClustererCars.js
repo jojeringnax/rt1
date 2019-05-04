@@ -32,7 +32,7 @@ class ClustererBrigades extends React.Component {
                     balloonContentLayout: ymaps.templateLayoutFactory.createClass([
                         '<ul class=list>',
                         '{% for geoObject in properties.geoObjects %}',
-                        '<li><a onclick="window.onclick.cars[\'{{geoObject.properties.id}}\']()"',
+                        '<li><a onclick="window.onclick.car[\'{{geoObject.properties.id}}\']()"',
                         ' href=# class="list_item car-baloon">',
                         '<img src="images/auto_icon/point_blue_','' +
                         '{{geoObject.properties.type}}',
