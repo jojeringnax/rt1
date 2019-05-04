@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import "../css/SideBar.css"
 import InfoCompany from "./SideBarSections/InfoCompany";
 import InfoDepartment from "../../containers/InfoDepartment";
-import InfoTs from "./SideBarSections/InfoTs";
 import Head from "./SideBarSections/Head";
 import NavigationInSideBar from "./SideBarSections/NavigationInSideBar";
+import InfoTs from "../../containers/InfoTS";
 
 class SideBar extends React.Component{
     constructor(props) {

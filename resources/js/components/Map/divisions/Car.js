@@ -13,7 +13,8 @@ class Car extends React.Component {
             bounds: [],
             template: null,
             templateClicked: null,
-            clicked: this.props.clicked
+            clicked: this.props.clicked,
+            statistic: store.getState().statisticCar
         };
 
         this.createTemplateLayoutFactory = (ymaps) => {
@@ -55,17 +56,24 @@ class Car extends React.Component {
     handleClick = e => {
         store.dispatch(setLevel('car', this.props.id));
         store.dispatch(setCarClicked(false));
-        store.dispatch(setStatisticCar({}));
+        let statistic = Object.assign(this.state.statistic, this.props);
+        store.dispatch(setStatisticCar(statistic));
         this.setState({
             clicked: true
         });
         this.props.functionClicked();
+        //console.log('car---click', this.props, store.getState().statisticCar);
     };
 
     componentDidMount() {
         window.onclick.cars[this.props.id] = this.handleClick;
-        let url =
-        axios.get()
+        let urlGetDataCar = '/api/car/' + this.props.id + '/data';
+        axios.get(urlGetDataCar)
+            .then(res => {
+                this.setState({
+                    statistic: res.data
+                })
+            })
     }
 
     render() {

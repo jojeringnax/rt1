@@ -10,12 +10,15 @@ import percentageDiscount from "../../img/info_auto_icon/percentage-discount.svg
 import toolsAndUtensils from "../../img/info_auto_icon/tools-and-utensils.svg";
 import carWheel from "../../img/info_auto_icon/car-wheel.svg";
 
+import {store} from "../../../index";
+
 
 class InfoTs extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            show: this.props.show
+            show: this.props.show,
+            statistic: {}
         };
     }
 
@@ -24,13 +27,12 @@ class InfoTs extends React.Component{
         //console.log(prevProps, this.state, this.props);
         if (prevProps.show !== this.props.show) {
             this.setState({
-                show: this.props.show
+                show: this.props.show,
             });
         }
     }
 
     render() {
-        console.log('props-ts',this.props);
         return(
             <div id="info-ts" className={"info-ts item-sideBar" + (this.state.show ? '' : ' hide')}>
                 <div className="title-ts d-flex justify-content-start">
