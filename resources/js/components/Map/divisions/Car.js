@@ -54,26 +54,26 @@ class Car extends React.Component {
     }
 
     handleClick = e => {
-        store.dispatch(setLevel('car', this.props.id));
-        store.dispatch(setCarClicked(false));
-        let statistic = Object.assign(this.state.statistic, this.props);
-        store.dispatch(setStatisticCar(statistic));
-        store.dispatch(setStructure('car', this.props.id));
-        this.setState({
-            clicked: true
-        });
-        this.props.functionClicked();
-    };
-
-    componentDidMount() {
-        window.onclick.cars[this.props.id] = this.handleClick;
-        let urlGetDataCar = '/api/car/' + this.props.id + '/data';
-        axios.get(urlGetDataCar)
+        axios.get('/api/car/' + this.props.id + '/data')
             .then(res => {
                 this.setState({
                     statistic: res.data
-                })
+                });
+                store.dispatch(setLevel('car', this.props.id));
+                store.dispatch(setCarClicked(false));
+                let statistic = Object.assign(this.state.statistic, this.props);
+                store.dispatch(setStatisticCar(statistic));
+                store.dispatch(setStructure('car', this.props.id));
+                this.setState({
+                    clicked: true
+                });
+                this.props.functionClicked();
             })
+
+    };
+
+    componentDidMount() {
+        window.onclick.car[this.props.id] = this.handleClick;
     }
 
     render() {

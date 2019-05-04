@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Faker\Provider\DateTime;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -60,27 +61,55 @@ class CarData extends Model
 
     /**
      * @param $carID
-     * @return self
+     * @return mixed
+     * @throws \Exception
      */
     public static function getCarData($carID)
     {
         $client = app(Soap::class);
         $carsData = json_decode($client->GetCarsData(['CarsID' => $carID])->return);
+        $keys = [
+            'Driver',
+            'Phone',
+            'StartTimePlan',
+            'EndTimePlan',
+            'WorkTimePlan',
+            'StartTimeFact',
+            'WorkTimeFact',
+            'Mileage',
+            'Speed',
+            'FuelNorm',
+            'FuelDUT',
+            'DriverMark',
+            'ViolationsCount'
+        ];
+        foreach ($keys as $key) {
+            $$key = (isset($carsData->$key) || $carsData->$key === '') ? $carsData->$key : null;
+        }
+        $StartTimePlan = (isset($carsData->StartTimePlan) || $carsData->StartTimePlan === '') ?
+            date('Y-m-d H:i:s', strtotime($carsData->StartTimePlan)) :
+            null;
+        $EndTimePlan = (isset($carsData->EndTimePlan) || $carsData->EndTimePlan === '') ?
+            date('Y-m-d H:i:s', strtotime($carsData->EndTimePlan)) :
+            null;
+        $StartTimeFact = (isset($carsData->StartTimeFact) || $carsData->StartTimeFact === '') ?
+            date('Y-m-d H:i:s', strtotime($carsData->StartTimeFact)) :
+            null;
         $carsDataModel = self::firstOrNew(['car_id' => $carID]);
         $carsDataModel->car_id = $carID;
-        $carsDataModel->driver_name = isset($carsData->Driver) ? $carsData->Driver : null;
-        $carsDataModel->phone_number = isset($carsData->Phone) ? $carsData->Phone : null;
-        $carsDataModel->start_time_plan = isset($carsData->StartTimePlan) ? $carsData->StartTimePlan : null;
-        $carsDataModel->end_time_plan = isset($carsData->EndTimePlan) ? $carsData->EndTimePlan : null;
-        $carsDataModel->work_time_plan = isset($carsData->EndTimePlan) ? $carsData->EndTimePlan : null;
-        $carsDataModel->start_time_fact = isset($carsData->StartTimeFact) ? $carsData->StartTimeFact : null;
-        $carsDataModel->work_time_fact = isset($carsData->WorkTimeFact) ? $carsData->WorkTimeFact : null;
-        $carsDataModel->mileage = isset($carsData->Mileage) ? $carsData->Mileage : null;
-        $carsDataModel->speed = isset($carsData->Speed) ? $carsData->Speed : null;
-        $carsDataModel->fuel_norm = isset($carsData->FuelNorm) ? $carsData->FuelNorm : null;
-        $carsDataModel->fuel_DUT = isset($carsData->FuelDUT) ? $carsData->FuelDUT : null;
-        $carsDataModel->driver_mark = isset($carsData->DriverMark) ? $carsData->DriverMark : null;
-        $carsDataModel->violations_count = isset($carsData->ViolationsCount) ? $carsData->ViolationsCount : null;
+        $carsDataModel->driver_name = $Driver;
+        $carsDataModel->phone_number = $Phone;
+        $carsDataModel->start_time_plan = $StartTimePlan;
+        $carsDataModel->end_time_plan = $EndTimePlan;
+        $carsDataModel->work_time_plan = $WorkTimePlan;
+        $carsDataModel->start_time_fact =  $StartTimeFact;
+        $carsDataModel->work_time_fact = $WorkTimeFact;
+        $carsDataModel->mileage = $Mileage;
+        $carsDataModel->speed = $Speed;
+        $carsDataModel->fuel_norm = $FuelNorm;
+        $carsDataModel->fuel_DUT = $FuelDUT;
+        $carsDataModel->driver_mark = $DriverMark;
+        $carsDataModel->violations_count = $ViolationsCount;
         $carsDataModel->save();
         return $carsDataModel;
     }
