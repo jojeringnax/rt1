@@ -375,3 +375,18 @@
     font-size: 1.4vh
   }
 }
+
+.transport-department {
+  cursor: pointer;
+  &.activeTransport {
+    background-color: #004781 !important;
+    color: white !important;
+    padding: 5px;
+    border-radius: 4px;
+    .transport-title {
+      p {
+        color: white !important;
+      }
+    }
+  }
+}

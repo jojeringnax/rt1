@@ -3,23 +3,97 @@ import ReactDOM from 'react-dom';
 import deliveryTruck from "../../img/delivery-truck.svg"
 import copy from "../../img/copy.svg";
 import pie from "../../img/pie.svg";
-import point_0 from "../../img/auto_icon/point_blue_0.svg"
-import point_1 from "../../img/auto_icon/point_blue_1.svg"
-import point_2 from "../../img/auto_icon/point_blue_2.svg"
-import point_3 from "../../img/auto_icon/point_blue_3.svg"
+
+import point_0 from "../../img/auto_icon/point_blue_0.svg";
+import point_1 from "../../img/auto_icon/point_blue_1.svg";
+import point_2 from "../../img/auto_icon/point_blue_2.svg";
+import point_3 from "../../img/auto_icon/point_blue_3.svg";
+
+import point_0_active from "../../img/auto_icon/point_0.svg";
+import point_1_active from "../../img/auto_icon/point_1.svg";
+import point_2_active from "../../img/auto_icon/point_2.svg";
+import point_3_active from "../../img/auto_icon/point_3.svg";
+
 import 'react-circular-progressbar/dist/styles.css';
 import CircularProgressbar from 'react-circular-progressbar';
+import {store} from "../../../index";
+import {setCars} from "../../../actions";
+
+const images = {
+    active:{
+        0: point_0_active,
+        1: point_1_active,
+        2: point_2_active,
+        3: point_3_active
+    },
+    notActive: {
+        0: point_0,
+        1: point_1,
+        2: point_2,
+        3: point_3
+    }
+};
 
 class InfoDepartment extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            show: this.props.show
+            show: this.props.show,
+            cars: [],
         };
+
     }
 
+    findChild = (obj, selector) => {
+        for (let i = 0; i < obj.children.length; i++) {
+            if(obj.children[i].children.length !== 0) {
+                if(obj.children[i].querySelector(selector)) {
+                    return obj.children[i].querySelector(selector);
+                }else {
+                    this.findChild(obj.children[i], selector);
+                }
+            }
+        }
+    };
+
     handleClickTypeTs = (e) => {
-        console.log(e.target)
+        const isActive = e.currentTarget.classList.contains('activeTransport');
+        if(isActive){
+            return false;
+        }
+
+        if (store.getState().level.level !== 'spot' && store.getState().level.level !== 'badSpot' && store.getState().level.level !== 'brigade') {
+            return false;
+        }
+
+        const numberImgTransportDepartment = document.querySelectorAll('.img-transport');
+        numberImgTransportDepartment.forEach(function(elementImg){
+            elementImg.setAttribute('src', images.notActive[parseInt(elementImg.getAttribute('data-imgtypecar'))]);
+        });
+
+        const numberTransportDepartment = document.querySelectorAll('.transport-department');
+        numberTransportDepartment.forEach(function(elem){
+            elem.classList.remove('activeTransport');
+        });
+
+        e.currentTarget.classList.add('activeTransport');
+        let resCars = [];
+
+        if(parseInt(e.currentTarget.getAttribute('data-typecar')) === 4 ) {
+            return store.dispatch(setCars(this.state.cars));
+        }
+
+        let img = this.findChild(e.currentTarget, '.img-transport');
+        img.setAttribute("src", images.active[parseInt(img.getAttribute('data-imgtypecar'))]);
+
+        this.state.cars.map(car => {
+            if(car.type === parseInt(e.currentTarget.getAttribute('data-typecar'))){
+                resCars.push(car);
+            }
+        });
+
+        store.dispatch(setCars(resCars));
+
     };
 
     componentDidUpdate(prevProps, prevState) {
@@ -27,6 +101,12 @@ class InfoDepartment extends React.Component{
             this.setState({
                 show: this.props.show
             });
+        }
+
+        if(prevProps.statistic !== this.props.statistic) {
+            this.setState({
+                cars: store.getState().cars
+            })
         }
     }
 
@@ -64,39 +144,39 @@ class InfoDepartment extends React.Component{
 
                     <div className="div-transport">
                         <hr className="hr-trans" />
-                        <div id="all" className="item-info transport-department" onClick={this.handleClickTypeTs}>
+                        <div data-typecar="4" id="all" className="item-info transport-department activeTransport" onClick={this.handleClickTypeTs}>
                             <div className="transport-title">
                                 <span id="passenger-car" className="p-type-transport">Все транспортные средства</span>
                             </div>
                         </div>
                         <hr className="hr-trans" />
-                        <div id="light" className="item-info transport-department">
+                        <div data-typecar="0" id="light" className="item-info transport-department" onClick={this.handleClickTypeTs}>
                             <div className="transport-title">
-                                <span className="span-h3-filial"><img src={point_0} alt="point_0" className="img-transport"/></span>
+                                <span className="span-h3-filial"><img data-imgtypecar="0" src={point_0} alt="point_0" className="img-transport"/></span>
                                 <span id="passenger-car" className="p-type-transport">Легковые</span>
                             </div>
                             <span id="passCar" className="p-quantity">{this.props.statistic.carsLight}</span>
                         </div>
                         <hr className="hr-trans" />
-                        <div id="truck" className="item-info transport-department">
+                        <div data-typecar="1" id="truck" className="item-info transport-department" onClick={this.handleClickTypeTs}>
                             <div className="transport-title">
-                                <span className="span-h3-filial"><img src={point_1} alt="point_1" className="img-transport"/></span>
+                                <span className="span-h3-filial"><img data-imgtypecar="1"  src={point_1} alt="point_1" className="img-transport"/></span>
                                 <span id="freight" className="p-type-transport">Грузовые</span>
                             </div>
                             <span id="freightCar" className="p-quantity">{this.props.statistic.carsTruck}</span>
                         </div>
                         <hr className="hr-trans" />
-                        <div id="bus" className="item-info transport-department">
+                        <div data-typecar="2" id="bus" className="item-info transport-department" onClick={this.handleClickTypeTs}>
                             <div className="transport-title">
-                                <span className="span-h3-filial"><img src={point_2} alt="point_2" className="img-transport"/></span>
+                                <span className="span-h3-filial"><img data-imgtypecar="2"  src={point_2} alt="point_2" className="img-transport"/></span>
                                 <span className="p-type-transport">Автобусы</span>
                             </div>
                             <span id="busCar" className="p-quantity">{this.props.statistic.carsBus}</span>
                         </div>
                         <hr className="hr-trans" />
-                        <div id="spec" className="item-info transort-department">
+                        <div data-typecar="3" id="spec" className="item-info transport-department" onClick={this.handleClickTypeTs}>
                             <div className="transport-title">
-                                <span className="span-h3-filial"><img src={point_3} alt="point_3" className="img-transport"/></span>
+                                <span className="span-h3-filial"><img data-imgtypecar="3"  src={point_3} alt="point_3" className="img-transport"/></span>
                                 <span id="spec" className="p-type-transport">Спецтехника</span>
                             </div>
                             <span id="specCar" className="p-quantity">{this.props.statistic.carsSpec}</span>

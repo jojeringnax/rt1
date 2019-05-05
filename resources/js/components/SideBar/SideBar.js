@@ -15,7 +15,8 @@ class SideBar extends React.Component{
             infoDepartment: false,
             infoTS: false,
         }
-}
+    }
+
     componentDidMount() {
         this.setState({
             infoCompany: this.props.level.level === 'company',

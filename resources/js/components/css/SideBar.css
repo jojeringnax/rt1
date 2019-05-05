@@ -273,4 +273,14 @@
   font-weight: bold;
   font-size: 1.4vh; }
 
+.transport-department {
+  cursor: pointer; }
+  .transport-department.activeTransport {
+    background-color: #004781 !important;
+    color: white !important;
+    padding: 5px;
+    border-radius: 4px; }
+    .transport-department.activeTransport .transport-title p {
+      color: white !important; }
+
 /*# sourceMappingURL=SideBar.css.map */
