@@ -65,7 +65,7 @@ class Car extends React.Component {
                 },() => {
                     store.dispatch(setCarClicked(false));
                     store.dispatch(setStatisticCar(Object.assign(this.state.statistic, this.props)));
-                    store.dispatch(setStructure('car', this.props.id));
+                    store.dispatch(setStructure('car', this.props.id, this.props.model));
 
                     this.props.functionClicked();
                 });

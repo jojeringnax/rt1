@@ -13,7 +13,6 @@ import {
 } from "../../../actions";
 
 class Autocolumn extends React.Component{
-
     constructor(props) {
         super(props);
         this.state = {
@@ -45,13 +44,14 @@ class Autocolumn extends React.Component{
             alert('Нет участков у данной автоколонны');
             return false;
         }
+
         store.dispatch(setAutocolumns({divisions: []}));
         store.dispatch(setBadSpots({divisions: []}));
         store.dispatch(setSpots({divisions: this.state.children}));
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setLevel('autocolumn', this.props.id));
         store.dispatch(setStatisticDepartment(this.state.statistic));
-        store.dispatch(setStructure('autocolumn', this.props.id));
+        store.dispatch(setStructure('autocolumn', this.props.id, this.props.name));
     };
 
 
@@ -105,6 +105,5 @@ class Autocolumn extends React.Component{
         )
     }
 }
-
 
 export default Autocolumn;

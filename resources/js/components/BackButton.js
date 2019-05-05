@@ -9,7 +9,7 @@ class BackButton extends React.Component{
     }
 
     handleClick = () => {
-        const isWithBadSpot = store.getState().structure.badSpot !== null;
+        const isWithBadSpot = store.getState().structure.badSpot.id !== null;
         const currentLevel = store.getState().level.level;
         let elementNeeded;
         let toClear;
@@ -48,13 +48,13 @@ class BackButton extends React.Component{
             default:
                 return false;
         }
-        const idNeeded = store.getState().structure[elementNeeded];
+        const idNeeded = store.getState().structure[elementNeeded]['id'];
         if (needToClear) {
             store.dispatch(toClear({divisions: []}));
         }
         store.dispatch(setCarClicked(false));
         store.dispatch(setCars([]));
-        store.dispatch(setStructure(currentLevel, null));
+        store.dispatch(setStructure(currentLevel, null, 'Нет имени'));
         return window.onclick[elementNeeded][idNeeded]();
     };
 

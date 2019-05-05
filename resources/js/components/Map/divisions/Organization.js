@@ -17,7 +17,10 @@ class Organization extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            children: [],
+            children: {
+                badSpots: [],
+                autocolumns: []
+            },
             bounds: [],
             template: null,
             statistic: {}
@@ -44,13 +47,13 @@ class Organization extends React.Component {
             alert('Нет ни автоколонн, ни участков у данной организации');
             return false;
         }
+        store.dispatch(setStructure('organization', this.props.id, this.props.description));
         store.dispatch(setOrganizations({divisions:[]}));
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setBadSpots({divisions: this.state.children.badSpots}));
         store.dispatch(setAutocolumns({divisions: this.state.children.autocolumns}));
         store.dispatch(setStatisticDepartment(this.state.statistic));
         store.dispatch(setLevel('organization', this.props.id));
-        store.dispatch(setStructure('organization', this.props.id));
     };
 
 

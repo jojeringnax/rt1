@@ -88,8 +88,9 @@ export function setOrganizationsPreload(dispatch) {
         });
 }
 
-export const setStructure = (division, id) => ({
+export const setStructure = (division, id, name) => ({
     type: 'SET_STRUCTURE',
     division,
-    id
+    id,
+    name
 });

@@ -3,7 +3,7 @@ import { YMaps, Map } from 'react-yandex-maps';
 import '../css/MapApp.css';
 import SideBar from "../SideBar/SideBar";
 import axios from "axios";
-import {someFunction} from "../../actions";
+import {setBounds, someFunction} from "../../actions";
 import ReactDOMServer from "react-dom/server";
 import '../css/MapPoints.css';
 import ClustererAutocolumns from './clusterers/ClustererAutocolumns'
@@ -41,6 +41,10 @@ class MapApp extends React.Component{
         }
     }
 
+    handleBoundsChange = (event) => {
+        store.dispatch(setBounds(event.get('newBounds')));
+    };
+
 
 
     render() {
@@ -56,6 +60,7 @@ class MapApp extends React.Component{
                     <div className="app-map">
                         <BackButton />
                         <Map
+                            onBoundsChange={this.handleBoundsChange}
                             width={"100%"}
                             height={"100vh"}
                             defaultState={{
