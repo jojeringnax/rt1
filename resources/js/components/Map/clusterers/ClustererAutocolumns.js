@@ -2,8 +2,6 @@ import { Clusterer } from 'react-yandex-maps';
 import React from "react";
 import {store} from '../../../index'
 import Autocolumn from "../divisions/Autocolumn";
-import { createStore } from 'redux'
-import '../../css/MapPoints.css'
 
 class ClustererAutocolumns extends React.Component {
 

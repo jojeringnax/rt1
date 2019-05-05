@@ -1,7 +1,6 @@
 import { Clusterer } from 'react-yandex-maps';
 import React from "react";
 import {store} from '../../../index'
-import '../../css/MapPoints.css'
 import Spot from "../divisions/Spot";
 
 class ClustererSpots extends React.Component {

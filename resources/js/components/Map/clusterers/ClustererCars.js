@@ -1,8 +1,6 @@
-import {Clusterer, Placemark} from 'react-yandex-maps';
+import {Clusterer} from 'react-yandex-maps';
 import React from "react";
 import {store} from '../../../index'
-import {setLevel} from '../../../actions'
-import '../../css/MapPoints.css'
 
 import Car from "../divisions/Car";
 

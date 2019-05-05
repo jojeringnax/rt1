@@ -1,6 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import "../css/SideBar.css"
+
 import InfoCompany from "./SideBarSections/InfoCompany";
 import InfoDepartment from "../../containers/InfoDepartment";
 import Head from "./SideBarSections/Head";

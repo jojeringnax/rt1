@@ -1,4 +1,3 @@
-import HeadOfSideBar from "../../SideBar/SideBar";
 import React from "react";
 import { Placemark } from 'react-yandex-maps';
 import {

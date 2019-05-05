@@ -1,5 +1,3 @@
-import axios from "axios";
-import dispatch from "react-redux"
 
 export const statisticDepartment = (state = [], action) => {
     switch (action.type) {
