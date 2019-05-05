@@ -1,32 +1,15 @@
 import React from 'react';
 import { YMaps, Map } from 'react-yandex-maps';
-import '../css/MapApp.css';
 import SideBar from "../SideBar/SideBar";
-import axios from "axios";
-import {someFunction} from "../../actions";
-import ReactDOMServer from "react-dom/server";
-import '../css/MapPoints.css';
+
 import ClustererAutocolumns from './clusterers/ClustererAutocolumns'
 import Organization from "./divisions/Organization";
-import Autocolumn from "./divisions/Autocolumn";
-import BadSpot from "./divisions/BadSpot";
-import Spot from "./divisions/Spot";
-import Car from "../../containers/Car";
-import {store} from "../../index";
+
 import ClustererBadSpots from "./clusterers/ClustererBadSpots";
 import ClustererSpots from "./clusterers/ClustererSpots";
 import ClustererBrigades from "./clusterers/ClustererBrigades";
 import ClustererCars from './clusterers/ClustererCars';
 import BackButton from "../BackButton";
-
-const carTypes = {
-    light: 0,
-    truck: 1,
-    bus: 2,
-    spec: 3
-};
-
-let divisions = [];
 
 class MapApp extends React.Component{
     constructor(props){
@@ -35,13 +18,7 @@ class MapApp extends React.Component{
             template: null,
             clickedCar: false
         };
-
-        this.clickedCars = () => {
-            this.setState({clickedCar:true})
-        }
     }
-
-
 
     render() {
         return(

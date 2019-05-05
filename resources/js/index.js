@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
-import axios from "axios";
-import {setPoints, setOrganizationsPreload, setAutocolumns, resetApp} from "./actions";
+
+import {setOrganizationsPreload, resetApp} from "./actions";
 
 
 export let store = createStore(rootReducer, applyMiddleware(thunk) && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

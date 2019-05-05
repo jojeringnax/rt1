@@ -1,6 +1,3 @@
-
-
-
 const bounds = (state = [], action) => {
     switch (action.type) {
         case 'SET_BOUNDS':

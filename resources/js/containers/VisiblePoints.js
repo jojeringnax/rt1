@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import MapApp from "../components/Map/AppMap";
 
 const mapStateToProps = state => ({
-    points: state.points,
     level: state.level,
     organizations: state.organizations,
     autocolumns: state.autocolumns,

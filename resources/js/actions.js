@@ -10,11 +10,6 @@ export const setLevel = (level, id=null) => ({
     id
 });
 
-export const setPoints = points => ({
-    type: 'SET_POINTS',
-    points
-});
-
 export const setOrganizations = organizations => ({
     type: 'SET_ORGANIZATIONS',
     organizations
@@ -52,11 +47,6 @@ export const setBounds = bounds => ({
 
 export const setStatisticDepartment = statistic => ({
     type: 'SET_STATISTIC_DEPARTMENT',
-    statistic
-});
-
-export const setStatisticCompany = statistic => ({
-    type: 'SET_STATISTIC_COMPANY',
     statistic
 });
 

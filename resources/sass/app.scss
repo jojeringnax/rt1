@@ -1,12 +1,9 @@
-
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import '../js/components/css/SideBar.scss';
+@import '../js/components/css/MapApp.scss';
+@import '../js/components/css/MapPoints.scss';
 
 // Variables
 @import 'variables';
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
 
 .navbar-laravel {
   background-color: #fff;

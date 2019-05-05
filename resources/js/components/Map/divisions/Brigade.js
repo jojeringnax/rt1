@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
 import {store} from "../../../index";
@@ -7,7 +6,6 @@ import {
     setBounds,
     setBrigades, setCars,
     setLevel,
-    setSpots,
     setStatisticDepartment, setStructure
 } from "../../../actions";
 
