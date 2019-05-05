@@ -6,6 +6,8 @@ import Head from "./SideBarSections/Head";
 import NavigationInSideBar from "./SideBarSections/NavigationInSideBar";
 import InfoTs from "../../containers/InfoTS";
 
+import {store} from "../../index";
+
 class SideBar extends React.Component{
     constructor(props) {
         super(props);
@@ -36,7 +38,7 @@ class SideBar extends React.Component{
         return(
             <div className="sideBar">
                 <Head />
-                <NavigationInSideBar />
+                <NavigationInSideBar level={this.props.level} />
                 <InfoCompany show={this.state.infoCompany} />
                 <InfoDepartment show={this.state.infoDepartment} />
                 <InfoTs show={this.state.infoTS} />

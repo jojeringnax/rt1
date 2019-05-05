@@ -9,7 +9,9 @@ class BackButton extends React.Component{
     }
 
     handleClick = () => {
-        const isWithBadSpot = store.getState().structure.badSpot.id !== null;
+        const str = store.getState().structure;
+        const isWithBadSpot = str.badSpot.id !== null;
+        const isWithBrigade = str.brigade.id !== null;
         const currentLevel = store.getState().level.level;
         let elementNeeded;
         let toClear;
@@ -41,7 +43,7 @@ class BackButton extends React.Component{
                 break;
 
             case 'car':
-                elementNeeded = isWithBadSpot ? 'badSpot' : 'spot';
+                elementNeeded = isWithBrigade ? 'brigade' : (isWithBadSpot ? 'badSpot' : 'spot');
                 needToClear = false;
                 break;
 

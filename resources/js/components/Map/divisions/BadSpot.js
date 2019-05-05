@@ -45,6 +45,7 @@ class BadSpot extends React.Component{
             alert("Нет ни бригад, ни автомобилей на данном участке");
             return false;
         }
+        store.dispatch(setStructure('badSpot', this.props.id, this.props.name));
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setBadSpots({divisions: []}));
         store.dispatch(setAutocolumns({divisions: []}));
@@ -52,7 +53,6 @@ class BadSpot extends React.Component{
         store.dispatch(setLevel("badSpot", this.props.id));
         store.dispatch(setCars(this.state.children.cars));
         store.dispatch(setStatisticDepartment(this.state.statistic));
-        store.dispatch(setStructure('badSpot', this.props.id, this.props.name));
     };
 
 

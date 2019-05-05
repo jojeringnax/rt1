@@ -39,12 +39,12 @@ class Brigade extends React.Component{
             alert('Нет машин в данной бригаде');
             return false;
         }
+        store.dispatch(setStructure('brigade', this.props.id, this.props.name));
         store.dispatch(setBrigades({divisions: []}));
         store.dispatch(setCars(this.state.children));
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setLevel('brigade', this.props.id));
         store.dispatch(setStatisticDepartment(this.state.statistic));
-        store.dispatch(setStructure('brigade', this.props.id, this.props.name));
     };
 
     componentDidMount() {

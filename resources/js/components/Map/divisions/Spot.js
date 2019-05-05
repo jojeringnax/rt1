@@ -44,13 +44,13 @@ class Spot extends React.Component{
             alert('Нет ни бригад, ни автомобилей у данного участка');
             return false;
         }
+        store.dispatch(setStructure('spot', this.props.id, this.props.name));
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setSpots({divisions: []}));
         store.dispatch(setBrigades({divisions: this.state.children.brigades}));
         store.dispatch(setCars(this.state.children.cars));
         store.dispatch(setLevel('spot', this.props.id));
         store.dispatch(setStatisticDepartment(this.state.statistic));
-        store.dispatch(setStructure('spot', this.props.id, this.props.name));
     };
 
 

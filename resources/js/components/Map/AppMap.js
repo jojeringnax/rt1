@@ -1,10 +1,10 @@
 import React from 'react';
 import { YMaps, Map } from 'react-yandex-maps';
+import {setBounds} from "../../actions";
 import SideBar from "../SideBar/SideBar";
-
-import ClustererAutocolumns from './clusterers/ClustererAutocolumns'
+import {store} from "../../index";
 import Organization from "./divisions/Organization";
-
+import ClustererAutocolumns from './clusterers/ClustererAutocolumns';
 import ClustererBadSpots from "./clusterers/ClustererBadSpots";
 import ClustererSpots from "./clusterers/ClustererSpots";
 import ClustererBrigades from "./clusterers/ClustererBrigades";
