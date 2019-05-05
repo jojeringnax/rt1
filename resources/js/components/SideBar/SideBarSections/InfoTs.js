@@ -51,7 +51,7 @@ class InfoTs extends React.Component{
                         </span>
                         <span id="year" className="" >
                             {
-                                this.props.statistic.number ? this.props.statistic.number : "Н/Д"
+                                this.props.statistic.year ? this.props.statistic.year + ' г.в.' : "Н/Д"
                             }
                         </span>
                     </div>
@@ -64,7 +64,7 @@ class InfoTs extends React.Component{
                                 <div className="d-flex align-items-start icon-ts">
                                     <img src={user} alt="driver_icon"/>
                                 </div>
-                                <div className="d-flex flex-column align-items-start">
+                                <div className="d-flex flex-column align-items-start item-ts-text">
                                     <span className="title-driver-name title-ts-text">Водитель:</span>
                                     <span id="driver" className="text-ts">
                                         {
@@ -77,7 +77,7 @@ class InfoTs extends React.Component{
                                 <div className="d-flex align-items-start icon-ts">
                                     <img src={callAnswer} alt="phone_driver"/>
                                 </div>
-                                <div className="d-flex flex-column align-items-start" >
+                                <div className="d-flex flex-column align-items-start item-ts-text">
                                     <span className="title-ts-text title-driver-phone">Телефон:</span>
                                     <span id="phone" className="text-ts">
                                         {
@@ -95,10 +95,10 @@ class InfoTs extends React.Component{
                             <div className="icon-ts">
                                 <img src={clock} alt="clock_icon"/>
                             </div>
-                            <div className="d-flex flex-column align-items-start" >
+                            <div className="d-flex flex-column align-items-start item-ts-text" >
                                 <div className="start flex flex-column">
                                     <span className="title-time-start title-ts-text">Время начала:</span>
-                                    <div className="time d-flex justify-content-between">
+                                    <div className="time d-flex justify-content-between ">
                                         <span id="start_time_plan" className="text-ts">
                                             {
                                                 this.props.statistic.start_time_plan ? this.props.statistic.start_time_plan : "Н/Д"
@@ -108,7 +108,8 @@ class InfoTs extends React.Component{
                                             {
                                                 this.props.statistic.start_time_fact ? this.props.statistic.start_time_fact : "Н/Д"
                                             }
-                                            <br/> <span>факт</span></span>
+                                            <br/>
+                                        </span>
                                     </div>
                                 </div>
                                 <div className="time-end item-ts-data">
@@ -145,7 +146,7 @@ class InfoTs extends React.Component{
                                 <div className="icon-ts">
                                     <img src={speedometer} alt="" />
                                 </div>
-                                <div className="d-flex flex-column align-items-start" >
+                                <div className="d-flex flex-column align-items-start item-ts-text" >
                                     <span className="title-ts-text">Пробег, км:</span>
                                     <span id="mileage" className="text-ts">
                                         {
@@ -168,7 +169,7 @@ class InfoTs extends React.Component{
                                 <div className="icon-ts">
                                     <img src={gasStation} alt="gasStation"/>
                                 </div>
-                                <div className="d-flex flex-column align-items-start">
+                                <div className="d-flex flex-column align-items-start item-ts-text">
                                     <span className="title-ts-text">Топливо по <br/>норме, л:</span>
                                     <span id="fuel_norm" className="text-ts">
                                     {
@@ -191,7 +192,7 @@ class InfoTs extends React.Component{
                                 <div className="icon-ts">
                                     <img src={star} alt="star"/>
                                 </div>
-                                <div className="d-flex flex-column align-items-start" >
+                                <div className="d-flex flex-column align-items-start item-ts-text" >
                                     <span className="title-ts-text">Количество <br/>нарушений:</span>
                                     <span id="violations_count" className="text-ts">
                                     {
@@ -218,7 +219,7 @@ class InfoTs extends React.Component{
                                 <div className="icon-ts">
                                     <img src={percentageDiscount} alt="percentageDiscount_icon"/>
                                 </div>
-                                <div className="d-flex flex-column align-items-start ts-car-data">
+                                <div className="d-flex flex-column align-items-start ts-car-data item-ts-text">
                                     <span className="title-ts-text">Процент рентабельности за прошлый месяц:</span>
                                     <span id="profitability" className="text-ts">
                                     {
@@ -233,7 +234,7 @@ class InfoTs extends React.Component{
                                 <div className="icon-ts">
                                     <img src={toolsAndUtensils} alt="toolsAndUtensils"/>
                                 </div>
-                                <div className="d-flex flex-column align-items-start ts-car-data">
+                                <div className="d-flex flex-column align-items-start ts-car-data item-ts-text">
                                     <span className="title-ts-text">Осталось км <br/> до ТО:</span>
                                     <span id="technical_inspection_days" className="text-ts">
                                         {
@@ -256,7 +257,7 @@ class InfoTs extends React.Component{
                                 <div className="icon-ts">
                                     <img src={carWheel} alt="carWheel"/>
                                 </div>
-                                <div className="d-flex flex-column align-items-start ts-car-data">
+                                <div className="d-flex flex-column align-items-start ts-car-data item-ts-text">
                                     <span className="title-ts-text">Км до замены шин:</span>
                                     <span id="tire_change_days" className="text-ts">
                                         {

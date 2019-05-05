@@ -78,7 +78,7 @@ class ClustererBrigades extends React.Component {
                                 y_pos={car.y_pos}
                                 clicked={(car.id === store.getState().level.id) ? 1 : 0}
                                 status={car.status}
-                                yesr={car.year}
+                                year={car.year}
                                 profitability={car.profitability}
                                 technical_inspection_days={car.technical_inspection_days}
                                 battery_change_days={car.battery_change_days}

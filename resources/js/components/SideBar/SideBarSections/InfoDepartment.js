@@ -18,6 +18,9 @@ class InfoDepartment extends React.Component{
         };
     }
 
+    handleClickTypeTs = (e) => {
+        console.log(e.target)
+    };
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.show !== this.props.show) {
@@ -26,6 +29,7 @@ class InfoDepartment extends React.Component{
             });
         }
     }
+
 
     render() {
         return(
@@ -60,13 +64,13 @@ class InfoDepartment extends React.Component{
 
                     <div className="div-transport">
                         <hr className="hr-trans" />
-                        <div id="all" className="item-info transort-department ">
+                        <div id="all" className="item-info transport-department" onClick={this.handleClickTypeTs}>
                             <div className="transport-title">
                                 <span id="passenger-car" className="p-type-transport">Все транспортные средства</span>
                             </div>
                         </div>
                         <hr className="hr-trans" />
-                        <div id="light" className="item-info transort-department">
+                        <div id="light" className="item-info transport-department">
                             <div className="transport-title">
                                 <span className="span-h3-filial"><img src={point_0} alt="point_0" className="img-transport"/></span>
                                 <span id="passenger-car" className="p-type-transport">Легковые</span>
@@ -74,7 +78,7 @@ class InfoDepartment extends React.Component{
                             <span id="passCar" className="p-quantity">{this.props.statistic.carsLight}</span>
                         </div>
                         <hr className="hr-trans" />
-                        <div id="truck" className="item-info transort-department">
+                        <div id="truck" className="item-info transport-department">
                             <div className="transport-title">
                                 <span className="span-h3-filial"><img src={point_1} alt="point_1" className="img-transport"/></span>
                                 <span id="freight" className="p-type-transport">Грузовые</span>
@@ -82,7 +86,7 @@ class InfoDepartment extends React.Component{
                             <span id="freightCar" className="p-quantity">{this.props.statistic.carsTruck}</span>
                         </div>
                         <hr className="hr-trans" />
-                        <div id="bus" className="item-info transort-department">
+                        <div id="bus" className="item-info transport-department">
                             <div className="transport-title">
                                 <span className="span-h3-filial"><img src={point_2} alt="point_2" className="img-transport"/></span>
                                 <span className="p-type-transport">Автобусы</span>
@@ -232,7 +236,12 @@ class InfoDepartment extends React.Component{
                 </div>
                 <div className="indic-bot">
                     <div className="div-pr25">
-                        <span id="lmch-2" className="p-meanings-2nd"><span id="fuel" className="span-figures-2nd">{(this.props.statistic.fuel/this.props.statistic.time).toFixed(2)}</span> л\мч<br/>ТМЧ</span>
+                        <span id="lmch-2" className="p-meanings-2nd"><span id="fuel" className="span-figures-2nd">
+                            {
+                                (this.props.statistic.fuel === 0 && this.props.statistic.time === 0) ? 0 :
+                                (this.props.statistic.fuel/this.props.statistic.time).toFixed(2)
+                            }
+                        </span> л\мч<br/>ТМЧ</span>
                         </div>
                     <div className="div-meanings">
                         <span id="" className="p-meanings-2nd"><span id="terminals" className="span-figures-2nd">110</span><br/>Терминалов</span>

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 * {
   font-size: 1.1vh;
@@ -125,11 +126,6 @@
 .div-bar-text {
   margin-left: 40px; }
 
-.span-h3-filial img {
-  height: 2vh; }
-.span-h3-filial .p-type-transport {
-  font-size: 1.5vh; }
-
 /*==================ts-data======================*/
 .title-ts-text {
   font-size: 1.1vh;
@@ -199,5 +195,82 @@
   cursor: pointer; }
   .text-level-menu:hover {
     text-decoration: underline; }
+
+#start_time_plan::after {
+  content: "план";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  color: #c1c1c1;
+  font-weight: normal;
+  font-size: 1.1vh; }
+
+#start_time_fact {
+  margin-left: 1vh; }
+
+#start_time_fact::after {
+  content: "факт";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  color: #c1c1c1;
+  font-weight: normal;
+  font-size: 1.1vh; }
+
+#work_time_plan::after {
+  content: "план";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  color: #c1c1c1;
+  font-weight: normal;
+  font-size: 1.1vh; }
+
+#work_time_fact::after {
+  content: "факт";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  color: #c1c1c1;
+  font-weight: normal;
+  font-size: 1.1vh; }
+
+.icon-ts {
+  width: 2.5vh;
+  text-align: center; }
+  .icon-ts img {
+    height: 1.8vh;
+    margin-top: 3px; }
+
+.fuel-time-end {
+  margin-left: 3vh; }
+
+.item-ts-text {
+  margin-left: 1.5vh; }
+
+.transport-title .span-h3-filial img {
+  width: 1.5vh; }
+.transport-title .p-type-transport {
+  font-size: 1.5vh;
+  margin-left: 1vh; }
+
+.header-ts-info #nameTS {
+  color: #005498;
+  margin-left: 1.5vh;
+  font-weight: bold;
+  font-size: 1.4vh; }
+.header-ts-info #number {
+  display: inline-block;
+  padding: 0.25vh 0.5vh 0.25vh 0.5vh;
+  border: 1px solid black;
+  color: black;
+  margin-left: 1.5vh;
+  font-weight: bold;
+  font-size: 1.4vh; }
+.header-ts-info #year {
+  color: black;
+  margin-left: 1.5vh;
+  font-weight: bold;
+  font-size: 1.4vh; }
 
 /*# sourceMappingURL=SideBar.css.map */
