@@ -110,7 +110,7 @@ class CarData extends Model
         $carsDataModel->fuel_norm = $FuelNorm;
         $carsDataModel->fuel_DUT = $FuelDUT;
         $carsDataModel->driver_mark = $DriverMark;
-        $carsDataModel->violations_count = $ViolationsCount;
+        $carsDataModel->violations_count = (integer) $ViolationsCount;
         $carsDataModel->save();
         return $carsDataModel;
     }

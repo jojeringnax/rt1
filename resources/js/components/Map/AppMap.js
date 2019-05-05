@@ -20,6 +20,11 @@ class MapApp extends React.Component{
         };
     }
 
+
+    handleBoundsChange = (event) => {
+        store.dispatch(setBounds(event.get('newBounds')));
+    };
+
     render() {
         return(
             <div className="app">
@@ -33,6 +38,7 @@ class MapApp extends React.Component{
                     <div className="app-map">
                         <BackButton />
                         <Map
+                            onBoundsChange={this.handleBoundsChange}
                             width={"100%"}
                             height={"100vh"}
                             defaultState={{

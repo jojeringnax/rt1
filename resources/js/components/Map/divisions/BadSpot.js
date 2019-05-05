@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
 import {store} from "../../../index";
@@ -10,7 +9,8 @@ import {
     setBrigades,
     setCars,
     setLevel,
-    setStatisticDepartment, setStructure
+    setStatisticDepartment,
+    setStructure
 } from "../../../actions";
 
 class BadSpot extends React.Component{
@@ -40,7 +40,7 @@ class BadSpot extends React.Component{
 
 
 
-    handleClick = e => {
+    handleClick = (e) => {
         if (this.state.children.brigades.length === 0 && this.state.children.cars.length === 0) {
             alert("Нет ни бригад, ни автомобилей на данном участке");
             return false;
@@ -52,7 +52,7 @@ class BadSpot extends React.Component{
         store.dispatch(setLevel("badSpot", this.props.id));
         store.dispatch(setCars(this.state.children.cars));
         store.dispatch(setStatisticDepartment(this.state.statistic));
-        store.dispatch(setStructure('badSpot', this.props.id));
+        store.dispatch(setStructure('badSpot', this.props.id, this.props.name));
     };
 
 
@@ -62,13 +62,11 @@ class BadSpot extends React.Component{
         axios.get(url)
             .then(res => {
                 this.setState({
-                    bounds:res.data.bounds.bounds
-                });
-                this.setState({
                     children: {
                         brigades: res.data.hasOwnProperty('divisions') ? res.data.divisions : [],
                         cars: res.data.hasOwnProperty('cars') ? res.data.cars : []
-                    }
+                    },
+                    bounds:res.data.bounds.bounds
                 })
             });
         axios.get('api/bad_spot/' + this.props.id + '/statistic')

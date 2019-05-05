@@ -50,7 +50,7 @@ class Spot extends React.Component{
         store.dispatch(setCars(this.state.children.cars));
         store.dispatch(setLevel('spot', this.props.id));
         store.dispatch(setStatisticDepartment(this.state.statistic));
-        store.dispatch(setStructure('spot', this.props.id));
+        store.dispatch(setStructure('spot', this.props.id, this.props.name));
     };
 
 
