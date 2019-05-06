@@ -9,7 +9,7 @@ import {
     setCars,
     setLevel,
     setStatisticDepartment,
-    setStructure
+    setStructure, setAminationMap, setAminationSideBar
 } from "../../../actions";
 
 class Spot extends React.Component{
@@ -40,6 +40,8 @@ class Spot extends React.Component{
 
 
     handleClick = (e) => {
+        store.dispatch(setAminationMap(true));
+        store.dispatch(setAminationSideBar(true));
         if (this.state.children.brigades.length === 0 && this.state.children.cars.length === 0) {
             alert('Нет ни бригад, ни автомобилей у данного участка');
             return false;
@@ -51,6 +53,13 @@ class Spot extends React.Component{
         store.dispatch(setCars(this.state.children.cars));
         store.dispatch(setLevel('spot', this.props.id));
         store.dispatch(setStatisticDepartment(this.state.statistic));
+        setTimeout(function () {
+            store.dispatch(setAminationSideBar(false));
+            store.dispatch(setAminationMap(false));
+        },600)
+
+
+
     };
 
 
@@ -67,12 +76,16 @@ class Spot extends React.Component{
                         brigades: res.data.hasOwnProperty('divisions') ? res.data.divisions : [],
                         cars: res.data.hasOwnProperty('cars') ? res.data.cars : []
                     }
+                },()=>{
+                    store.dispatch(setAminationMap(false));
                 })
             });
         axios.get('api/spot/' + this.props.id + '/statistic')
             .then(res => {
                 this.setState({
                     statistic: res.data
+                },()=>{
+                    store.dispatch(setAminationSideBar(false));
                 });
             });
     }

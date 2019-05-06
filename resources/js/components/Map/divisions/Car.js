@@ -2,7 +2,14 @@ import React from 'react';
 import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
 import {store} from "../../../index";
-import {setCarClicked, setLevel, setStatisticCar, setStructure} from "../../../actions";
+import {
+    setAminationMap,
+    setAminationSideBar,
+    setCarClicked,
+    setLevel,
+    setStatisticCar,
+    setStructure
+} from "../../../actions";
 
 class Car extends React.Component {
 
@@ -48,6 +55,8 @@ class Car extends React.Component {
         if (prevProps.clicked !== this.props.clicked) {
             this.setState({
                 clicked: this.props.clicked
+            },()=>{
+
             });
         }
     }
@@ -65,7 +74,7 @@ class Car extends React.Component {
                 },() => {
                     store.dispatch(setCarClicked(false));
                     store.dispatch(setStatisticCar(Object.assign(this.state.statistic, this.props)));
-
+                    //store.dispatch(setAminationSideBar(true));
                     this.props.functionClicked();
                 });
             })

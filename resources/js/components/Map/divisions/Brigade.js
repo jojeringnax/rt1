@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
 import {store} from "../../../index";
 import {
+    setAminationMap, setAminationSideBar,
     setBounds,
     setBrigades, setCars,
     setLevel,
@@ -35,6 +36,8 @@ class Brigade extends React.Component{
     }
 
     handleClick = (e) => {
+        store.dispatch(setAminationMap(true));
+        store.dispatch(setAminationSideBar(true));
         if (this.state.children.length === 0) {
             alert('Нет машин в данной бригаде');
             return false;
@@ -45,6 +48,7 @@ class Brigade extends React.Component{
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setLevel('brigade', this.props.id));
         store.dispatch(setStatisticDepartment(this.state.statistic));
+
     };
 
     componentDidMount() {
@@ -55,12 +59,16 @@ class Brigade extends React.Component{
                 this.setState({
                     children: res.data.hasOwnProperty('cars') ? res.data.cars : [],
                     bounds: res.data.bounds.bounds
+                },()=>{
+                    store.dispatch(setAminationMap(false));
                 })
             });
         axios.get('api/brigade/' + this.props.id + '/statistic')
             .then(res => {
                 this.setState({
                     statistic: res.data
+                },()=>{
+                    store.dispatch(setAminationSideBar(false));
                 });
             });
     }

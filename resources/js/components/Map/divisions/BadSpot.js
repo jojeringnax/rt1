@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
 import {store} from "../../../index";
 import {
+    setAminationMap, setAminationSideBar,
     setAutocolumns,
     setBadSpots,
     setBounds,
@@ -41,6 +42,8 @@ class BadSpot extends React.Component{
 
 
     handleClick = (e) => {
+        store.dispatch(setAminationMap(true));
+        store.dispatch(setAminationSideBar(true));
         if (this.state.children.brigades.length === 0 && this.state.children.cars.length === 0) {
             alert("Нет ни бригад, ни автомобилей на данном участке");
             return false;
@@ -53,6 +56,7 @@ class BadSpot extends React.Component{
         store.dispatch(setLevel("badSpot", this.props.id));
         store.dispatch(setCars(this.state.children.cars));
         store.dispatch(setStatisticDepartment(this.state.statistic));
+
     };
 
 
@@ -67,12 +71,17 @@ class BadSpot extends React.Component{
                         cars: res.data.hasOwnProperty('cars') ? res.data.cars : []
                     },
                     bounds:res.data.bounds.bounds
+                },()=>{
+                    store.dispatch(setAminationMap(false));
+
                 })
             });
         axios.get('api/bad_spot/' + this.props.id + '/statistic')
             .then(res => {
                 this.setState({
                     statistic: res.data
+                },()=>{
+                    store.dispatch(setAminationSideBar(false));
                 });
             });
     }

@@ -3,6 +3,7 @@ import React from "react";
 import {store} from '../../../index'
 
 import Car from "../divisions/Car";
+import {setAminationMap, setAminationSideBar} from "../../../actions";
 
 class ClustererBrigades extends React.Component {
 
@@ -44,7 +45,6 @@ class ClustererBrigades extends React.Component {
             }
         };
     };
-
 
     render() {
         return (

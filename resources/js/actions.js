@@ -60,6 +60,16 @@ export const setCarClicked = clicked => ({
     clicked
 });
 
+export const setAminationSideBar = animation => ({
+    type: 'SET_ANIMATION_SIDEBAR',
+    animation
+});
+
+export const setAminationMap = animation => ({
+    type: 'SET_ANIMATION_MAP',
+    animation
+});
+
 export const Levels = {
     company: 'company',
     organization: 'organization',

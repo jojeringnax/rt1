@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import MapApp from "../components/Map/AppMap";
+import {animationSideBar} from "../reducers/animation";
 
 const mapStateToProps = state => ({
     level: state.level,
@@ -9,7 +10,9 @@ const mapStateToProps = state => ({
     spots: state.spots,
     brigades: state.brigades,
     bounds: state.bounds,
-    cars: state.cars
+    cars: state.cars,
+    animationSideBar: state.animationSideBar,
+    animationMap: state.animationMap
 });
 
 

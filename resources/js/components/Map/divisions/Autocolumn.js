@@ -9,7 +9,7 @@ import {
     setBounds,
     setLevel,
     setStatisticDepartment,
-    setStructure
+    setStructure, setAminationMap, setAminationSideBar
 } from "../../../actions";
 
 class Autocolumn extends React.Component{
@@ -40,6 +40,8 @@ class Autocolumn extends React.Component{
 
 
     handleClick = (e) => {
+        store.dispatch(setAminationMap(true));
+        store.dispatch(setAminationSideBar(true));
         if (this.state.children.length === 0) {
             alert('Нет участков у данной автоколонны');
             return false;
@@ -51,6 +53,7 @@ class Autocolumn extends React.Component{
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setLevel('autocolumn', this.props.id));
         store.dispatch(setStatisticDepartment(this.state.statistic));
+
     };
 
 
@@ -62,12 +65,16 @@ class Autocolumn extends React.Component{
                 this.setState({
                     children: res.data.hasOwnProperty('divisions') ? res.data.divisions : [],
                     bounds: res.data.bounds.bounds
+                },() => {
+                    store.dispatch(setAminationMap(false));
                 })
             });
         axios.get('api/autocolumn/' + this.props.id + '/statistic')
             .then(res => {
                 this.setState({
                     statistic: res.data
+                },() => {
+                    store.dispatch(setAminationSideBar(false));
                 });
             });
     }

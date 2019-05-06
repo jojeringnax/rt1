@@ -36,13 +36,18 @@ class SideBar extends React.Component{
 
     render() {
         return(
-            <div className="sideBar">
-                <Head />
-                <NavigationInSideBar level={this.props.level} />
-                <InfoCompany show={this.state.infoCompany} />
-                <InfoDepartment show={this.state.infoDepartment} />
-                <InfoTs show={this.state.infoTS} />
+            <div className={"sideBar"}>
+                <div className={(this.props.showAnimation ? '' : 'hide')+ " overlay_block"}></div>
+                <div className={(this.props.showAnimation ? 'loading_process' : '') + " "}>
+
+                    <Head />
+                    <NavigationInSideBar level={this.props.level} />
+                    <InfoCompany show={this.state.infoCompany} />
+                    <InfoDepartment show={this.state.infoDepartment} />
+                    <InfoTs show={this.state.infoTS} />
+                </div>
             </div>
+
         );
 
     }

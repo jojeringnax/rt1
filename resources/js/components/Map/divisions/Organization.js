@@ -6,7 +6,7 @@ import {
     setOrganizations,
     setBadSpots,
     setLevel,
-    setStatisticDepartment, setStructure
+    setStatisticDepartment, setStructure, setAminationSideBar, setAminationMap
 } from "../../../actions";
 import {store} from "../../../index";
 import axios from "axios";
@@ -53,6 +53,8 @@ class Organization extends React.Component {
         store.dispatch(setAutocolumns({divisions: this.state.children.autocolumns}));
         store.dispatch(setStatisticDepartment(this.state.statistic));
         store.dispatch(setLevel('organization', this.props.id));
+        store.dispatch(setAminationMap(true));
+        store.dispatch(setAminationSideBar(true));
     };
 
 
@@ -77,17 +79,22 @@ class Organization extends React.Component {
                         badSpots: badSpots,
                         autocolumns: autocolumns
                     }
+                },() => {
+                    store.dispatch(setAminationMap(false));
                 });
             });
         axios.get('api/organization/' + this.props.id + '/statistic')
             .then(res => {
                 this.setState({
                     statistic: res.data
+                },()=> {
+                    store.dispatch(setAminationSideBar(false));
                 });
             });
     }
 
     render () {
+        
         return (
             <Placemark
                 onLoad={this.createTemplateLayoutFactory}

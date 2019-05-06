@@ -4,8 +4,11 @@ import {organizations, autocolumns, cars, brigades, badSpots, spots} from './div
 import {statisticDepartment, statisticCar, statisticCompany} from './statistics'
 import bounds from './bounds'
 import structure from './structure'
+import {animationSideBar, animationMap} from "./animation";
 
 export default combineReducers({
+    animationSideBar,
+    animationMap,
     level,
     organizations,
     autocolumns,
