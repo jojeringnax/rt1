@@ -79,16 +79,12 @@ class Organization extends React.Component {
                         badSpots: badSpots,
                         autocolumns: autocolumns
                     }
-                },() => {
-                    store.dispatch(setAminationMap(false));
                 });
             });
         axios.get('api/organization/' + this.props.id + '/statistic')
             .then(res => {
                 this.setState({
                     statistic: res.data
-                },()=> {
-                    store.dispatch(setAminationSideBar(false));
                 });
             });
     }

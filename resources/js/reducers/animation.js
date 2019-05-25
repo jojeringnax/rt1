@@ -1,4 +1,4 @@
-export const animationSideBar = (state = {animationsSideBar:true}, action) => {
+export const animationSideBar = (state = true, action) => {
     switch (action.type) {
         case 'SET_ANIMATION_SIDEBAR':
             return action.animation;
@@ -7,7 +7,7 @@ export const animationSideBar = (state = {animationsSideBar:true}, action) => {
     }
 };
 
-export const animationMap = (state = {animationMap:true}, action) => {
+export const animationMap = (state = true, action) => {
     switch (action.type) {
         case 'SET_ANIMATION_MAP':
             return action.animation;

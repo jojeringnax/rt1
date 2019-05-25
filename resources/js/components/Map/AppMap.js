@@ -1,6 +1,6 @@
 import React from 'react';
 import { YMaps, Map } from 'react-yandex-maps';
-import {setBounds} from "../../actions";
+import {setAminationMap, setAminationSideBar, setBounds} from "../../actions";
 import SideBar from "../SideBar/SideBar";
 import {store} from "../../index";
 import Organization from "./divisions/Organization";
@@ -18,6 +18,13 @@ class MapApp extends React.Component{
             template: null,
             clickedCar: false
         };
+    }
+
+    componentDidMount() {
+        window.addEventListener('load', () => {
+            store.dispatch(setAminationMap(false));
+            store.dispatch(setAminationSideBar(false));
+        });
     }
 
     handleBoundsChange = (event) => {

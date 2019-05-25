@@ -85,7 +85,7 @@ export function setOrganizationsPreload(dispatch) {
         .then((res) => {
             dispatch(setOrganizations(res.data));
             dispatch(setBounds(res.data.bounds.bounds));
-        });
+        })
 }
 
 export const setStructure = (division, id, name) => ({
