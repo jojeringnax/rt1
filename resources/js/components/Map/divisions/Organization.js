@@ -80,7 +80,7 @@ class Organization extends React.Component {
                         autocolumns: autocolumns
                     }
                 });
-            });
+            })
         axios.get('api/organization/' + this.props.id + '/statistic')
             .then(res => {
                 this.setState({

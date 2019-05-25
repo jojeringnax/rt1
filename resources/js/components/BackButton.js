@@ -1,7 +1,15 @@
 import React from 'react'
 import "./css/MapApp.css"
 import {store} from '../index'
-import {setBrigades, setCarClicked, setCars, setSpots, setStructure} from "../actions";
+import {
+    setAminationMap,
+    setAminationSideBar,
+    setBrigades,
+    setCarClicked,
+    setCars,
+    setSpots,
+    setStructure
+} from "../actions";
 
 class BackButton extends React.Component{
     constructor(props) {
@@ -54,6 +62,8 @@ class BackButton extends React.Component{
         if (needToClear) {
             store.dispatch(toClear({divisions: []}));
         }
+        store.dispatch(setAminationMap(false));
+        store.dispatch(setAminationSideBar(false));
         store.dispatch(setCarClicked(false));
         store.dispatch(setCars([]));
         store.dispatch(setStructure(currentLevel, null, 'Нет имени'));

@@ -42,12 +42,13 @@ class BadSpot extends React.Component{
 
 
     handleClick = (e) => {
-        store.dispatch(setAminationMap(true));
-        store.dispatch(setAminationSideBar(true));
         if (this.state.children.brigades.length === 0 && this.state.children.cars.length === 0) {
             alert("Нет ни бригад, ни автомобилей на данном участке");
             return false;
         }
+        store.dispatch(setAminationMap(true));
+        store.dispatch(setAminationSideBar(true));
+
         store.dispatch(setStructure('badSpot', this.props.id, this.props.name));
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setBadSpots({divisions: []}));
@@ -75,6 +76,9 @@ class BadSpot extends React.Component{
                     store.dispatch(setAminationMap(false));
 
                 })
+            })
+            .catch(err => {
+                store.dispatch(setAminationMap(false));
             });
         axios.get('api/bad_spot/' + this.props.id + '/statistic')
             .then(res => {
@@ -83,6 +87,9 @@ class BadSpot extends React.Component{
                 },()=>{
                     store.dispatch(setAminationSideBar(false));
                 });
+            })
+            .catch(err => {
+                store.dispatch(setAminationSideBar(false));
             });
     }
 

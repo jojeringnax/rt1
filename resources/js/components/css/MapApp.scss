@@ -1,48 +1,58 @@
 .app-map {
-  height: 100vh;
-  width: 80%;
+    height: 100vh;
+    width: 80%;
 }
 
 .app {
-  display: flex;
+    display: flex;
 }
 
 #btn-back {
-  width: 10vh;
-  height: 3vh;
-  position: absolute;
-  z-index: 213123;
+    width: 13vh;
+    height: 5vh;
+    position: absolute;
+    z-index: 213123;
+    border: none;
+    background-color: white;
+    color: black;
+    font-weight: 600;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1);
+    top: 3vh;
+    left: 5vh;
+    cursor: pointer;
+
 }
 
 .d-flex {
-  display: flex;
+    display: flex;
 }
 
 .align-items-center {
-  align-items: center;
+    align-items: center;
 }
 
+
 .justify-content-center {
-  justify-content: center;
+    justify-content: center;
 }
 
 .justify-content-between {
-  justify-content: space-between;
+    justify-content: space-between;
 }
 
 hr {
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .item-info {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 5px;
 }

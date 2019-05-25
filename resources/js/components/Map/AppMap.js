@@ -43,7 +43,7 @@ class MapApp extends React.Component{
                     >
                     <div className="app-map">
                         <div className={(this.props.animationMap ? '' : 'hide')+ " overlay_block"}></div>
-                        <div className={(this.props.animationMap ? 'loading_process' : '')}>
+                        <div className={(this.props.animationMap ? 'loading_process' : '')} style={{position:"relative"}}>
                             <BackButton />
                             <Map
                                 onBoundsChange={this.handleBoundsChange}

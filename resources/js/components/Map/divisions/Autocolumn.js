@@ -40,12 +40,13 @@ class Autocolumn extends React.Component{
 
 
     handleClick = (e) => {
-        store.dispatch(setAminationMap(true));
-        store.dispatch(setAminationSideBar(true));
         if (this.state.children.length === 0) {
             alert('Нет участков у данной автоколонны');
             return false;
         }
+        store.dispatch(setAminationMap(true));
+        store.dispatch(setAminationSideBar(true));
+
         store.dispatch(setStructure('autocolumn', this.props.id, this.props.name));
         store.dispatch(setAutocolumns({divisions: []}));
         store.dispatch(setBadSpots({divisions: []}));
@@ -68,6 +69,9 @@ class Autocolumn extends React.Component{
                 },() => {
                     store.dispatch(setAminationMap(false));
                 })
+            })
+            .catch(err => {
+                store.dispatch(setAminationMap(false));
             });
         axios.get('api/autocolumn/' + this.props.id + '/statistic')
             .then(res => {
@@ -76,7 +80,10 @@ class Autocolumn extends React.Component{
                 },() => {
                     store.dispatch(setAminationSideBar(false));
                 });
-            });
+            })
+            .catch(err => {
+                store.dispatch(setAminationSideBar(false));
+            })
     }
 
     render () {

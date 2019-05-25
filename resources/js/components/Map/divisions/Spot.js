@@ -40,12 +40,13 @@ class Spot extends React.Component{
 
 
     handleClick = (e) => {
-        store.dispatch(setAminationMap(true));
-        store.dispatch(setAminationSideBar(true));
         if (this.state.children.brigades.length === 0 && this.state.children.cars.length === 0) {
             alert('Нет ни бригад, ни автомобилей у данного участка');
             return false;
         }
+        store.dispatch(setAminationMap(true));
+        store.dispatch(setAminationSideBar(true));
+
         store.dispatch(setStructure('spot', this.props.id, this.props.name));
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setSpots({divisions: []}));
@@ -79,6 +80,9 @@ class Spot extends React.Component{
                 },()=>{
                     store.dispatch(setAminationMap(false));
                 })
+            })
+            .catch(err => {
+                store.dispatch(setAminationMap(false));
             });
         axios.get('api/spot/' + this.props.id + '/statistic')
             .then(res => {
@@ -87,6 +91,9 @@ class Spot extends React.Component{
                 },()=>{
                     store.dispatch(setAminationSideBar(false));
                 });
+            })
+            .catch(err => {
+                store.dispatch(setAminationSideBar(false));
             });
     }
 

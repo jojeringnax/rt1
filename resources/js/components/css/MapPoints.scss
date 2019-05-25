@@ -1,18 +1,121 @@
 .bb {
-  color: black;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100px;
-  min-width: 250px;
-  //margin-left: 200px;
-  margin-top: -80px;
-  z-index: 0;
-  margin-left: 75px;
-  position: relative;
+        color: black;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    min-width: 250px;
+    //margin-left: 200px;
+    margin-top: -80px;
+    z-index: 0;
+    margin-left: 75px;
+    position: relative;
 
-  .bb-num {
+    .bb-num {
+        width: 60px;
+        height: 60px;
+        color:white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("../img/elipse.svg");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 10;
+        font-size: 0.8vh;
+    }
+    .bb-num-org {
+        width: 60px;
+        height: 60px;
+        color:white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("../img/elipse_firm.svg");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 10;
+        font-size: 0.8vh;
+    }
+
+    .bb-num-spot {
+        width: 60px;
+        height: 60px;
+        color:white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("../img/elipse_spot.svg");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 10;
+        font-size: 0.8vh;
+    }
+
+    .bb-num-brigade {
+        width: 60px;
+        height: 60px;
+        color:white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("../img/elipse_brigade.svg");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 10;
+        font-size: 0.8vh;
+    }
+
+    .bb-name {
+        position: absolute;
+        margin-left: 25px;
+        z-index: 1;
+        min-width: 50px;
+        height: 40px;
+        background-color: white;
+        font-size: 0.56vh;
+        display: flex;
+        font-weight: bold;
+        align-items: center;
+        //justify-content: center;
+        padding:    0 25px 0 45px;
+        box-shadow: 0 3px 10px rgba(4, 67, 154, 0.12);
+        text-align: left;
+        box-sizing: content-box;
+        flex-grow: 1;
+    }
+}
+
+.bb-cluster-car {
+    color: black;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    .bb-num {
+        width: 60px;
+        height: 60px;
+        color: #004781;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("../img/elipse_white.svg");
+        background-size: 100%;
+        background-position: center;
+        z-index: 10;
+        font-size: 1vh;
+    }
+}
+
+
+.bb-num-car-white {
     width: 60px;
     height: 60px;
     color:white;
@@ -21,73 +124,52 @@
     justify-content: center;
     background-image: url("../img/elipse.svg");
     background-size: 100%;
-    background-repeat: no-repeat;
     background-position: center;
     z-index: 10;
-    font-size: 0.8vh;
-  }
-  .bb-num-org {
-    width: 60px;
-    height: 60px;
-    color:white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: url("../img/elipse_firm.svg");
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 10;
-    font-size: 0.8vh;
-  }
-
-  .bb-num-spot {
-    width: 60px;
-    height: 60px;
-    color:white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: url("../img/elipse_spot.svg");
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 10;
-    font-size: 0.8vh;
-  }
-
-  .bb-name {
-    position: absolute;
-    margin-left: 25px;
-    z-index: 1;
-    min-width: 50px;
-    height: 40px;
-    background-color: white;
-    font-size: 0.56vh;
-    display: flex;
-    font-weight: bold;
-    align-items: center;
-    //justify-content: center;
-    padding:  0 25px 0 45px;
-    box-shadow: 0 3px 10px rgba(4, 67, 154, 0.12);
-    text-align: left;
-    box-sizing: content-box;
-    flex-grow: 1;
-  }
+    font-size: 1vh;
+    svg {
+        width: 130%;
+    }
 }
 
-.bb-cluster-car {
-  color: black;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-  width: 60px;
-  .bb-num {
+.bb-num-car-inline {
     width: 60px;
     height: 60px;
-    color: #004781;
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../img/auto_icon/ellipse_noIn.svg");
+    background-size: 100%;
+    background-position: center;
+    z-index: 10;
+    font-size: 1vh;
+    svg {
+        width: 130%;
+    }
+}
+
+.bb-num-car-inline_checked {
+    width: 60px;
+    height: 60px;
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../img/auto_icon/ellipse_noIn_checked.svg");
+    background-size: 100%;
+    background-position: center;
+    z-index: 10;
+    font-size: 1vh;
+    svg {
+        width: 130%;
+    }
+}
+
+.bb-num-car {
+    width: 60px;
+    height: 60px;
+    color:white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -96,98 +178,31 @@
     background-position: center;
     z-index: 10;
     font-size: 1vh;
-  }
-}
-
-
-.bb-num-car-white {
-  width: 60px;
-  height: 60px;
-  color:white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: url("../img/elipse.svg");
-  background-size: 100%;
-  background-position: center;
-  z-index: 10;
-  font-size: 1vh;
-  svg {
-    width: 130%;
-  }
-}
-
-.bb-num-car-inline {
-  width: 60px;
-  height: 60px;
-  color:white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: url("../img/auto_icon/ellipse_noIn.svg");
-  background-size: 100%;
-  background-position: center;
-  z-index: 10;
-  font-size: 1vh;
-  svg {
-    width: 130%;
-  }
-}
-
-.bb-num-car-inline_checked {
-  width: 60px;
-  height: 60px;
-  color:white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: url("../img/auto_icon/ellipse_noIn_checked.svg");
-  background-size: 100%;
-  background-position: center;
-  z-index: 10;
-  font-size: 1vh;
-  svg {
-    width: 130%;
-  }
-}
-
-.bb-num-car {
-  width: 60px;
-  height: 60px;
-  color:white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: url("../img/elipse_white.svg");
-  background-size: 100%;
-  background-position: center;
-  z-index: 10;
-  font-size: 1vh;
-  svg {
-    width: 130%;
-  }
+    svg {
+        width: 130%;
+    }
 }
 
 .bb-cluster {
-  color: black;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100px;
-  width: 100px;
-  z-index: 0;
-  .bb-num {
-    width: 60px;
-    height: 60px;
-    color:white;
+    color: black;
+    font-weight: bold;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    background-image: url("../img/elipse.svg");
-    background-size: 100%;
-    background-position: center;
-    z-index: 10;
-    font-size: 1vh;
-  }
+    height: 100px;
+    width: 100px;
+    z-index: 0;
+    .bb-num {
+        width: 60px;
+        height: 60px;
+        color:white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("../img/elipse.svg");
+        background-size: 100%;
+        background-position: center;
+        z-index: 10;
+        font-size: 1vh;
+    }
 }

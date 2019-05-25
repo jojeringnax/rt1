@@ -24,7 +24,7 @@ class Brigade extends React.Component{
             if (ymaps && !this.state.template) {
                 this.setState({
                     template: ymaps.templateLayoutFactory.createClass(
-                        '<div class="bb"><span class="bb-num">'
+                        '<div class="bb"><span class="bb-num-brigade">'
                         + this.props.carsNumber
                         + '</span> <span id="auto_name" class="bb-name">'
                         + this.props.name
@@ -36,12 +36,13 @@ class Brigade extends React.Component{
     }
 
     handleClick = (e) => {
-        store.dispatch(setAminationMap(true));
-        store.dispatch(setAminationSideBar(true));
         if (this.state.children.length === 0) {
             alert('Нет машин в данной бригаде');
             return false;
         }
+        store.dispatch(setAminationMap(true));
+        store.dispatch(setAminationSideBar(true));
+
         store.dispatch(setStructure('brigade', this.props.id, this.props.name));
         store.dispatch(setBrigades({divisions: []}));
         store.dispatch(setCars(this.state.children));
@@ -62,6 +63,9 @@ class Brigade extends React.Component{
                 },()=>{
                     store.dispatch(setAminationMap(false));
                 })
+            })
+            .catch(err => {
+                store.dispatch(setAminationMap(false));
             });
         axios.get('api/brigade/' + this.props.id + '/statistic')
             .then(res => {
@@ -69,7 +73,10 @@ class Brigade extends React.Component{
                     statistic: res.data
                 },()=>{
                     store.dispatch(setAminationSideBar(false));
-                });
+                })
+            })
+            .catch(err => {
+                store.dispatch(setAminationSideBar(false));
             });
     }
 
