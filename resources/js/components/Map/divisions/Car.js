@@ -79,11 +79,16 @@ class Car extends React.Component {
                     this.props.functionClicked();
                 });
             })
+            .catch(err => {
+                store.dispatch(setAminationSideBar(false));
+                store.dispatch(setAminationMap(false));
+            })
 
     };
 
     componentDidMount() {
         window.onclick.car[this.props.id] = this.handleClick;
+
     }
 
     render() {

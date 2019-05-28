@@ -49,6 +49,10 @@ class Brigade extends React.Component{
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setLevel('brigade', this.props.id));
         store.dispatch(setStatisticDepartment(this.state.statistic));
+        setTimeout(function () {
+            store.dispatch(setAminationSideBar(false));
+            store.dispatch(setAminationMap(false));
+        },600)
 
     };
 

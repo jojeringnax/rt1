@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import {Placemark} from "react-yandex-maps";
 import {store} from "../../../index";
+import { MDBAlert } from 'mdbreact';
+
 import {
     setAminationMap, setAminationSideBar,
     setAutocolumns,
@@ -57,6 +59,10 @@ class BadSpot extends React.Component{
         store.dispatch(setLevel("badSpot", this.props.id));
         store.dispatch(setCars(this.state.children.cars));
         store.dispatch(setStatisticDepartment(this.state.statistic));
+        setTimeout(function () {
+            store.dispatch(setAminationSideBar(false));
+            store.dispatch(setAminationMap(false));
+        },600)
 
     };
 
@@ -64,6 +70,7 @@ class BadSpot extends React.Component{
     componentDidMount() {
         window.onclick.badSpot[this.props.id] = this.handleClick;
         let url = '/api/bad_spot/' + this.props.id + '/children';
+
         axios.get(url)
             .then(res => {
                 this.setState({
