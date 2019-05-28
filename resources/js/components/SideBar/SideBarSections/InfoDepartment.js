@@ -214,7 +214,7 @@ class InfoDepartment extends React.Component{
                         <div className="ilia" >
                             <span id="applications_ac_per" className="p-bar">
                                 {
-                                    (this.props.statistic.applications_ac/this.props.statistic.applications_total).toFixed(2)*100
+                                    Math.round(((this.props.statistic.applications_ac/this.props.statistic.applications_total).toFixed(2))*100)
                                 }%
                             </span>
                             <CircularProgressbar
