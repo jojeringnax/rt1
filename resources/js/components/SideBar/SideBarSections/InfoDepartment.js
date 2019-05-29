@@ -83,6 +83,7 @@ class InfoDepartment extends React.Component{
             return store.dispatch(setCars(this.state.cars));
         }
 
+
         let img = this.findChild(e.currentTarget, '.img-transport');
         img.setAttribute("src", images.active[parseInt(img.getAttribute('data-imgtypecar'))]);
 
@@ -324,7 +325,7 @@ class InfoDepartment extends React.Component{
                         </span> л\мч<br/>ТМЧ</span>
                         </div>
                     <div className="div-meanings">
-                        <span id="" className="p-meanings-2nd"><span id="terminals" className="span-figures-2nd">110</span><br/>Терминалов</span>
+                        <span id="" className="p-meanings-2nd"><span id="terminals" className="span-figures-2nd">{this.props.statistic.carsTerminal}</span><br/>Терминалов</span>
                     </div>
                 </div>
             </div>

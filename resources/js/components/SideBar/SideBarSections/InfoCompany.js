@@ -214,7 +214,7 @@ class InfoCompany extends React.Component{
                             </span> л\мч<br/>ТМЧ</span>
                         </div>{/*END__INFO_COMPANY*/}
                         <div className="div-meanings">
-                            <span id="" className="p-meanings-2nd"><span id="comp_terminals" className="span-figures-2nd">110</span><br/>Терминалов</span>
+                            <span id="" className="p-meanings-2nd"><span id="comp_terminals" className="span-figures-2nd">{this.state.statistic.carsTerminal}</span><br/>Терминалов</span>
                         </div>
                     </div>
                 </div>

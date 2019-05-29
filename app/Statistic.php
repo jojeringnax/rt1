@@ -98,6 +98,7 @@ class Statistic extends Model
         $resultStatistic['carsRepair'] = $carsInfo['statuses']['R'];
         $resultStatistic['carsTO'] = $carsInfo['statuses']['TO'];
         $resultStatistic['carsInline'] = $carsInfo['statuses']['inline'];
+        $resultStatistic['carsTerminal'] = $carsInfo['carsTerminal'];
         return $resultStatistic;
     }
 
@@ -131,6 +132,7 @@ class Statistic extends Model
         $resultStatistic['carsRepair'] = $carsInfo['statuses']['R'];
         $resultStatistic['carsTO'] = $carsInfo['statuses']['TO'];
         $resultStatistic['carsInline'] = $carsInfo['statuses']['inline'];
+        $resultStatistic['carsTerminal'] = $carsInfo['carsTerminal'];
         return $resultStatistic;
     }
 }

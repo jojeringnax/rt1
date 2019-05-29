@@ -137,6 +137,7 @@ class Car extends Model
         $carsTruck = 0;
         $carsBus = 0;
         $carsSpec = 0;
+        $carsTerminal= 0;
         foreach ($cars as $car) {
             if ($car->type === Car::TYPES['Легковые ТС']) {
                 $carsLight++;
@@ -162,9 +163,13 @@ class Car extends Model
             if ($car->inline) {
                 $carsInline++;
             }
+            if($car->terminal) {
+                $carsTerminal ++;
+            }
         }
         return [
             'totalCars' => count($cars),
+            'carsTerminal' => $carsTerminal,
             'statuses' => [
                 'G' => $carsReady,
                 'R' => $carsRepair,
@@ -197,6 +202,7 @@ class Car extends Model
         $carsBus = 0;
         $carsSpec = 0;
         $carsTotal = 0;
+        $carsTerminal = 0;
         if ($division->cars !== null) {
             $carsTotal = count($cars);
             foreach ($cars as $car) {
@@ -224,10 +230,14 @@ class Car extends Model
                 if ($car->inline) {
                     $carsInline++;
                 }
+                if ($car->terminal) {
+                    $carsTerminal ++;
+                }
             }
         }
         return [
             'totalCars' => $carsTotal,
+            'carsTerminal' => $carsTerminal,
             'statuses' => [
                 'G' => $carsReady,
                 'R' => $carsRepair,
