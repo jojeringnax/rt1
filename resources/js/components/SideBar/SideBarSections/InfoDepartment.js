@@ -143,14 +143,17 @@ class InfoDepartment extends React.Component{
                         </div>
                         <div className="item-info">
                             <span id="without-terminal" onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} className="trans-auto" style={{cursor:"pointer"}}>
-                                {
-                                    !this.state.withoutTerminal ? "..." : "Без терминала"
-                                }
+                                ...
                             </span>
-                            <span id="OnLine" className={this.state.withoutTerminal ? "figures" : "figures hide"}>{parseInt(this.props.statistic.carsTotal) - parseInt(this.props.statistic.carsTerminal)}</span>
                         </div>
+                        <div className={this.state.withoutTerminal ? "item-info" : "item-info hide"}>
+                            <span id="" className="trans-auto">Без терминала</span>
 
+                            <span id="OnLine" className="figures">{parseInt(this.props.statistic.carsTotal) - parseInt(this.props.statistic.carsTerminal)}</span>
+                        </div>
                     </div>
+
+
 
                     <div className="div-transport">
                         <hr className="hr-trans" />
