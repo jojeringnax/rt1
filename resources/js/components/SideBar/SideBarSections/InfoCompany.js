@@ -12,7 +12,8 @@ class InfoCompany extends React.Component{
         super(props);
         this.state = {
             show: this.props.show,
-            statistic: {}
+            statistic: {},
+            withoutTerminal: false
         };
     }
 
@@ -69,6 +70,14 @@ class InfoCompany extends React.Component{
                     <div className="item-info">
                         <span className="trans-auto">На линии, шт.</span>
                         <span id="compOnLine" className="figures">{this.state.statistic.carsInline}</span>
+                    </div>
+                    <div className="item-info">
+                            <span id="without-terminal" onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} className="trans-auto" style={{cursor:"pointer"}}>
+                                {
+                                    !this.state.withoutTerminal ? "..." : "Без терминала"
+                                }
+                            </span>
+                        <span id="OnLine" className={this.state.withoutTerminal ? "figures" : "figures hide"}>{parseInt(this.state.statistic.carsTotal) - parseInt(this.state.statistic.carsTerminal)}</span>
                     </div>
                 </div>
 

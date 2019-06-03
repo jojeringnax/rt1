@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import deliveryTruck from "../../img/delivery-truck.svg"
 import copy from "../../img/copy.svg";
 import pie from "../../img/pie.svg";
@@ -40,6 +39,7 @@ class InfoDepartment extends React.Component{
         this.state = {
             show: this.props.show,
             cars: [],
+            withoutTerminal: false,
         };
 
     }
@@ -141,6 +141,15 @@ class InfoDepartment extends React.Component{
                             <span id="on-line-department" className="trans-auto">На линии, шт.</span>
                             <span id="OnLine" className="figures">{this.props.statistic.carsInline}</span>
                         </div>
+                        <div className="item-info">
+                            <span id="without-terminal" onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} className="trans-auto" style={{cursor:"pointer"}}>
+                                {
+                                    !this.state.withoutTerminal ? "..." : "Без терминала"
+                                }
+                            </span>
+                            <span id="OnLine" className={this.state.withoutTerminal ? "figures" : "figures hide"}>{parseInt(this.props.statistic.carsTotal) - parseInt(this.props.statistic.carsTerminal)}</span>
+                        </div>
+
                     </div>
 
                     <div className="div-transport">
