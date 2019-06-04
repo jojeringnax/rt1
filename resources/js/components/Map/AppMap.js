@@ -22,7 +22,7 @@ class MapApp extends React.Component{
 
     componentDidMount() {
         window.addEventListener('load', () => {
-            store.dispatch(setAminationMap(false));
+            store.dispatxch(setAminationMap(false));
             store.dispatch(setAminationSideBar(false));
         });
     }
@@ -37,7 +37,7 @@ class MapApp extends React.Component{
                 <SideBar level={this.props.level} showAnimation={this.props.animationSideBar} />
                 <YMaps
                     query={{
-                        apikey: '27544797-3131-4759-9f4b-54f17c827eb2&lang=ru_RU',
+                        apikey: '27544797-3131-4759-9f4b-54f17c827eb2',
                     }}
                     version={"2.1"}
                     >
