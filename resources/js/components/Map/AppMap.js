@@ -22,7 +22,7 @@ class MapApp extends React.Component{
 
     componentDidMount() {
         window.addEventListener('load', () => {
-            store.dispatxch(setAminationMap(false));
+            store.dispatch(setAminationMap(false));
             store.dispatch(setAminationSideBar(false));
         });
     }
