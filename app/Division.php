@@ -101,7 +101,11 @@ class Division extends Model
         }
         $finalChildren = [];
         foreach ($childrenClasses as $childrenClass) {
-            $children = $childrenClass::where('x_pos', '!=', null)->where($parentType.'_id', $parentID)->get();
+            if ($childrenClass === Car::class) {
+                $children = $childrenClass::where('x_pos', '!=', null)->where($parentType.'_id', $parentID)->get();
+            } else {
+                $children = $childrenClass::where('x_pos', '!=', null)->where('work', 1)->where($parentType.'_id', $parentID)->get();
+            }
             foreach($children as $child) {
                 $finalChildren[] = $child;
             }

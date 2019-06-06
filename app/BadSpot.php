@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $town
  * @property string $description
  * @property string $address
+ * @property boolean $work
  * @property float $x_pos
  * @property float $y_pos
  *

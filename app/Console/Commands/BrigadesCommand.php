@@ -94,6 +94,7 @@ class BrigadesCommand extends Command
             $brigadeModel->town = $haveName ? $names['spots'][$brigade->ID][1] : null;
             $brigadeModel->description = $brigade->Description;
             $brigadeModel->address = $brigade->Address;
+            $brigadeModel->work = $brigade->Work ? (boolean) $brigade->Work : false;
             $brigadeModel->x_pos = $brigade->XPos ? $brigade->XPos : null;
             $brigadeModel->y_pos = $brigade->YPos ? $brigade->YPos : null;
             $brigadeModel->save();

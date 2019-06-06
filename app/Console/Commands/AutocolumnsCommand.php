@@ -74,6 +74,7 @@ class AutocolumnsCommand extends Command
             $autocolumnModel->town = $haveName ? $names['autocolumns'][$autocolumn->ID][1] : null;
             $autocolumnModel->description = $autocolumn->Description;
             $autocolumnModel->address = $autocolumn->Address;
+            $autocolumnModel->work = $autocolumn->Work ? (boolean) $autocolumn->Work : false;
             $autocolumnModel->x_pos = $autocolumn->XPos ? $autocolumn->XPos : null;
             $autocolumnModel->y_pos = $autocolumn->YPos ? $autocolumn->YPos : null;
             $autocolumnModel->save();

@@ -21,6 +21,7 @@ class CreateBadSpotsTable extends Migration
             $table->string('name', 256)->nullable();
             $table->string('town', 64)->nullable();
             $table->string('address', 512)->nullable();
+            $table->boolean('work')->default(false);
             $table->float('x_pos',8)->nullable();
             $table->float('y_pos',8)->nullable();
             $table->timestamps();

@@ -79,6 +79,7 @@ class SpotsCommand extends Command
             $spotModel->town = $haveName ? $names['spots'][$spot->ID][1] : null;
             $spotModel->description = $spot->Description;
             $spotModel->address = $spot->Address;
+            $spotModel->work = $spot->Work ? (boolean) $spot->Work : false;
             $spotModel->x_pos = $spot->XPos ? $spot->XPos : null;
             $spotModel->y_pos = $spot->YPos ? $spot->YPos : null;
             $spotModel->save();
