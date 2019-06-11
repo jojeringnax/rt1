@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import deliveryTruck from "../../img/delivery-truck.svg"
 import copy from "../../img/copy.svg";
 import pie from "../../img/pie.svg";
+import arrow_top from '../../img/arrow_top.svg'
 import 'react-circular-progressbar/dist/styles.css';
 import CircularProgressbar from 'react-circular-progressbar';
 import axios from 'axios';
@@ -72,12 +73,16 @@ class InfoCompany extends React.Component{
                         <span id="compOnLine" className="figures">{this.state.statistic.carsInline}</span>
                     </div>
                     <div className="item-info">
-                            <span id="without-terminal" onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} className="trans-auto" style={{cursor:"pointer"}}>
+                            <span id="without-terminal" onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} className={!this.state.withoutTerminal ? "trans-auto" : "trans-auto hide"} style={{cursor:"pointer"}}>
                                 ...
                             </span>
                     </div>
-                    <div className={this.state.withoutTerminal ? "item-info" : "item-info hide"}>
-                        <span id="" className="trans-auto">Без терминала</span>
+                    <div className={this.state.withoutTerminal ? "item-info" : "item-info hide"} onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} style={{cursor:'pointer'}}>
+                        <span id="" className="trans-auto"><img src={arrow_top} alt="" style={{
+                            margin:"0 10px 0 0",
+                            height:'0.9vh',
+                            width: '0.9vh'
+                        }}/>Без терминала</span>
 
                         <span id="OnLine" className="figures">{parseInt(this.state.statistic.carsTotal) - parseInt(this.state.statistic.carsTerminal)}</span>
                     </div>
