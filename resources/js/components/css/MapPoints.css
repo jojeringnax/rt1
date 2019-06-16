@@ -9,62 +9,87 @@
   margin-top: -80px;
   z-index: 0;
   margin-left: 75px;
-  position: relative; }
-  .bb .bb-num {
-    width: 60px;
-    height: 60px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: url("../img/elipse.svg");
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 10;
-    font-size: 0.8vh; }
-  .bb .bb-num-org {
-    width: 60px;
-    height: 60px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: url("../img/elipse_firm.svg");
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 10;
-    font-size: 0.8vh; }
-  .bb .bb-num-spot {
-    width: 60px;
-    height: 60px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: url("../img/elipse_spot.svg");
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 10;
-    font-size: 0.8vh; }
-  .bb .bb-name {
-    position: absolute;
-    margin-left: 25px;
-    z-index: 1;
-    min-width: 50px;
-    height: 40px;
-    background-color: white;
-    font-size: 0.56vh;
-    display: flex;
-    font-weight: bold;
-    align-items: center;
-    padding: 0 25px 0 45px;
-    box-shadow: 0 3px 10px rgba(4, 67, 154, 0.12);
-    text-align: left;
-    box-sizing: content-box;
-    flex-grow: 1; }
+  position: relative;
+}
+.bb .bb-num {
+  width: 60px;
+  height: 60px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/public/img/elipse.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 10;
+  font-size: 0.8vh;
+}
+.bb .bb-num-org {
+  width: 60px;
+  height: 60px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/public/img/elipse_firm.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 10;
+  font-size: 0.8vh;
+}
+.bb .bb-name {
+  position: absolute;
+  margin-left: 25px;
+  z-index: 1;
+  min-width: 50px;
+  height: 40px;
+  background-color: white;
+  font-size: 0.56vh;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  padding: 0 25px 0 45px;
+  box-shadow: 0 3px 10px rgba(4, 67, 154, 0.12);
+  text-align: left;
+  box-sizing: content-box;
+  flex-grow: 1;
+}
+
+.bb-num-spot {
+  width: 60px;
+  height: 60px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/public/img/elipse_spot.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 10;
+  font-size: 0.8vh;
+}
+
+.link-one_point {
+  text-decoration: none;
+}
+
+.bb-num-brigade {
+  width: 60px;
+  height: 60px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/public/img/elipse_brigade.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 10;
+  font-size: 0.8vh;
+}
 
 .bb-cluster-car {
   color: black;
@@ -73,19 +98,21 @@
   justify-content: space-between;
   align-items: center;
   height: 60px;
-  width: 60px; }
-  .bb-cluster-car .bb-num {
-    width: 60px;
-    height: 60px;
-    color: #004781;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: url("../img/elipse_white.svg");
-    background-size: 100%;
-    background-position: center;
-    z-index: 10;
-    font-size: 1vh; }
+  width: 60px;
+}
+.bb-cluster-car .bb-num {
+  width: 60px;
+  height: 60px;
+  color: #004781;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/public/img/elipse_white.svg");
+  background-size: 100%;
+  background-position: center;
+  z-index: 10;
+  font-size: 1vh;
+}
 
 .bb-num-car-white {
   width: 60px;
@@ -94,13 +121,45 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("../img/elipse.svg");
+  background-image: url("/public/img/elipse.svg");
   background-size: 100%;
   background-position: center;
   z-index: 10;
-  font-size: 1vh; }
-  .bb-num-car-white svg {
-    width: 130%; }
+  font-size: 1vh;
+}
+.bb-num-car-white svg {
+  width: 130%;
+}
+
+.bb-one_point {
+  color: black;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  min-width: 250px;
+  z-index: 0;
+  margin-left: 75px;
+  position: relative;
+}
+.bb-one_point .bb-name-one_point {
+  position: absolute;
+  margin-left: 25px;
+  z-index: 1;
+  min-width: 50px;
+  height: 40px;
+  background-color: white;
+  font-size: 0.8vh;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  padding: 0 25px 0 45px;
+  text-align: left;
+  box-sizing: content-box;
+  flex-grow: 1;
+  line-height: 1.7;
+}
 
 .bb-num-car-inline {
   width: 60px;
@@ -109,13 +168,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("../img/auto_icon/ellipse_noIn.svg");
+  background-image: url("/public/img/auto_icon/ellipse_noIn.svg");
   background-size: 100%;
   background-position: center;
   z-index: 10;
-  font-size: 1vh; }
-  .bb-num-car-inline svg {
-    width: 130%; }
+  font-size: 1vh;
+}
+.bb-num-car-inline svg {
+  width: 130%;
+}
 
 .bb-num-car-inline_checked {
   width: 60px;
@@ -124,13 +185,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("../img/auto_icon/ellipse_noIn_checked.svg");
+  background-image: url("/public/img/auto_icon/ellipse_noIn_checked.svg");
   background-size: 100%;
   background-position: center;
   z-index: 10;
-  font-size: 1vh; }
-  .bb-num-car-inline_checked svg {
-    width: 130%; }
+  font-size: 1vh;
+}
+.bb-num-car-inline_checked svg {
+  width: 130%;
+}
 
 .bb-num-car {
   width: 60px;
@@ -139,13 +202,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("../img/elipse_white.svg");
+  background-image: url("/public/img/elipse_white.svg");
   background-size: 100%;
   background-position: center;
   z-index: 10;
-  font-size: 1vh; }
-  .bb-num-car svg {
-    width: 130%; }
+  font-size: 1vh;
+}
+.bb-num-car svg {
+  width: 130%;
+}
 
 .bb-cluster {
   color: black;
@@ -155,18 +220,20 @@
   align-items: center;
   height: 100px;
   width: 100px;
-  z-index: 0; }
-  .bb-cluster .bb-num {
-    width: 60px;
-    height: 60px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: url("../img/elipse.svg");
-    background-size: 100%;
-    background-position: center;
-    z-index: 10;
-    font-size: 1vh; }
+  z-index: 0;
+}
+.bb-cluster .bb-num {
+  width: 60px;
+  height: 60px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/public/img/elipse.svg");
+  background-size: 100%;
+  background-position: center;
+  z-index: 10;
+  font-size: 1vh;
+}
 
 /*# sourceMappingURL=MapPoints.css.map */

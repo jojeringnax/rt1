@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import deliveryTruck from "../../img/delivery-truck.svg"
-import copy from "../../img/copy.svg";
-import pie from "../../img/pie.svg";
-import arrow_top from '../../img/arrow_top.svg'
+import deliveryTruck from "/public/img/delivery-truck.svg"
+import copy from "/public/img/copy.svg";
+import pie from "/public/img/pie.svg";
+import arrow_top from '/public/img/arrow_top.svg'
 import 'react-circular-progressbar/dist/styles.css';
 import CircularProgressbar from 'react-circular-progressbar';
 import axios from 'axios';

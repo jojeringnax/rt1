@@ -1,25 +1,23 @@
 import React from 'react';
-import deliveryTruck from "../../img/delivery-truck.svg"
-import copy from "../../img/copy.svg";
-import pie from "../../img/pie.svg";
+import deliveryTruck from "/public/img/delivery-truck.svg"
+import copy from "/public/img/copy.svg";
+import pie from "/public/img/pie.svg";
 
-import arrow_top from '../../img/arrow_top.svg';
+import point_0 from "/public/img/auto_icon/point_blue_0.svg";
+import point_1 from "/public/img/auto_icon/point_blue_1.svg";
+import point_2 from "/public/img/auto_icon/point_blue_2.svg";
+import point_3 from "/public/img/auto_icon/point_blue_3.svg";
 
-import point_0 from "../../img/auto_icon/point_blue_0.svg";
-import point_1 from "../../img/auto_icon/point_blue_1.svg";
-import point_2 from "../../img/auto_icon/point_blue_2.svg";
-import point_3 from "../../img/auto_icon/point_blue_3.svg";
-
-import point_0_active from "../../img/auto_icon/point_0.svg";
-import point_1_active from "../../img/auto_icon/point_1.svg";
-import point_2_active from "../../img/auto_icon/point_2.svg";
-import point_3_active from "../../img/auto_icon/point_3.svg";
+import point_0_active from "/public/img/auto_icon/point_0.svg";
+import point_1_active from "/public/img/auto_icon/point_1.svg";
+import point_2_active from "/public/img/auto_icon/point_2.svg";
+import point_3_active from "/public/img/auto_icon/point_3.svg";
 
 import 'react-circular-progressbar/dist/styles.css';
 import CircularProgressbar from 'react-circular-progressbar';
 import {store} from "../../../index";
 import {setCars} from "../../../actions";
-import arrow_top from "../../img/arrow_top.svg";
+import arrow_top from "/public/img/arrow_top.svg";
 
 const images = {
     active:{
