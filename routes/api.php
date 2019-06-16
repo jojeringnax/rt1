@@ -32,7 +32,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  *  ORGANIZATIONS AND ORGANIZATION INFOS
  */
 
-    Route::get('organization/{id}/children', function ($id) {
+    Route::get('organization/{id}/children}', function ($id) {
         return Json::encode(\App\Division::getChildrenForDivision(\App\Organization::class,$id));
     });
 
@@ -60,6 +60,10 @@ Route::get('bad_spot/{id}/children', function ($id) {
     return Json::encode(\App\Division::getChildrenForDivision(\App\BadSpot::class,$id));
 });
 
+Route::get('bad_spot/{id}/reset_cars', function ($id) {
+    return \App\Division::getChildrenForDivision(\App\BadSpot::class, $id, true);
+});
+
 Route::get('bad_spot/{id}/statistic', function ($id) {
     return \App\Statistic::getStatisticForDivision(\App\BadSpot::class, $id)->toJson();
 });
@@ -72,6 +76,10 @@ Route::get('spot/{id}/children', function ($id) {
     return Json::encode(\App\Division::getChildrenForDivision(\App\Spot::class,$id));
 });
 
+Route::get('spot/{id}/reset_cars', function ($id) {
+    return \App\Division::getChildrenForDivision(\App\Spot::class, $id, true);
+});
+
 Route::get('spot/{id}/statistic', function ($id) {
     return \App\Statistic::getStatisticForDivision(\App\Spot::class, $id)->toJson();
 });
@@ -82,6 +90,10 @@ Route::get('spot/{id}/statistic', function ($id) {
 
 Route::get('brigade/{id}/children', function ($id) {
     return Json::encode(\App\Division::getChildrenForDivision(\App\Brigade::class, $id));
+});
+
+Route::get('brigade/{id}/reset_cars', function ($id) {
+    return \App\Division::getChildrenForDivision(\App\Brigade::class, $id, true);
 });
 
 Route::get('brigade/{id}/statistic', function ($id) {

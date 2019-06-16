@@ -69,7 +69,7 @@ class Division extends Model
     }
 
 
-    public static function getChildrenForDivision($parentClass, $parentID)
+    public static function getChildrenForDivision($parentClass, $parentID, $onlyRefreshCarsCoordinates=false)
     {
         if ($parentClass::find($parentID) === null) {
             return 'This is not a joke';
@@ -102,6 +102,33 @@ class Division extends Model
         $finalChildren = [];
         foreach ($childrenClasses as $childrenClass) {
             if ($childrenClass === Car::class) {
+                if ($onlyRefreshCarsCoordinates) {
+                    $carIDs = $childrenClass::where('x_pos', '!=', null)->where($parentType.'_id', $parentID)->pluck('id');
+                    $array = [];
+                    $resultCarsArray = [];
+                    foreach($carIDs as $ID) {
+                        $array[] = ['CarsID' => $ID];
+                    }
+                    $res = json_decode(app(Soap::class)->GetCarsPosition(['CarsJson' => json_encode($array)])->return);
+                    foreach ($res as $position) {
+                        $car = Car::findOne($position->CarsID);
+                        if ($car === null) {
+                            $car = new Car();
+                            $car->id = $position->CarsID;
+                            $textParentID = $parentClass."_id";
+                            $car->$textParentID = $parentID;
+                        } else {
+                            if ($position->XPos === null || $position->YPos === null) {
+                                continue;
+                            }
+                        }
+                        $car->x_pos = $position->YPos;
+                        $car->y_pos = $position->XPos;
+                        $car->save();
+                        $resultCarsArray[] = $car;
+                    }
+                    return json_encode($resultCarsArray);
+                }
                 $children = $childrenClass::where('x_pos', '!=', null)->where($parentType.'_id', $parentID)->get();
             } else {
                 $children = $childrenClass::where('x_pos', '!=', null)->where('work', 1)->where($parentType.'_id', $parentID)->get();
