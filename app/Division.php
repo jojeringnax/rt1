@@ -111,7 +111,7 @@ class Division extends Model
                     }
                     $res = json_decode(app(Soap::class)->GetCarsPosition(['CarsJson' => json_encode($array)])->return);
                     foreach ($res as $position) {
-                        $car = Car::findOne($position->CarsID);
+                        $car = Car::find($position->CarsID);
                         if ($car === null) {
                             $car = new Car();
                             $car->id = $position->CarsID;

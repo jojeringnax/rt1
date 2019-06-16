@@ -32,7 +32,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  *  ORGANIZATIONS AND ORGANIZATION INFOS
  */
 
-    Route::get('organization/{id}/children}', function ($id) {
+    Route::get('organization/{id}/children', function ($id) {
         return Json::encode(\App\Division::getChildrenForDivision(\App\Organization::class,$id));
     });
 
