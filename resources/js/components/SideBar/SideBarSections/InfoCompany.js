@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import deliveryTruck from "../../img/delivery-truck.svg"
-import copy from "../../img/copy.svg";
-import pie from "../../img/pie.svg";
-import arrow from '../../img/arrow.svg'
+import deliveryTruck from "/public/img/delivery-truck.svg"
+import copy from "/public/img/copy.svg";
+import pie from "/public/img/pie.svg";
+import arrow_top from '/public/img/arrow_top.svg'
 import 'react-circular-progressbar/dist/styles.css';
 import CircularProgressbar from 'react-circular-progressbar';
 import axios from 'axios';
@@ -78,7 +78,7 @@ class InfoCompany extends React.Component{
                             </span>
                     </div>
                     <div className={this.state.withoutTerminal ? "item-info" : "item-info hide"} onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} style={{cursor:'pointer'}}>
-                        <span id="" className="trans-auto"><img src={arrow} alt="" style={{
+                        <span id="" className="trans-auto"><img src={arrow_top} alt="" style={{
                             margin:"0 10px 0 0",
                             height:'0.9vh',
                             width: '0.9vh'

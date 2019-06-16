@@ -1,16 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import user from "../../img/info_auto_icon/user.svg";
-import callAnswer from "../../img/info_auto_icon/call-answer.svg";
-import clock from "../../img/info_auto_icon/clock.svg";
-import speedometer from "../../img/info_auto_icon/speedometer.svg";
-import gasStation from "../../img/info_auto_icon/gas-station.svg";
-import star from "../../img/info_auto_icon/star.svg";
-import percentageDiscount from "../../img/info_auto_icon/percentage-discount.svg";
-import toolsAndUtensils from "../../img/info_auto_icon/tools-and-utensils.svg";
-import carWheel from "../../img/info_auto_icon/car-wheel.svg";
-
-import {store} from "../../../index";
+import user from "/public/img/info_auto_icon/user.svg";
+import callAnswer from "/public/img/info_auto_icon/call-answer.svg";
+import clock from "/public/img/info_auto_icon/clock.svg";
+import speedometer from "/public/img/info_auto_icon/speedometer.svg";
+import gasStation from "/public/img/info_auto_icon/gas-station.svg";
+import star from "/public/img/info_auto_icon/star.svg";
+import percentageDiscount from "/public/img/info_auto_icon/percentage-discount.svg";
+import toolsAndUtensils from "/public/img/info_auto_icon/tools-and-utensils.svg";
+import carWheel from "/public/info_auto_icon/car-wheel.svg";
 
 
 class InfoTs extends React.Component{
@@ -36,7 +33,7 @@ class InfoTs extends React.Component{
             <div id="info-ts" className={"info-ts item-sideBar" + (this.state.show ? '' : ' hide')}>
                 <div className="title-ts d-flex justify-content-start">
                     <div>
-                        <img id="img-ts" src="" alt="" />
+                        <img id="img-ts" src={'/public/img/auto_icon/point_' + this.props.statistic.type + '.svg'} alt="" />
                     </div>
                     <div className="header-ts-info">
                         <span id="nameTS" className="">

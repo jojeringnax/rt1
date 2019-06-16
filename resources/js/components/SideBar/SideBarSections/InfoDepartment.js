@@ -3,7 +3,10 @@ import deliveryTruck from "../../img/delivery-truck.svg"
 import copy from "../../img/copy.svg";
 import pie from "../../img/pie.svg";
 
-import arrow from '../../img/arrow.svg';
+import point_0 from "/public/img/auto_icon/point_blue_0.svg";
+import point_1 from "/public/img/auto_icon/point_blue_1.svg";
+import point_2 from "/public/img/auto_icon/point_blue_2.svg";
+import point_3 from "/public/img/auto_icon/point_blue_3.svg";
 
 import point_0 from "../../img/auto_icon/point_blue_0.svg";
 import point_1 from "../../img/auto_icon/point_blue_1.svg";
@@ -19,6 +22,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import CircularProgressbar from 'react-circular-progressbar';
 import {store} from "../../../index";
 import {setCars} from "../../../actions";
+import arrow_top from "/public/img/arrow_top.svg";
 
 const images = {
     active:{
@@ -144,12 +148,12 @@ class InfoDepartment extends React.Component{
                             <span id="OnLine" className="figures">{this.props.statistic.carsInline}</span>
                         </div>
                         <div className="item-info">
-                            <span id="without-terminal" onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} className={!this.state.withoutTerminal ? "trans-auto" : "trans-auto hide"} style={{cursor:"pointer"}}>
+                            <span id="without-terminal" onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} className=className={!this.state.withoutTerminal ? "trans-auto" : "trans-auto hide"} style={{cursor:"pointer"}}>
                                 ...
                             </span>
                         </div>
                         <div className={this.state.withoutTerminal ? "item-info" : "item-info hide"} onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} style={{cursor:'pointer'}}>
-                            <span id="" className="trans-auto"><img src={arrow} alt="" style={{
+                            <span id="" className="trans-auto"><img src={arrow_top} alt="" style={{
                                 margin:"0 10px 0 0",
                                 height:'0.9vh',
                                 width: '0.9vh'
