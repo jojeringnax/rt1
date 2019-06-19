@@ -58,16 +58,6 @@ class Spot extends React.Component{
             store.dispatch(setAminationSideBar(false));
             store.dispatch(setAminationMap(false));
         },600);
-        if(this.state.children.cars !== []) {
-            let url = "/api/" + store.getState().level.level + "/" + store.getState().level.id + "/reset_cars";
-            window.resetCars = setInterval(() => {
-                axios.get(url)
-                    .then(res => {
-                        store.dispatch(setCars(res.data));
-                    })
-            }, 20000);
-        }
-
     };
 
 

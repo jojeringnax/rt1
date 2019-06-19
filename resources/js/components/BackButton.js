@@ -59,18 +59,6 @@ class BackButton extends React.Component{
             default:
                 return false;
         }
-        if(window.hasOwnProperty('resetCars')) {
-            clearInterval(window.resetCars);
-            if(store.getState().cars !== []) {
-                let url = "/api/" + store.getState().level.level + "/" + store.getState().level.id + "/reset_cars";
-                window.resetCars = setInterval(() => {
-                    axios.get(url)
-                        .then(res => {
-                            store.dispatch(setCars(res.data));
-                        })
-                }, 20000);
-            }
-        }
 
         const idNeeded = store.getState().structure[elementNeeded]['id'];
         if (needToClear) {

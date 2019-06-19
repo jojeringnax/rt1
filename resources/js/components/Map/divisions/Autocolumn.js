@@ -46,26 +46,14 @@ class Autocolumn extends React.Component{
         }
         store.dispatch(setAminationMap(true));
         store.dispatch(setAminationSideBar(true));
-
         store.dispatch(setStructure('autocolumn', this.props.id, this.props.name));
         store.dispatch(setAutocolumns({divisions: []}));
         store.dispatch(setBadSpots({divisions: []}));
         store.dispatch(setSpots({divisions: this.state.children}));
+        store.dispatch(setCars([]));
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setLevel('autocolumn', this.props.id));
         store.dispatch(setStatisticDepartment(this.state.statistic));
-        if(window.hasOwnProperty('resetCars')) {
-            clearInterval(window.resetCars);
-            if(store.getState().cars !== []) {
-                let url = "/api/" + store.getState().level.level + "/" + store.getState().level.id + "/reset_cars";
-                window.resetCars = setInterval(() => {
-                    axios.get(url)
-                        .then(res => {
-                            store.dispatch(setCars(res.data));
-                        })
-                }, 20000);
-            }
-        }
     };
 
 

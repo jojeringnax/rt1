@@ -52,22 +52,10 @@ class Organization extends React.Component {
         store.dispatch(setBadSpots({divisions: this.state.children.badSpots}));
         store.dispatch(setAutocolumns({divisions: this.state.children.autocolumns}));
         store.dispatch(setStatisticDepartment(this.state.statistic));
+        store.dispatch(setCars([]));
         store.dispatch(setLevel('organization', this.props.id));
         store.dispatch(setAminationMap(true));
         store.dispatch(setAminationSideBar(true));
-
-        if(window.hasOwnProperty('resetCars')) {
-            clearInterval(window.resetCars);
-            if(store.getState().cars !== []) {
-                let url = "/api/" + store.getState().level.level + "/" + store.getState().level.id + "/reset_cars";
-                window.resetCars = setInterval(() => {
-                    axios.get(url)
-                        .then(res => {
-                            store.dispatch(setCars(res.data));
-                        })
-                }, 20000);
-            }
-        }
     };
 
 

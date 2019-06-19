@@ -6,10 +6,16 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
-import {setOrganizationsPreload, resetApp} from "./actions";
+import {setOrganizationsPreload, resetApp, setCars} from "./actions";
+import axios from "axios";
 
 
 export let store = createStore(rootReducer, applyMiddleware(thunk) && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+window.config = {
+    interval: 30000
+};
+
 
 window.onclick = {
     company: {
@@ -24,6 +30,17 @@ window.onclick = {
     spot: {},
     brigade: {},
     car: {}
+};
+
+
+
+window.resetCars = () => {
+    const level = store.getState().level.level !== "badSpot" ? store.getState().level.level : "bad_spot";
+    const url = "/api/" + level + "/" + store.getState().level.id + "/reset_cars";
+    axios.get(url)
+        .then(res => {
+            store.dispatch(setCars(res.data))
+        });
 };
 
 ReactDOM.render(

@@ -59,6 +59,16 @@ export const cars = (state = [], action) => {
         case 'RESET_APP':
             return state = [];
         case 'SET_CARS':
+            if (Object.keys(action.cars).length) {
+                if (window.hasOwnProperty("intervalResetCars")) {
+                    clearInterval(window.intervalResetCars);
+                }
+                window.intervalResetCars = setInterval(window.resetCars, window.config.interval);
+            } else {
+                if (window.hasOwnProperty("intervalResetCars")) {
+                    clearInterval(window.intervalResetCars);
+                }
+            }
             return action.cars;
         default:
             return state;

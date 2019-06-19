@@ -42,7 +42,6 @@ class Brigade extends React.Component{
         }
         store.dispatch(setAminationMap(true));
         store.dispatch(setAminationSideBar(true));
-
         store.dispatch(setStructure('brigade', this.props.id, this.props.name));
         store.dispatch(setBrigades({divisions: []}));
         store.dispatch(setCars(this.state.children));
@@ -53,18 +52,6 @@ class Brigade extends React.Component{
             store.dispatch(setAminationSideBar(false));
             store.dispatch(setAminationMap(false));
         },600);
-
-        if(this.state.children.cars !== []) {
-            let url = "/api/" + store.getState().level.level + "/" + store.getState().level.id + "/reset_cars";
-            window.resetCars = setInterval(() => {
-                axios.get(url)
-                    .then(res => {
-                        store.dispatch(setCars(res.data));
-                    })
-            }, 20000);
-        }
-
-
     };
 
     componentDidMount() {
