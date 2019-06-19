@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/public/img/elipse.svg");
+  background-image: url("/img/elipse.svg");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -32,7 +32,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/public/img/elipse_firm.svg");
+  background-image: url("/img/elipse_firm.svg");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -64,7 +64,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/public/img/elipse_spot.svg");
+  background-image: url("/img/elipse_spot.svg");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -83,7 +83,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/public/img/elipse_brigade.svg");
+  background-image: url("/img/elipse_brigade.svg");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -107,7 +107,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/public/img/elipse_white.svg");
+  background-image: url("/img/elipse_white.svg");
   background-size: 100%;
   background-position: center;
   z-index: 10;
@@ -121,7 +121,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/public/img/elipse.svg");
+  background-image: url("/img/elipse.svg");
   background-size: 100%;
   background-position: center;
   z-index: 10;
@@ -168,7 +168,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/public/img/auto_icon/ellipse_noIn.svg");
+  background-image: url("/img/auto_icon/ellipse_noIn.svg");
   background-size: 100%;
   background-position: center;
   z-index: 10;
@@ -185,7 +185,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/public/img/auto_icon/ellipse_noIn_checked.svg");
+  background-image: url("/img/auto_icon/ellipse_noIn_checked.svg");
   background-size: 100%;
   background-position: center;
   z-index: 10;
@@ -202,7 +202,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/public/img/elipse_white.svg");
+  background-image: url("/img/elipse_white.svg");
   background-size: 100%;
   background-position: center;
   z-index: 10;
@@ -229,7 +229,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/public/img/elipse.svg");
+  background-image: url("/img/elipse.svg");
   background-size: 100%;
   background-position: center;
   z-index: 10;

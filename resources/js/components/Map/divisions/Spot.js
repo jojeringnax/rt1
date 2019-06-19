@@ -57,14 +57,22 @@ class Spot extends React.Component{
         setTimeout(function () {
             store.dispatch(setAminationSideBar(false));
             store.dispatch(setAminationMap(false));
-        },600)
-
-
+        },600);
+        if(this.state.children.cars !== []) {
+            let url = "/api/" + store.getState().level.level + "/" + store.getState().level.id + "/reset_cars";
+            window.resetCars = setInterval(() => {
+                axios.get(url)
+                    .then(res => {
+                        store.dispatch(setCars(res.data));
+                    })
+            }, 20000);
+        }
 
     };
 
 
     componentDidMount() {
+
         window.onclick.spot[this.props.id] = this.handleClick;
         let url = '/api/spot/' + this.props.id + '/children';
         axios.get(url)
@@ -79,6 +87,7 @@ class Spot extends React.Component{
                     }
                 },()=>{
                     store.dispatch(setAminationMap(false));
+
                 })
             })
             .catch(err => {

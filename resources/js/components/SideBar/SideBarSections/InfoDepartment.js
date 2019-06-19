@@ -1,41 +1,22 @@
 import React from 'react';
-import deliveryTruck from "../../img/delivery-truck.svg"
-import copy from "../../img/copy.svg";
-import pie from "../../img/pie.svg";
-
-import point_0 from "/public/img/auto_icon/point_blue_0.svg";
-import point_1 from "/public/img/auto_icon/point_blue_1.svg";
-import point_2 from "/public/img/auto_icon/point_blue_2.svg";
-import point_3 from "/public/img/auto_icon/point_blue_3.svg";
-
-import point_0 from "../../img/auto_icon/point_blue_0.svg";
-import point_1 from "../../img/auto_icon/point_blue_1.svg";
-import point_2 from "../../img/auto_icon/point_blue_2.svg";
-import point_3 from "../../img/auto_icon/point_blue_3.svg";
-
-import point_0_active from "../../img/auto_icon/point_0.svg";
-import point_1_active from "../../img/auto_icon/point_1.svg";
-import point_2_active from "../../img/auto_icon/point_2.svg";
-import point_3_active from "../../img/auto_icon/point_3.svg";
 
 import 'react-circular-progressbar/dist/styles.css';
 import CircularProgressbar from 'react-circular-progressbar';
 import {store} from "../../../index";
 import {setCars} from "../../../actions";
-import arrow_top from "/public/img/arrow_top.svg";
 
 const images = {
     active:{
-        0: point_0_active,
-        1: point_1_active,
-        2: point_2_active,
-        3: point_3_active
+        0: '/img/auto_icon/point_0.svg',
+        1: '/img/auto_icon/point_1.svg',
+        2: '/img/auto_icon/point_2.svg',
+        3: '/img/auto_icon/point_3.svg'
     },
     notActive: {
-        0: point_0,
-        1: point_1,
-        2: point_2,
-        3: point_3
+        0: '/img/auto_icon/point_blue_0.svg',
+        1: '/img/auto_icon/point_blue_1.svg',
+        2: '/img/auto_icon/point_blue_2.svg',
+        3: '/img/auto_icon/point_blue_3.svg'
     }
 };
 
@@ -124,7 +105,7 @@ class InfoDepartment extends React.Component{
                 <div className="">
                     <div className="">
                         <div className="ts-title">
-                            <span className="img"><img src={deliveryTruck} alt="deliveryTruck" className="span-yan/img-h3"/></span>
+                            <span className="img"><img src="/img/delivery-truck.svg" alt="deliveryTruck" className="span-yan/img-h3"/></span>
                             <span id="tranport-means" className="ts-text h3-main">Транспортные средства</span>
                         </div>
                         <div id="" className="item-info">
@@ -148,12 +129,12 @@ class InfoDepartment extends React.Component{
                             <span id="OnLine" className="figures">{this.props.statistic.carsInline}</span>
                         </div>
                         <div className="item-info">
-                            <span id="without-terminal" onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} className=className={!this.state.withoutTerminal ? "trans-auto" : "trans-auto hide"} style={{cursor:"pointer"}}>
+                            <span id="without-terminal" onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} className={!this.state.withoutTerminal ? "trans-auto" : "trans-auto hide"} style={{cursor:"pointer"}}>
                                 ...
                             </span>
                         </div>
                         <div className={this.state.withoutTerminal ? "item-info" : "item-info hide"} onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} style={{cursor:'pointer'}}>
-                            <span id="" className="trans-auto"><img src={arrow_top} alt="" style={{
+                            <span id="" className="trans-auto"><img src="/img/arrow_top.svg" alt="" style={{
                                 margin:"0 10px 0 0",
                                 height:'0.9vh',
                                 width: '0.9vh'
@@ -174,7 +155,7 @@ class InfoDepartment extends React.Component{
                         <hr className="hr-trans" />
                         <div data-typecar="0" id="light" className="item-info transport-department" onClick={this.handleClickTypeTs}>
                             <div className="transport-title">
-                                <span className="span-h3-filial"><img data-imgtypecar="0" src={point_0} alt="point_0" className="img-transport"/></span>
+                                <span className="span-h3-filial"><img data-imgtypecar="0" src='/img/auto_icon/point_blue_0.svg' alt="point_0" className="img-transport"/></span>
                                 <span id="passenger-car" className="p-type-transport">Легковые</span>
                             </div>
                             <span id="passCar" className="p-quantity">{this.props.statistic.carsLight}</span>
@@ -182,7 +163,7 @@ class InfoDepartment extends React.Component{
                         <hr className="hr-trans" />
                         <div data-typecar="1" id="truck" className="item-info transport-department" onClick={this.handleClickTypeTs}>
                             <div className="transport-title">
-                                <span className="span-h3-filial"><img data-imgtypecar="1"  src={point_1} alt="point_1" className="img-transport"/></span>
+                                <span className="span-h3-filial"><img data-imgtypecar="1"  src='/img/auto_icon/point_blue_1.svg' alt="point_1" className="img-transport"/></span>
                                 <span id="freight" className="p-type-transport">Грузовые</span>
                             </div>
                             <span id="freightCar" className="p-quantity">{this.props.statistic.carsTruck}</span>
@@ -190,7 +171,7 @@ class InfoDepartment extends React.Component{
                         <hr className="hr-trans" />
                         <div data-typecar="2" id="bus" className="item-info transport-department" onClick={this.handleClickTypeTs}>
                             <div className="transport-title">
-                                <span className="span-h3-filial"><img data-imgtypecar="2"  src={point_2} alt="point_2" className="img-transport"/></span>
+                                <span className="span-h3-filial"><img data-imgtypecar="2"  src='/img/auto_icon/point_blue_2.svg' alt="point_2" className="img-transport"/></span>
                                 <span className="p-type-transport">Автобусы</span>
                             </div>
                             <span id="busCar" className="p-quantity">{this.props.statistic.carsBus}</span>
@@ -198,7 +179,7 @@ class InfoDepartment extends React.Component{
                         <hr className="hr-trans" />
                         <div data-typecar="3" id="spec" className="item-info transport-department" onClick={this.handleClickTypeTs}>
                             <div className="transport-title">
-                                <span className="span-h3-filial"><img data-imgtypecar="3"  src={point_3} alt="point_3" className="img-transport"/></span>
+                                <span className="span-h3-filial"><img data-imgtypecar="3"  src='/img/auto_icon/point_blue_3.svg' alt="point_3" className="img-transport"/></span>
                                 <span id="spec" className="p-type-transport">Спецтехника</span>
                             </div>
                             <span id="specCar" className="p-quantity">{this.props.statistic.carsSpec}</span>
@@ -210,7 +191,7 @@ class InfoDepartment extends React.Component{
                 <div className="">
                     <div id="request-department" className="">
                         <div className="request-title">
-                            <span className="img"><img src={copy} alt="copy" className="span-yan/img-h3-2nd"/></span>
+                            <span className="img"><img src='/img/copy.svg' alt="copy" className="span-yan/img-h3-2nd"/></span>
                             <span id="title-request" className="text">Заявки</span>
                         </div>
                         <div className="item-info">
@@ -229,7 +210,7 @@ class InfoDepartment extends React.Component{
                 </div>
                 <div id="indicators-department" className="indicators-class">
                     <div className="indicators-title">
-                        <span className="img"><img src={pie} alt="pie" className="span-yan/img-h3-3nd"/></span>
+                        <span className="img"><img src='/img/pie.svg' alt="pie" className="span-yan/img-h3-3nd"/></span>
                         <span id="h3-indicator" className="text">Показатели компании</span>
                     </div>
                     <div className="item-bar">

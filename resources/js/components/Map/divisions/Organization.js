@@ -6,7 +6,7 @@ import {
     setOrganizations,
     setBadSpots,
     setLevel,
-    setStatisticDepartment, setStructure, setAminationSideBar, setAminationMap
+    setStatisticDepartment, setStructure, setAminationSideBar, setAminationMap, setCars
 } from "../../../actions";
 import {store} from "../../../index";
 import axios from "axios";
@@ -55,6 +55,19 @@ class Organization extends React.Component {
         store.dispatch(setLevel('organization', this.props.id));
         store.dispatch(setAminationMap(true));
         store.dispatch(setAminationSideBar(true));
+
+        if(window.hasOwnProperty('resetCars')) {
+            clearInterval(window.resetCars);
+            if(store.getState().cars !== []) {
+                let url = "/api/" + store.getState().level.level + "/" + store.getState().level.id + "/reset_cars";
+                window.resetCars = setInterval(() => {
+                    axios.get(url)
+                        .then(res => {
+                            store.dispatch(setCars(res.data));
+                        })
+                }, 20000);
+            }
+        }
     };
 
 

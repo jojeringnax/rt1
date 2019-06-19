@@ -1,9 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import deliveryTruck from "/public/img/delivery-truck.svg"
-import copy from "/public/img/copy.svg";
-import pie from "/public/img/pie.svg";
-import arrow_top from '/public/img/arrow_top.svg'
 import 'react-circular-progressbar/dist/styles.css';
 import CircularProgressbar from 'react-circular-progressbar';
 import axios from 'axios';
@@ -48,7 +43,7 @@ class InfoCompany extends React.Component{
                 <div>
                     <div className="ts-title">
                         <span className="img">
-                            <img src={deliveryTruck} alt="deliveryTruck" className="" />
+                            <img src='/img/delivery-truck.svg' alt="deliveryTruck" className="" />
                         </span>
                         <span className="ts-text">Транспортные средства</span>
                     </div>
@@ -78,7 +73,7 @@ class InfoCompany extends React.Component{
                             </span>
                     </div>
                     <div className={this.state.withoutTerminal ? "item-info" : "item-info hide"} onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} style={{cursor:'pointer'}}>
-                        <span id="" className="trans-auto"><img src={arrow_top} alt="" style={{
+                        <span id="" className="trans-auto"><img src='/img/arrow_top.svg' alt="" style={{
                             margin:"0 10px 0 0",
                             height:'0.9vh',
                             width: '0.9vh'
@@ -90,7 +85,7 @@ class InfoCompany extends React.Component{
 
                 <div id="request" className="">
                     <div className="request-title">
-                        <span className="img"><img src={copy} alt="copy" className="span-yan/img-h3-2nd" /></span>
+                        <span className="img"><img src='/img/copy.svg' alt="copy" className="span-yan/img-h3-2nd" /></span>
                         <span className="text">Заявки</span>
                     </div>
                     <div className="item-info">
@@ -109,7 +104,7 @@ class InfoCompany extends React.Component{
 
                 <div id="indicators" className="indicators-class">
                     <div className="indicators-title">
-                        <span className="img"><img src={pie} alt="pie" className="span-yan/img-h3-3nd" /></span>
+                        <span className="img"><img src='/img/pie.svg' alt="pie" className="span-yan/img-h3-3nd" /></span>
                         <span className="text">Показатели компании</span>
                     </div>
                     <div className="item-bar">

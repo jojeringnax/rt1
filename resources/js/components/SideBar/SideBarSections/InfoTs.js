@@ -1,13 +1,4 @@
 import React from 'react';
-import user from "/public/img/info_auto_icon/user.svg";
-import callAnswer from "/public/img/info_auto_icon/call-answer.svg";
-import clock from "/public/img/info_auto_icon/clock.svg";
-import speedometer from "/public/img/info_auto_icon/speedometer.svg";
-import gasStation from "/public/img/info_auto_icon/gas-station.svg";
-import star from "/public/img/info_auto_icon/star.svg";
-import percentageDiscount from "/public/img/info_auto_icon/percentage-discount.svg";
-import toolsAndUtensils from "/public/img/info_auto_icon/tools-and-utensils.svg";
-import carWheel from "/public/info_auto_icon/car-wheel.svg";
 
 
 class InfoTs extends React.Component{
@@ -33,7 +24,7 @@ class InfoTs extends React.Component{
             <div id="info-ts" className={"info-ts item-sideBar" + (this.state.show ? '' : ' hide')}>
                 <div className="title-ts d-flex justify-content-start">
                     <div>
-                        <img id="img-ts" src={'/public/img/auto_icon/point_' + this.props.statistic.type + '.svg'} alt="" />
+                        <img id="img-ts" src={'/img/auto_icon/point_' + this.props.statistic.type + '.svg'} alt="" />
                     </div>
                     <div className="header-ts-info">
                         <span id="nameTS" className="">
@@ -59,7 +50,7 @@ class InfoTs extends React.Component{
                         <div>
                             <div className="name-driver d-flex item-ts-data">
                                 <div className="d-flex align-items-start icon-ts">
-                                    <img src={user} alt="driver_icon"/>
+                                    <img src='/img/info_auto_icon/user.svg' alt="driver_icon"/>
                                 </div>
                                 <div className="d-flex flex-column align-items-start item-ts-text">
                                     <span className="title-driver-name title-ts-text">Водитель:</span>
@@ -72,7 +63,7 @@ class InfoTs extends React.Component{
                             </div>
                             <div className="phone-driver d-flex align-items-start item-ts-data">
                                 <div className="d-flex align-items-start icon-ts">
-                                    <img src={callAnswer} alt="phone_driver"/>
+                                    <img src='/img/info_auto_icon/call-answer.svg' alt="phone_driver"/>
                                 </div>
                                 <div className="d-flex flex-column align-items-start item-ts-text">
                                     <span className="title-ts-text title-driver-phone">Телефон:</span>
@@ -90,7 +81,7 @@ class InfoTs extends React.Component{
                     <div className="work-time item-ts-data d-flex flex-column">
                         <div className="d-flex">
                             <div className="icon-ts">
-                                <img src={clock} alt="clock_icon"/>
+                                <img src='/img/info_auto_icon/clock.svg' alt="clock_icon"/>
                             </div>
                             <div className="d-flex flex-column align-items-start item-ts-text" >
                                 <div className="start flex flex-column">
@@ -141,7 +132,7 @@ class InfoTs extends React.Component{
                         <div className="row-1 d-flex flex-row item-ts-data">
                             <div className="dada-ts-item d-flex">
                                 <div className="icon-ts">
-                                    <img src={speedometer} alt="" />
+                                    <img src='/img/info_auto_icon/speedometer.svg' alt="" />
                                 </div>
                                 <div className="d-flex flex-column align-items-start item-ts-text" >
                                     <span className="title-ts-text">Пробег, км:</span>
@@ -164,7 +155,7 @@ class InfoTs extends React.Component{
                         <div className="row-2 d-flex flex-row item-ts-data">
                             <div className="dada-ts-item d-flex">
                                 <div className="icon-ts">
-                                    <img src={gasStation} alt="gasStation"/>
+                                    <img src='/img/info_auto_icon/gas-station.svg' alt="gasStation"/>
                                 </div>
                                 <div className="d-flex flex-column align-items-start item-ts-text">
                                     <span className="title-ts-text">Топливо по <br/>норме, л:</span>
@@ -187,7 +178,7 @@ class InfoTs extends React.Component{
                         <div className="row-3 d-flex flex-row item-ts-data">
                             <div className="dada-ts-item d-flex">
                                 <div className="icon-ts">
-                                    <img src={star} alt="star"/>
+                                    <img src='/img/info_auto_icon/star.svg' alt="star"/>
                                 </div>
                                 <div className="d-flex flex-column align-items-start item-ts-text" >
                                     <span className="title-ts-text">Количество <br/>нарушений:</span>
@@ -214,7 +205,7 @@ class InfoTs extends React.Component{
                         <div className="row-1 d-flex flex-row item-ts-data">
                             <div className="dada-ts-item d-flex" >
                                 <div className="icon-ts">
-                                    <img src={percentageDiscount} alt="percentageDiscount_icon"/>
+                                    <img src='/img/info_auto_icon/percentage-discount.svg' alt="percentageDiscount_icon"/>
                                 </div>
                                 <div className="d-flex flex-column align-items-start ts-car-data item-ts-text">
                                     <span className="title-ts-text">Процент рентабельности за прошлый месяц:</span>
@@ -229,7 +220,7 @@ class InfoTs extends React.Component{
                         <div className="row-2 d-flex flex-row item-ts-data">
                             <div className="dada-ts-item d-flex">
                                 <div className="icon-ts">
-                                    <img src={toolsAndUtensils} alt="toolsAndUtensils"/>
+                                    <img src='/img/info_auto_icon/tools-and-utensils.svg' alt="toolsAndUtensils"/>
                                 </div>
                                 <div className="d-flex flex-column align-items-start ts-car-data item-ts-text">
                                     <span className="title-ts-text">Осталось км <br/> до ТО:</span>
@@ -252,7 +243,7 @@ class InfoTs extends React.Component{
                         <div className="row-3 d-flex flex-row item-ts-data">
                             <div className="dada-ts-item d-flex">
                                 <div className="icon-ts">
-                                    <img src={carWheel} alt="carWheel"/>
+                                    <img src='/img/info_auto_icon/car-wheel.svg' alt="carWheel"/>
                                 </div>
                                 <div className="d-flex flex-column align-items-start ts-car-data item-ts-text">
                                     <span className="title-ts-text">Км до замены шин:</span>

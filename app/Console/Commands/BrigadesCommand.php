@@ -82,7 +82,7 @@ class BrigadesCommand extends Command
              * @var $brigadeModel Brigade
              */
             $this->info('Brigade with ID='.$brigade->ID.' in work...');
-            $haveName = isset($names['spots'][$brigade->ID]);
+            $haveName = isset($names['brigades'][$brigade->ID]);
             $brigadeModel = Brigade::firstOrNew(['id' => $brigade->ID]);
             $brigadeModel->id = $brigade->ID;
             $brigadeModel->company_id = '113';
@@ -90,8 +90,8 @@ class BrigadesCommand extends Command
             $brigadeModel->autocolumn_id = $autocolumnID;
             $brigadeModel->bad_spot_id = $badSpotID;
             $brigadeModel->spot_id = $spotID;
-            $brigadeModel->name = $haveName ? $names['spots'][$brigade->ID][0] : null;
-            $brigadeModel->town = $haveName ? $names['spots'][$brigade->ID][1] : null;
+            $brigadeModel->name = $haveName ? $names['brigades'][$brigade->ID][0] : null;
+            $brigadeModel->town = $haveName ? $names['brigades'][$brigade->ID][1] : null;
             $brigadeModel->description = $brigade->Description;
             $brigadeModel->address = $brigade->Address;
             $brigadeModel->work = $brigade->Work ? (boolean) $brigade->Work : false;

@@ -10,6 +10,7 @@ import {
     setSpots,
     setStructure
 } from "../actions";
+import axios from "axios";
 
 class BackButton extends React.Component{
     constructor(props) {
@@ -58,6 +59,19 @@ class BackButton extends React.Component{
             default:
                 return false;
         }
+        if(window.hasOwnProperty('resetCars')) {
+            clearInterval(window.resetCars);
+            if(store.getState().cars !== []) {
+                let url = "/api/" + store.getState().level.level + "/" + store.getState().level.id + "/reset_cars";
+                window.resetCars = setInterval(() => {
+                    axios.get(url)
+                        .then(res => {
+                            store.dispatch(setCars(res.data));
+                        })
+                }, 20000);
+            }
+        }
+
         const idNeeded = store.getState().structure[elementNeeded]['id'];
         if (needToClear) {
             store.dispatch(toClear({divisions: []}));
@@ -68,6 +82,7 @@ class BackButton extends React.Component{
         store.dispatch(setCars([]));
         store.dispatch(setStructure(currentLevel, null, 'Нет имени'));
         return window.onclick[elementNeeded][idNeeded]();
+
     };
 
     render() {

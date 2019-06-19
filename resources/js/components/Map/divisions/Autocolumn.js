@@ -9,7 +9,7 @@ import {
     setBounds,
     setLevel,
     setStatisticDepartment,
-    setStructure, setAminationMap, setAminationSideBar
+    setStructure, setAminationMap, setAminationSideBar, setCars
 } from "../../../actions";
 
 class Autocolumn extends React.Component{
@@ -54,7 +54,18 @@ class Autocolumn extends React.Component{
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setLevel('autocolumn', this.props.id));
         store.dispatch(setStatisticDepartment(this.state.statistic));
-
+        if(window.hasOwnProperty('resetCars')) {
+            clearInterval(window.resetCars);
+            if(store.getState().cars !== []) {
+                let url = "/api/" + store.getState().level.level + "/" + store.getState().level.id + "/reset_cars";
+                window.resetCars = setInterval(() => {
+                    axios.get(url)
+                        .then(res => {
+                            store.dispatch(setCars(res.data));
+                        })
+                }, 20000);
+            }
+        }
     };
 
 

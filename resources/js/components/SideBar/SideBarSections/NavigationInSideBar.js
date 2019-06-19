@@ -1,6 +1,5 @@
 import React from 'react';
 import {store} from "../../../index";
-import arrow from '../../img/arrow.svg';
 
 class NavigationInSideBar extends React.Component{
 
@@ -64,7 +63,7 @@ class NavigationInSideBar extends React.Component{
                                 className={'nav-' + level + ' item-navbar'}
                                 onClick={window.onclick[level][id]}
                                 key={id}
-                            >{level === "company" ? '' : <img className="arr-nav-sideBar" src={arrow} />} {name}</span>
+                            >{level === "company" ? '' : <img className="arr-nav-sideBar" src='/img/arrow.svg' />} {name}</span>
                         )
                     })
                 }

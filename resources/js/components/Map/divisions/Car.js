@@ -32,8 +32,8 @@ class Car extends React.Component {
                             ((this.props.status !== 'R' && this.props.status !== 'TO') ? 'bb-num-car' : 'bb-num-car-inline') +
                             '"><img src="' +
                             (this.props.status !== 'R' && this.props.status !== 'TO' ?
-                                '/public/img/auto_icon/point_blue_' + this.props.type + '.svg' :
-                                '/public/img/auto_icon/point_noIn_' + this.props.type + '.svg') +
+                                '/img/auto_icon/point_blue_' + this.props.type + '.svg' :
+                                '/img/auto_icon/point_noIn_' + this.props.type + '.svg') +
                             '" alt="auto"></span></div>'
                         ),
                     templateClicked:
@@ -42,8 +42,8 @@ class Car extends React.Component {
                             ((this.props.status !== 'R' && this.props.status !== 'TO') ? 'bb-num-car-white' : 'bb-num-car-inline_checked') +
                             '"><img src="' +
                             (this.props.status !== 'R' && this.props.status !== 'TO' ?
-                                '/public/img/auto_icon/point_' + this.props.type + '.svg' :
-                                '/public/img/auto_icon/point_noIn_check_' + this.props.type + '.svg') +
+                                '/img/auto_icon/point_' + this.props.type + '.svg' :
+                                '/img/auto_icon/point_noIn_check_' + this.props.type + '.svg') +
                             '" alt="auto"></span></div>'
                         )
                 });
@@ -87,6 +87,9 @@ class Car extends React.Component {
     };
 
     componentDidMount() {
+        // setInterval(() => {
+        //     alert('hui')
+        // }, 3000);
         window.onclick.car[this.props.id] = this.handleClick;
 
     }
