@@ -25,7 +25,7 @@ class SideBar extends React.Component{
             infoTS: this.props.level.level === 'car'})
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if (prevProps.level.level !== this.props.level.level) {
             this.setState({infoCompany: this.props.level.level === 'company'});
             this.setState({infoDepartment: ['organization', 'spot', 'badSpot', 'autocolumn', 'brigade'].
@@ -37,7 +37,7 @@ class SideBar extends React.Component{
     render() {
         return(
             <div className={"sideBar"}>
-                <div className={(this.props.showAnimation ? '' : 'hide')+ " overlay_block"}></div>
+                <div className={(this.props.showAnimation ? '' : 'hide')+ " overlay_block"} />
                 <div className={(this.props.showAnimation ? 'loading_process' : '') + " "}>
 
                     <Head />

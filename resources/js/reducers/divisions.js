@@ -64,9 +64,11 @@ export const cars = (state = [], action) => {
                     clearInterval(window.intervalResetCars);
                 }
                 window.intervalResetCars = setInterval(window.resetCars, window.config.interval);
+                console.log("interval On");
             } else {
                 if (window.hasOwnProperty("intervalResetCars")) {
                     clearInterval(window.intervalResetCars);
+                    console.log("interval Off");
                 }
             }
             return action.cars;
