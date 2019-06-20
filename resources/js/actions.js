@@ -35,7 +35,7 @@ export const setBrigades = brigades => ({
     brigades
 });
 
-export const setCars = (cars, reset=false) => ({
+export const setCars = (cars, reset=true) => ({
     type: 'SET_CARS',
     cars,
     reset
