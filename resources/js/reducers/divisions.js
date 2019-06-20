@@ -59,7 +59,7 @@ export const cars = (state = [], action) => {
         case 'RESET_APP':
             return state = [];
         case 'SET_CARS':
-                if (store.getState().level.level !== "car") {
+                if (action.reset) {
                     if (Object.keys(action.cars).length) {
                         if (window.hasOwnProperty("intervalResetCars")) {
                             clearInterval(window.intervalResetCars);
@@ -72,6 +72,8 @@ export const cars = (state = [], action) => {
                             console.log("interval Off");
                         }
                     }
+                } else {
+                    console.log("Do not need to check if the interval is set. But the interval is running.");
                 }
             return action.cars;
         default:

@@ -87,9 +87,6 @@ class Car extends React.Component {
     };
 
     componentDidMount() {
-        // setInterval(() => {
-        //     alert('hui')
-        // }, 3000);
         window.onclick.car[this.props.id] = this.handleClick;
 
     }

@@ -35,9 +35,10 @@ export const setBrigades = brigades => ({
     brigades
 });
 
-export const setCars = cars => ({
+export const setCars = (cars, reset=false) => ({
     type: 'SET_CARS',
-    cars
+    cars,
+    reset
 });
 
 export const setBounds = bounds => ({

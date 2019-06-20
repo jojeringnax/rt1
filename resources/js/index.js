@@ -35,12 +35,24 @@ window.onclick = {
 
 
 window.resetCars = () => {
-    const level = store.getState().level.level !== "badSpot" ? store.getState().level.level : "bad_spot";
-    const url = "/api/" + level + "/" + store.getState().level.id + "/reset_cars";
+    let level = store.getState().level.level !== "badSpot" ? store.getState().level.level : "bad_spot";
+    let id = store.getState().level.id;
+    const structure = store.getState().structure;
+    if (level === "car") {
+        console.log("User has chosen a car, so we need to take the level before");
+        if (structure.spot.id !== null) {
+            level = structure.brigade.id !== null ? "brigade" : "spot";
+            id = structure.brigade.id !== null ? structure.brigade.id : structure.spot.id;
+        } else if (structure.badSpot.id !== null) {
+            level = structure.brigade.id !== null ? "brigade" : "bad_spot";
+            id = structure.brigade.id !== null ? structure.brigade.id : structure.badSpot.id;
+        }
+    }
+    const url = "/api/" + level + "/" + id + "/reset_cars";
     axios.get(url)
         .then(res => {
             if (typeof res.data === "object") {
-                store.dispatch(setCars(res.data))
+                store.dispatch(setCars(res.data, false))
             } else {
                 console.warn("Via reset_cars-method we have got a "+typeof res.data);
             }
