@@ -1,4 +1,4 @@
-
+import {store} from "../index"
 export const organizations = (state = {divisions: []}, action) => {
     switch (action.type) {
         case 'RESET_APP':
@@ -59,18 +59,20 @@ export const cars = (state = [], action) => {
         case 'RESET_APP':
             return state = [];
         case 'SET_CARS':
-            if (Object.keys(action.cars).length) {
-                if (window.hasOwnProperty("intervalResetCars")) {
-                    clearInterval(window.intervalResetCars);
+                if (store.getState().level.level !== "car") {
+                    if (Object.keys(action.cars).length) {
+                        if (window.hasOwnProperty("intervalResetCars")) {
+                            clearInterval(window.intervalResetCars);
+                        }
+                        window.intervalResetCars = setInterval(window.resetCars, window.config.interval);
+                        console.log("interval On");
+                    } else {
+                        if (window.hasOwnProperty("intervalResetCars")) {
+                            clearInterval(window.intervalResetCars);
+                            console.log("interval Off");
+                        }
+                    }
                 }
-                window.intervalResetCars = setInterval(window.resetCars, window.config.interval);
-                console.log("interval On");
-            } else {
-                if (window.hasOwnProperty("intervalResetCars")) {
-                    clearInterval(window.intervalResetCars);
-                    console.log("interval Off");
-                }
-            }
             return action.cars;
         default:
             return state;

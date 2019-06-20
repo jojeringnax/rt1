@@ -39,7 +39,11 @@ window.resetCars = () => {
     const url = "/api/" + level + "/" + store.getState().level.id + "/reset_cars";
     axios.get(url)
         .then(res => {
-            store.dispatch(setCars(res.data))
+            if (typeof res.data === "object") {
+                store.dispatch(setCars(res.data))
+            } else {
+                console.warn("Via reset_cars-method we have got a "+typeof res.data);
+            }
         });
 };
 
