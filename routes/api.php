@@ -116,6 +116,13 @@ Route::get('cc/{id}', function ($id) {
     return \App\Car::find($id)->badSpot;
 });
 
+/**
+ * GET ALL CARS
+ */
+Route::get('cars', function () {
+    return \App\Car::all();
+});
+
 
 
 

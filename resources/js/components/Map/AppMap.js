@@ -10,6 +10,7 @@ import ClustererSpots from "./clusterers/ClustererSpots";
 import ClustererBrigades from "./clusterers/ClustererBrigades";
 import ClustererCars from './clusterers/ClustererCars';
 import BackButton from "../BackButton";
+import axios from'axios';
 
 class MapApp extends React.Component{
     constructor(props){
@@ -21,6 +22,20 @@ class MapApp extends React.Component{
     }
 
     componentDidMount() {
+
+        console.log('hiu')
+        axios.get('/api/cars')
+            .then(res => {
+                console.log(res.data);
+                let numCars = 0;
+                res.data.map(car => {
+                     if (car.company_id !== null) {
+                         numCars +=1
+                     }
+                });
+
+                console.log(numCars)
+            });
         window.addEventListener('load', () => {
             store.dispatch(setAminationMap(false));
             store.dispatch(setAminationSideBar(false));

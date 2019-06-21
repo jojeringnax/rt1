@@ -128,7 +128,7 @@ class Car extends Model
      */
     public static function getCarsCommonInfo()
     {
-        $cars = self::where('x_pos', '!=', null)->get();
+        $cars = self::where('company_id', '!=', null)->get();
         $carsReady = 0;
         $carsRepair = 0;
         $carsTO = 0;

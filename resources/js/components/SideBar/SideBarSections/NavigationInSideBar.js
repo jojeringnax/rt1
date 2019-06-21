@@ -5,7 +5,7 @@ class NavigationInSideBar extends React.Component{
 
     constructor(props) {
         super(props);
-
+        this.structure = [];
         let res = {};
         const str = store.getState().structure;
 
@@ -49,19 +49,24 @@ class NavigationInSideBar extends React.Component{
         }
     }
 
-
-
     render() {
         return(
             <div className="nav-sidebar" style={{display: 'inline-block'}} id="firm">
                 {
                     Object.keys(this.state.structure).map(level =>  {
+                        console.log(this.state.structure);
                         const id = this.state.structure[level].id;
                         const name = this.state.structure[level].name;
                         return (
                             <span
                                 className={'nav-' + level + ' item-navbar'}
-                                onClick={window.onclick[level][id]}
+                                onClick={() => {
+                                    window.onclick[level][id]();
+                                    //console.log(this.state.structure, level);
+                                    // this.state.structure.map(level => {
+                                    //     console.log(level)
+                                    // })
+                                }}
                                 key={id}
                             >{level === "company" ? '' : <img className="arr-nav-sideBar" src='/img/arrow.svg' />} {name}</span>
                         )
