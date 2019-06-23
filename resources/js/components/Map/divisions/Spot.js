@@ -46,7 +46,6 @@ class Spot extends React.Component{
         }
         store.dispatch(setAminationMap(true));
         store.dispatch(setAminationSideBar(true));
-
         store.dispatch(setStructure('spot', this.props.id, this.props.name));
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setSpots({divisions: []}));

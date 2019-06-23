@@ -5,7 +5,7 @@ import {store} from '../../../index'
 import Car from "../divisions/Car";
 import {setAminationMap, setAminationSideBar} from "../../../actions";
 
-class ClustererBrigades extends React.Component {
+class ClustererCars extends React.Component {
 
     constructor(props) {
         super(props);
@@ -95,4 +95,4 @@ class ClustererBrigades extends React.Component {
     }
 }
 
-export default ClustererBrigades;
+export default ClustererCars;

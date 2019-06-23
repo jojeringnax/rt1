@@ -54,7 +54,6 @@ class NavigationInSideBar extends React.Component{
             <div className="nav-sidebar" style={{display: 'inline-block'}} id="firm">
                 {
                     Object.keys(this.state.structure).map(level =>  {
-                        console.log(this.state.structure);
                         const id = this.state.structure[level].id;
                         const name = this.state.structure[level].name;
                         return (
