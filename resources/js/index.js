@@ -52,7 +52,7 @@ window.resetCars = () => {
     axios.get(url)
         .then(res => {
             if (typeof res.data === "object") {
-                store.dispatch(setCars([]));
+                store.dispatch(setCars([], false));
                 store.dispatch(setCars(res.data, false));
             } else {
                 console.warn("Via reset_cars-method we have got a "+typeof res.data);
