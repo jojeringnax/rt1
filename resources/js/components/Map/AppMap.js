@@ -11,6 +11,7 @@ import ClustererBrigades from "./clusterers/ClustererBrigades";
 import ClustererCars from './clusterers/ClustererCars';
 import BackButton from "../BackButton";
 import axios from'axios';
+import carsFromRT from '../../data/ts.json';
 
 class MapApp extends React.Component{
     constructor(props){
@@ -28,13 +29,50 @@ class MapApp extends React.Component{
             .then(res => {
                 console.log(res.data);
                 let numCars = 0;
+                let cars = [];
                 res.data.map(car => {
                      if (car.company_id !== null) {
-                         numCars +=1
+                         numCars +=1;
+                         cars.push(car)
                      }
                 });
+                let result = [];
+                let num = 0;
+                let ress = [];
+                carsFromRT.map(ts => {
+                    num = 0;
+                    cars.map(car => {
+                        if(car.id === ts.id) {
+                            result.push(ts)
+                            num+=1
+                        }
+                    });
+                    if(num === 0) {
+                        ress.push(ts)
+                    }
+                });
+                AppServiceProvider
+                console.log(ress)
+                let doubles = [];
+                carsFromRT.map((car, index) => {
+                    carsFromRT.map((el, index1) => {
+                        if(car.id === el.id && index !== index1) {
+                            let vlad = car;
+                            vlad.number = 2;
+                            doubles.map((id, index) => {
+                                if(id.id === car.id) {
+                                    vlad.number +=1;
+                                }
+                            });
+                            doubles.push(vlad);
 
-                console.log(numCars)
+                        }
+                    })
+                });
+
+                console.log(doubles);
+
+                console.log(carsFromRT.length - (doubles.length));
             });
         window.addEventListener('load', () => {
             store.dispatch(setAminationMap(false));

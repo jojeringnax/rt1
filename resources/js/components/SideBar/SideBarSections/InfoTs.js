@@ -24,7 +24,7 @@ class InfoTs extends React.Component{
             <div id="info-ts" className={"info-ts item-sideBar" + (this.state.show ? '' : ' hide')}>
                 <div className="title-ts d-flex justify-content-start">
                     <div>
-                        <img id="img-ts" src={'/img/auto_icon/point_' + this.props.statistic.type + '.svg'} alt="" />
+                        <img id="img-ts" src={'/img/auto_icon/point_blue_' + this.props.statistic.type + '.svg'} alt="" />
                     </div>
                     <div className="header-ts-info">
                         <span id="nameTS" className="">
