@@ -51,7 +51,6 @@ class MapApp extends React.Component{
                         ress.push(ts)
                     }
                 });
-                AppServiceProvider
                 console.log(ress)
                 let doubles = [];
                 carsFromRT.map((car, index) => {
