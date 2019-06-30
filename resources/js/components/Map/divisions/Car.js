@@ -63,7 +63,6 @@ class Car extends React.Component {
 
     handleClick = e => {
         store.dispatch(setStructure('car', this.props.id, this.props.model));
-        store.dispatch(setLevel('car', this.props.id));
         store.dispatch(setAminationSideBar(true));
         this.setState({
             clicked: true
@@ -73,6 +72,7 @@ class Car extends React.Component {
                 this.setState({
                     statistic: res.data
                 },() => {
+                    store.dispatch(setLevel('car', this.props.id));
                     store.dispatch(setCarClicked(false));
                     store.dispatch(setStatisticCar(Object.assign(this.state.statistic, this.props)));
                     store.dispatch(setAminationSideBar(false));

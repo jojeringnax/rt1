@@ -9,7 +9,7 @@ import {
     setBounds,
     setLevel,
     setStatisticDepartment,
-    setStructure, setAminationMap, setAminationSideBar, setCars
+    setStructure, setAminationMap, setAminationSideBar, setCars, setBrigades
 } from "../../../actions";
 
 class Autocolumn extends React.Component{
@@ -48,7 +48,7 @@ class Autocolumn extends React.Component{
         store.dispatch(setAminationSideBar(true));
         store.dispatch(setStructure('autocolumn', this.props.id, this.props.name));
         store.dispatch(setAutocolumns({divisions: []}));
-        store.dispatch(setBadSpots({divisions: []}));
+        store.dispatch(setBrigades({divisions: []}));
         store.dispatch(setSpots({divisions: this.state.children}));
         store.dispatch(setCars([]));
         store.dispatch(setBounds(this.state.bounds));

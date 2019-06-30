@@ -21,19 +21,48 @@ const structure = (state = {
                 car: {id: null, name: 'Нет имени'}
             };
         case 'SET_STRUCTURE':
-            let result = {};
-            for(let key in state) {
-                result[key] = {
-                    id: state.id,
-                    name: state.name
-                };
-                if (action.division === key) {
-                    result[key]['id'] = action.id;
-                    result[key]['name'] = action.name ? action.name : 'Нет имени'
-                } else {
-                    result[key] = state[key];
-                }
+            let result = state;
+            let arr = [];
+            switch (action.division) {
+                case 'organization':
+                    result.organization = {
+                        id:  action.id, name: action.name ? action.name : 'Нет имени'
+                    };
+                    arr = ['autocolumn', 'badSpot', 'spot', 'brigade', 'car'];
+                    break;
+                case 'autocolumn':
+                    result.autocolumn = {
+                        id:  action.id, name: action.name ? action.name : 'Нет имени'
+                    };
+                    arr = ['spot', 'badSpot', 'brigade', 'car'];
+                    break;
+                case 'badSpot':
+                    result.badSpot = {
+                        id:  action.id, name: action.name ? action.name : 'Нет имени'
+                    };
+                    arr = ['brigade', 'car'];
+                    break;
+                case 'spot':
+                    result.spot = {
+                        id:  action.id, name: action.name ? action.name : 'Нет имени'
+                    };
+                    arr = ['brigade', 'car'];
+                    break;
+                case 'brigade':
+                    result.brigade = {
+                        id:  action.id, name: action.name ? action.name : 'Нет имени'
+                    };
+                    arr = ['car'];
+                    break;
+                case 'car':
+                    result.car = {
+                        id:  action.id, name: action.name ? action.name : 'Нет имени'
+                    };
+
             }
+            arr.map(key => {
+                result[key] = {id: null, name: 'Нет имени'}
+            });
             return result;
         default:
             return state;

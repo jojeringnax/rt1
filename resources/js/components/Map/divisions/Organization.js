@@ -6,7 +6,7 @@ import {
     setOrganizations,
     setBadSpots,
     setLevel,
-    setStatisticDepartment, setStructure, setAminationSideBar, setAminationMap, setCars
+    setStatisticDepartment, setStructure, setAminationSideBar, setAminationMap, setCars, setBrigades
 } from "../../../actions";
 import {store} from "../../../index";
 import axios from "axios";
@@ -46,16 +46,22 @@ class Organization extends React.Component {
             alert('Нет ни автоколонн, ни участков у данной организации');
             return false;
         }
+        store.dispatch(setAminationMap(true));
+        store.dispatch(setAminationSideBar(true));
         store.dispatch(setStructure('organization', this.props.id, this.props.description));
         store.dispatch(setOrganizations({divisions:[]}));
+        store.dispatch(setBrigades({divisions:[]}));
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setBadSpots({divisions: this.state.children.badSpots}));
         store.dispatch(setAutocolumns({divisions: this.state.children.autocolumns}));
         store.dispatch(setStatisticDepartment(this.state.statistic));
         store.dispatch(setCars([]));
         store.dispatch(setLevel('organization', this.props.id));
-        store.dispatch(setAminationMap(true));
-        store.dispatch(setAminationSideBar(true));
+
+        setTimeout(function () {
+            store.dispatch(setAminationSideBar(false));
+            store.dispatch(setAminationMap(false));
+        },400);
     };
 
 
@@ -81,7 +87,7 @@ class Organization extends React.Component {
                         autocolumns: autocolumns
                     }
                 });
-            })
+            });
         axios.get('api/organization/' + this.props.id + '/statistic')
             .then(res => {
                 this.setState({

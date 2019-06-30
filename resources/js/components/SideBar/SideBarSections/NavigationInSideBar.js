@@ -61,10 +61,6 @@ class NavigationInSideBar extends React.Component{
                                 className={'nav-' + level + ' item-navbar'}
                                 onClick={() => {
                                     window.onclick[level][id]();
-                                    //console.log(this.state.structure, level);
-                                    // this.state.structure.map(level => {
-                                    //     console.log(level)
-                                    // })
                                 }}
                                 key={id}
                             >{level === "company" ? '' : <img className="arr-nav-sideBar" src='/img/arrow.svg' />} {name}</span>
