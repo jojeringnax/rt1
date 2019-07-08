@@ -26,7 +26,7 @@ class Autocolumn extends React.Component{
             if (ymaps && !this.state.template) {
                 this.setState({
                     template: ymaps.templateLayoutFactory.createClass(
-                        '<div class="bb"><span class="bb-num">'
+                        '<div class="bb"><span class="bb-num-autocolumn">'
                         + this.props.carsNumber
                         + '</span> <span id="auto_name" class="bb-name">'
                         + this.props.name

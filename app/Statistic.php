@@ -89,7 +89,8 @@ class Statistic extends Model
             }
         }
         $carsInfo = Car::getCarsCommonInfo();
-        $resultStatistic['carsTotal'] = $carsInfo['totalCars'];
+        $resultStatistic['carsTotal'] = $carsInfo['carsTotal'];
+        $resultStatistic['carsOnMap'] = $carsInfo['carsOnMap'];
         $resultStatistic['carsLight'] = $carsInfo['types']['light'];
         $resultStatistic['carsTruck'] = $carsInfo['types']['truck'];
         $resultStatistic['carsBus'] = $carsInfo['types']['bus'];
@@ -123,7 +124,8 @@ class Statistic extends Model
             }
         }
         $carsInfo = Car::getCarsInfo($division);
-        $resultStatistic['carsTotal'] = $carsInfo['totalCars'];
+        $resultStatistic['carsTotal'] = $carsInfo['carsTotal'];
+        $resultStatistic['carsOnMap'] = $carsInfo['carsOnMap'];
         $resultStatistic['carsLight'] = $carsInfo['types']['light'];
         $resultStatistic['carsTruck'] = $carsInfo['types']['truck'];
         $resultStatistic['carsBus'] = $carsInfo['types']['bus'];

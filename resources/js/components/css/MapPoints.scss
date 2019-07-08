@@ -11,7 +11,6 @@
     z-index: 0;
     margin-left: 75px;
     position: relative;
-
     .bb-num {
         width: 60px;
         height: 60px;
@@ -19,12 +18,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-image: url("/img/elipse.svg");
+        background-image: url("/img/elipse_new_white.svg");
         background-size: 100%;
         background-repeat: no-repeat;
         background-position: center;
         z-index: 10;
         font-size: 0.8vh;
+        position:relative;
+
+
     }
     .bb-num-org {
         width: 60px;
@@ -40,8 +42,6 @@
         z-index: 10;
         font-size: 0.8vh;
     }
-
-
     .bb-name {
         position: absolute;
         margin-left: 25px;
@@ -62,6 +62,32 @@
     }
 }
 
+.bb-num-autocolumn {
+    width: 60px;
+    height: 60px;
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/img/elipse_autocolumn.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10;
+    font-size: 0.8vh;
+}
+
+.icon-mark {
+    position: absolute;
+    top: -18px;
+    right: -12px;
+    background-image: url("/img/icon/iconMark.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 40px;
+    height: 40px;
+}
 
 .bb-num-spot {
     width: 60px;
@@ -113,7 +139,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-image: url("/img/elipse_white.svg");
+        background-image: url("/img/elipse_new_white.svg");
         background-size: 100%;
         background-position: center;
         z-index: 10;
@@ -238,7 +264,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-image: url("/img/elipse.svg");
+        background-image: url("/img/elipse_new_white.svg");
         background-size: 100%;
         background-position: center;
         z-index: 10;

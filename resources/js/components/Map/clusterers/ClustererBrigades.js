@@ -19,6 +19,8 @@ class ClustererBrigades extends React.Component {
                     layout: ymaps.templateLayoutFactory.createClass([
                         '<div class="bb-cluster-car">',
                         '<span class="bb-num">',
+                        '<span class="icon-mark">',
+                        '</span>',
                         '{{ properties.geoObjects.length }}',
                         '</span></div>'
                     ].join(''))});

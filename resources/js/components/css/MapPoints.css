@@ -18,12 +18,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/img/elipse.svg");
+  background-image: url("/img/elipse_new_white.svg");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
   z-index: 10;
   font-size: 0.8vh;
+  position: relative;
 }
 .bb .bb-num-org {
   width: 60px;
@@ -55,6 +56,18 @@
   text-align: left;
   box-sizing: content-box;
   flex-grow: 1;
+}
+
+.icon-mark {
+  position: absolute;
+  top: -18px;
+  right: -12px;
+  background-image: url("/img/icon/iconMark.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 40px;
+  height: 40px;
 }
 
 .bb-num-spot {
@@ -107,7 +120,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/img/elipse_white.svg");
+  background-image: url("/img/elipse_new_white.svg");
   background-size: 100%;
   background-position: center;
   z-index: 10;
@@ -229,7 +242,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/img/elipse.svg");
+  background-image: url("/img/elipse_new_white.svg");
   background-size: 100%;
   background-position: center;
   z-index: 10;

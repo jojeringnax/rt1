@@ -133,13 +133,31 @@ class InfoDepartment extends React.Component{
                                 ...
                             </span>
                         </div>
-                        <div className={this.state.withoutTerminal ? "item-info" : "item-info hide"} onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} style={{cursor:'pointer'}}>
-                            <span id="" className="trans-auto"><img src="/img/arrow_top.svg" alt="" style={{
-                                margin:"0 10px 0 0",
-                                height:'0.9vh',
-                                width: '0.9vh'
-                            }}/>Без терминала</span>
-                            <span id="OnLine" className="figures">{parseInt(this.props.statistic.carsTotal) - parseInt(this.props.statistic.carsTerminal)}</span>
+                        {/*<div className={this.state.withoutTerminal ? "item-info" : "item-info hide"} onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} style={{cursor:'pointer'}}>*/}
+                        {/*    <span id="" className="trans-auto"><img src="/img/arrow_top.svg" alt="" style={{*/}
+                        {/*        margin:"0 10px 0 0",*/}
+                        {/*        height:'0.9vh',*/}
+                        {/*        width: '0.9vh'*/}
+                        {/*    }}/>Без терминала</span>*/}
+                        {/*    <span id="OnLine" className="figures">{parseInt(this.props.statistic.carsTotal) - parseInt(this.props.statistic.carsTerminal)}</span>*/}
+                        {/*</div>*/}
+                        <div className={this.state.withoutTerminal ? "item-info d-flex flex-column" : "item-info hide d-flex flex-column"} onClick={()=>{this.setState({withoutTerminal: !this.state.withoutTerminal})}} style={{cursor:'pointer'}}>
+                            <div className="d-flex justify-content-between" style={{width: "100%"}}>
+                              <span id="" className="trans-auto">
+                                    <img src='/img/arrow_top.svg' alt="" style={{
+                                        margin:"0 10px 0 0",
+                                        height:'0.9vh',
+                                        width: '0.9vh'
+                                    }}/>
+                                    Без терминала
+                            </span>
+                                <span id="OnLine" className="figures">{parseInt(this.props.statistic.carsTotal) - parseInt(this.props.statistic.carsTerminal)}</span>
+                            </div>
+                            <div className="d-flex justify-content-between" style={{width: "100%"}}>
+                            <span id="" className="trans-auto" style={{marginLeft: '0.9vh', paddingLeft: '10px'}}>
+                                На карте</span>
+                                <span id="OnLine" className="figures">{parseInt(this.props.statistic.carsOnMap)}</span>
+                            </div>
                         </div>
                     </div>
 

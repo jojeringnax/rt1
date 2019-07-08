@@ -138,7 +138,11 @@ class Car extends Model
         $carsBus = 0;
         $carsSpec = 0;
         $carsTerminal= 0;
+        $carsOnMap=0;
         foreach ($cars as $car) {
+            if($car->x_pos !== null) {
+                $carsOnMap += 1;
+            }
             if ($car->type === Car::TYPES['Легковые ТС']) {
                 $carsLight++;
             }
@@ -168,7 +172,8 @@ class Car extends Model
             }
         }
         return [
-            'totalCars' => count($cars),
+            'carsOnMap' => $carsOnMap,
+            'carsTotal' => count($cars),
             'carsTerminal' => $carsTerminal,
             'statuses' => [
                 'G' => $carsReady,
@@ -203,9 +208,13 @@ class Car extends Model
         $carsSpec = 0;
         $carsTotal = 0;
         $carsTerminal = 0;
+        $carsOnMap = 0;
         if ($division->cars !== null) {
             $carsTotal = count($cars);
             foreach ($cars as $car) {
+                if($car->x_pos !== null) {
+                    $carsOnMap += 1;
+                }
                 if ($car->type === Car::TYPES['Легковые ТС']) {
                     $carsLight++;
                 }
@@ -236,7 +245,8 @@ class Car extends Model
             }
         }
         return [
-            'totalCars' => $carsTotal,
+            'carsOnMap' => $carsOnMap,
+            'carsTotal' => $carsTotal,
             'carsTerminal' => $carsTerminal,
             'statuses' => [
                 'G' => $carsReady,
