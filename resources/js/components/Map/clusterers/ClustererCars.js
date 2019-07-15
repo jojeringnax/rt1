@@ -33,7 +33,7 @@ class ClustererCars extends React.Component {
                         '{% for geoObject in properties.geoObjects %}',
                         '<li><a onclick="window.onclick.car[\'{{geoObject.properties.id}}\']()"',
                         ' href=# class="list_item car-baloon">',
-                        '<img src="images/auto_icon/point_blue_','' +
+                        '<img src="/img/auto_icon/point_blue_','' +
                         '{{geoObject.properties.type}}',
                         '.svg" alt="">',
                         '{{ geoObject.properties.model }}',

@@ -110,6 +110,7 @@ class BadSpot extends React.Component{
                     description: this.props.description,
                     children: this.state.children,
                     statistic: this.state.statistic,
+                    name: this.props.name,
                     id: this.props.id,
                     bounds: this.state.bounds,
                     handleClick: this.handleClick

@@ -9,7 +9,7 @@ import {
     setCars,
     setLevel,
     setStatisticDepartment,
-    setStructure, setAminationMap, setAminationSideBar
+    setStructure, setAminationMap, setAminationSideBar, setBadSpots
 } from "../../../actions";
 
 class Spot extends React.Component{
@@ -49,6 +49,7 @@ class Spot extends React.Component{
         store.dispatch(setStructure('spot', this.props.id, this.props.name));
         store.dispatch(setBounds(this.state.bounds));
         store.dispatch(setSpots({divisions: []}));
+        store.dispatch(setBadSpots({divisions: []}));
         store.dispatch(setBrigades({divisions: this.state.children.brigades}));
         store.dispatch(setCars(this.state.children.cars));
         store.dispatch(setLevel('spot', this.props.id));
@@ -105,6 +106,7 @@ class Spot extends React.Component{
                     description: this.props.description,
                     children: this.state.children,
                     statistic: this.state.statistic,
+                    name: this.props.name,
                     id: this.props.id,
                     bounds: this.state.bounds,
                     handleClick: this.handleClick

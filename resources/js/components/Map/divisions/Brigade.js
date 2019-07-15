@@ -90,6 +90,7 @@ class Brigade extends React.Component{
                 properties={{
                     carsNumber: this.props.carsNumber,
                     description: this.props.description,
+                    name: this.props.name,
                     children: this.state.children,
                     statistic: this.state.statistic,
                     id: this.props.id,

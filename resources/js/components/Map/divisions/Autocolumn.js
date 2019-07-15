@@ -49,6 +49,7 @@ class Autocolumn extends React.Component{
         store.dispatch(setStructure('autocolumn', this.props.id, this.props.name));
         store.dispatch(setAutocolumns({divisions: []}));
         store.dispatch(setBrigades({divisions: []}));
+        store.dispatch(setBadSpots({divisions: []}));
         store.dispatch(setSpots({divisions: this.state.children}));
         store.dispatch(setCars([]));
         store.dispatch(setBounds(this.state.bounds));
@@ -93,6 +94,7 @@ class Autocolumn extends React.Component{
                 properties={{
                     carsNumber: this.props.carsNumber,
                     description: this.props.description,
+                    name: this.props.name,
                     children: this.state.children,
                     statistic: this.state.statistic,
                     id: this.props.id,
