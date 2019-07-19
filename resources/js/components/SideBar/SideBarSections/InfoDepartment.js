@@ -340,7 +340,7 @@ class InfoDepartment extends React.Component{
                         <span id="lmch-2" className="p-meanings-2nd"><span id="fuel" className="span-figures-2nd">
                             {
                                 (this.props.statistic.fuel === 0 && this.props.statistic.time === 0) ? 0 :
-                                (this.state.statistic.time/this.state.statistic.fuel).toFixed(2)
+                                (this.props.statistic.time/this.props.statistic.fuel).toFixed(2)
                             }
                         </span> мч\л<br/>ТМЧ</span>
                         </div>
