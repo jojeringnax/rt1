@@ -340,9 +340,9 @@ class InfoDepartment extends React.Component{
                         <span id="lmch-2" className="p-meanings-2nd"><span id="fuel" className="span-figures-2nd">
                             {
                                 (this.props.statistic.fuel === 0 && this.props.statistic.time === 0) ? 0 :
-                                (this.props.statistic.fuel/this.props.statistic.time).toFixed(2)
+                                (this.state.statistic.time/this.state.statistic.fuel).toFixed(2)
                             }
-                        </span> л\мч<br/>ТМЧ</span>
+                        </span> мч\л<br/>ТМЧ</span>
                         </div>
                     <div className="div-meanings">
                         <span id="" className="p-meanings-2nd"><span id="terminals" className="span-figures-2nd">{this.props.statistic.carsTerminal}</span><br/>Терминалов</span>

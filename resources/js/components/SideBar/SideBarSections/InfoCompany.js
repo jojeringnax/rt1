@@ -38,6 +38,7 @@ class InfoCompany extends React.Component{
 
 
     render() {
+        console.log(this.state.statistic);
         return(
             <div id="info-company" className={"istatisticDepartmentnfo-company item-sideBar" + (this.state.show ? '' : ' hide')}>
                 <div>
@@ -229,9 +230,10 @@ class InfoCompany extends React.Component{
                             <span id="lmch-2" className="p-meanings-2nd"><span id="comp_fuel" className="span-figures-2nd">
                                 {
                                     (this.state.statistic.fuel === 0 && this.state.statistic.time === 0) ? 0 :
-                                    ((this.state.statistic.fuel/this.state.statistic.time).toFixed(2))
+                                    ((this.state.statistic.time/this.state.statistic.fuel).toFixed(2))
                                 }
-                            </span> л\мч<br/>ТМЧ</span>
+
+                            </span> мч\л<br/>ТМЧ</span>
                         </div>{/*END__INFO_COMPANY*/}
                         <div className="div-meanings">
                             <span id="" className="p-meanings-2nd"><span id="comp_terminals" className="span-figures-2nd">{this.state.statistic.carsTerminal}</span><br/>Терминалов</span>
