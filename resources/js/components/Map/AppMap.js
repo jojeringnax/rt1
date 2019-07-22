@@ -23,8 +23,6 @@ class MapApp extends React.Component{
     }
 
     componentDidMount() {
-
-        console.log('hiu')
         axios.get('/api/cars')
             .then(res => {
                 // console.log(res.data);
@@ -96,7 +94,7 @@ class MapApp extends React.Component{
                     <div className="app-map">
                         <div className={(this.props.animationMap ? '' : 'hide')+ " overlay_block"}></div>
                         <div className={(this.props.animationMap ? 'loading_process' : '')} style={{position:"relative"}}>
-                            <BackButton />
+                            {this.props.level.level !== "company" ? <BackButton /> : <></>}
                             <Map
                                 onBoundsChange={this.handleBoundsChange}
                                 width={"100%"}

@@ -158,7 +158,7 @@ class InfoTs extends React.Component{
                                     <img src='/img/info_auto_icon/gas-station.svg' alt="gasStation"/>
                                 </div>
                                 <div className="d-flex flex-column align-items-start item-ts-text">
-                                    <span className="title-ts-text">Топливо по <br/>норме, л:</span>
+                                    <span className="title-ts-text">Расход топлива по <br/>норме, л:</span>
                                     <span id="fuel_norm" className="text-ts">
                                     {
                                         this.props.statistic.fuel_norm ? this.props.statistic.fuel_norm : "Н/Д"
