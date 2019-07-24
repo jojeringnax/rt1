@@ -111,7 +111,8 @@ class Organization extends Model
         foreach ($organizations as $organization) {
             $resultArray['divisions'][] = [
                 'organization' => $organization,
-                'carsNumber' => Car::where('x_pos', '!=', null)->where('organization_id', $organization->id)->count()
+                'carsNumber' => Car::where('x_pos', '!=', null)->where('organization_id', $organization->id)->count(),
+                'totalCarsNumber' => Car::where('company_id', '!=', null)->where('organization_id', $organization->id)->count()
             ];
         }
         return $resultArray;

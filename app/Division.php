@@ -159,7 +159,8 @@ class Division extends Model
             }
             $resultArray['divisions'][] = [
                 $childType => $finalChild,
-                'carsNumber' => Car::where('x_pos', '!=', null)->where($childType.'_id', $finalChild->id)->count()
+                'carsNumber' => Car::where('x_pos', '!=', null)->where($childType.'_id', $finalChild->id)->count(),
+                'totalCarsNumber' => Car::where('company_id', '!=', null)->where($childType.'_id', $finalChild->id)->count()
             ];
         }
         return $resultArray;

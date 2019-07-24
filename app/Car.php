@@ -141,7 +141,7 @@ class Car extends Model
         $carsOnMap=0;
         foreach ($cars as $car) {
             if($car->x_pos !== null) {
-                $carsOnMap += 1;
+                $carsOnMap++;
             }
             if ($car->type === Car::TYPES['Легковые ТС']) {
                 $carsLight++;
@@ -168,7 +168,7 @@ class Car extends Model
                 $carsInline++;
             }
             if($car->terminal) {
-                $carsTerminal ++;
+                $carsTerminal++;
             }
         }
         return [
