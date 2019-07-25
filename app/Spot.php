@@ -88,9 +88,17 @@ class Spot extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function cars()
+    public function carsWithCoordinates()
     {
         return $this->hasMany(Car::class)->where('x_pos', '!=', null);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cars()
+    {
+        return $this->hasMany(Car::class)->where('company_id', '!=', null);;
     }
 
     /**
