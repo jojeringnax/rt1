@@ -13,7 +13,7 @@ import axios from "axios";
 export let store = createStore(rootReducer, applyMiddleware(thunk) && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 window.config = {
-    interval: 30000
+    interval: 100000
 };
 
 
@@ -64,9 +64,12 @@ window.resetCars = () => {
                     }
                 });
             } else {
-                console.warn("Via reset_cars-method we have got a "+typeof res.data);
+                console.warn("Via reset_cars-method we have got a " + typeof res.data);
             }
-        });
+        })
+        .catch(err => {
+            console.log(err)
+        })
 };
 
 ReactDOM.render(
