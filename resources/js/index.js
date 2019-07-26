@@ -13,7 +13,7 @@ import axios from "axios";
 export let store = createStore(rootReducer, applyMiddleware(thunk) && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 window.config = {
-    interval: 100000
+    interval: 50000
 };
 
 
@@ -52,23 +52,27 @@ window.resetCars = () => {
     let resCars = [];
     axios.get(url)
         .then(res => {
+            console.log('---res', res, res.data)
             if (typeof res.data === "object") {
                 store.dispatch(setCars([], false));
+
                 if(document.querySelector('.activeTransport').getAttribute('data-typecar') === "4") {
                     store.dispatch(setCars(res.data));
                     return false;
                 }
+                console.log(document.querySelector('.activeTransport').getAttribute('data-typecar'))
                 res.data.map(car => {
                     if(car.type === parseInt(document.querySelector('.activeTransport').getAttribute('data-typecar'))){
                         resCars.push(car);
                     }
                 });
+                store.dispatch(setCars(resCars));
             } else {
                 console.warn("Via reset_cars-method we have got a " + typeof res.data);
             }
         })
         .catch(err => {
-            console.log(err)
+            console.log('---err', err)
         })
 };
 
