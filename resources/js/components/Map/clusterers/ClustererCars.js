@@ -4,6 +4,11 @@ import {store} from '../../../index'
 
 import Car from "../divisions/Car";
 import {setAminationMap, setAminationSideBar} from "../../../actions";
+const statuses = {
+    "0": 'G',
+    "1": 'R',
+    "2": 'TO'
+};
 
 class ClustererCars extends React.Component {
 
@@ -33,8 +38,14 @@ class ClustererCars extends React.Component {
                         '{% for geoObject in properties.geoObjects %}',
                         '<li><a onclick="window.onclick.car[\'{{geoObject.properties.id}}\']()"',
                         ' href=# class="list_item car-baloon">',
-                        '<img src="/img/auto_icon/point_blue_','' +
-                        '{{geoObject.properties.type}}',
+                        '<img ',
+                        'src="',
+                        '{% if geoObject.properties.status != 0 %}',
+                        '/img/auto_icon/point_noIn_',
+                        '{% else %}',
+                        '/img/auto_icon/point_blue_',
+                        '{% endif %}',
+                        '{{ geoObject.properties.type }}',
                         '.svg" alt="">',
                         '{{ geoObject.properties.model }}',
                         '</a></li>',
@@ -45,6 +56,7 @@ class ClustererCars extends React.Component {
             }
         };
     };
+
 
     render() {
         return (

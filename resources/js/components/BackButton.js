@@ -10,7 +10,7 @@ import {
     setSpots,
     setStructure
 } from "../actions";
-import axios from "axios";
+import {images} from "./SideBar/SideBarSections/InfoDepartment";
 
 class BackButton extends React.Component{
     constructor(props) {
@@ -18,6 +18,17 @@ class BackButton extends React.Component{
     }
 
     handleClick = () => {
+        store.dispatch(setAminationMap(true));
+        store.dispatch(setAminationSideBar(true));
+        const numberTransportDepartment = document.querySelectorAll('.transport-department');
+        numberTransportDepartment.forEach(function(elem){
+            elem.getAttribute('data-typecar') === "4" ? elem.classList.add('activeTransport') :  elem.classList.remove('activeTransport');
+        });
+        const numberImgTransportDepartment = document.querySelectorAll('.img-transport');
+        numberImgTransportDepartment.forEach(function(elementImg){
+            elementImg.setAttribute('src', images.notActive[parseInt(elementImg.getAttribute('data-imgtypecar'))]);
+        });
+
         const str = store.getState().structure;
         const isWithBadSpot = str.badSpot.id !== null;
         const isWithBrigade = str.brigade.id !== null;
@@ -69,8 +80,7 @@ class BackButton extends React.Component{
         store.dispatch(setCarClicked(false));
         store.dispatch(setCars([]));
         store.dispatch(setStructure(currentLevel, null, 'Нет имени'));
-        return window.onclick[elementNeeded][idNeeded]();
-
+        return window.onclick[elementNeeded][idNeeded]();A
     };
 
     render() {

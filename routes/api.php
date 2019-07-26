@@ -80,6 +80,10 @@ Route::get('spot/{id}/reset_cars', function ($id) {
     return \App\Division::getChildrenForDivision(\App\Spot::class, $id, true);
 });
 
+Route::get('car/{id}', function ($id) {
+    return print_r(json_decode(app(\App\Soap::class)->GetCarsPosition(['CarsJson' => json_encode([['CarsID' => $id]])])->return), true);
+});
+
 Route::get('spot/{id}/statistic', function ($id) {
     return \App\Statistic::getStatisticForDivision(\App\Spot::class, $id)->toJson();
 });

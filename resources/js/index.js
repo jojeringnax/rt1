@@ -49,11 +49,20 @@ window.resetCars = () => {
         }
     }
     const url = "/api/" + level + "/" + id + "/reset_cars";
+    let resCars = [];
     axios.get(url)
         .then(res => {
             if (typeof res.data === "object") {
                 store.dispatch(setCars([], false));
-                store.dispatch(setCars(res.data, false));
+                if(document.querySelector('.activeTransport').getAttribute('data-typecar') === "4") {
+                    store.dispatch(setCars(res.data));
+                    return false;
+                }
+                res.data.map(car => {
+                    if(car.type === parseInt(document.querySelector('.activeTransport').getAttribute('data-typecar'))){
+                        resCars.push(car);
+                    }
+                });
             } else {
                 console.warn("Via reset_cars-method we have got a "+typeof res.data);
             }

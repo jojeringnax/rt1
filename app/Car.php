@@ -142,19 +142,20 @@ class Car extends Model
         foreach ($cars as $car) {
             if($car->x_pos !== null) {
                 $carsOnMap++;
+                if ($car->type === Car::TYPES['Легковые ТС']) {
+                    $carsLight++;
+                }
+                else if ($car->type === Car::TYPES['Грузовые ТС']) {
+                    $carsTruck++;
+                }
+                else if ($car->type === Car::TYPES['Автобусы']) {
+                    $carsBus++;
+                }
+                else if ($car->type === Car::TYPES['Спецтехника']) {
+                    $carsSpec++;
+                }
             }
-            if ($car->type === Car::TYPES['Легковые ТС']) {
-                $carsLight++;
-            }
-            else if ($car->type === Car::TYPES['Грузовые ТС']) {
-                $carsTruck++;
-            }
-            else if ($car->type === Car::TYPES['Автобусы']) {
-                $carsBus++;
-            }
-            else if ($car->type === Car::TYPES['Спецтехника']) {
-                $carsSpec++;
-            }
+
             if ($car->status === Car::STATUSES['G']) {
                 $carsReady++;
             }
@@ -214,19 +215,20 @@ class Car extends Model
             foreach ($cars as $car) {
                 if($car->x_pos !== null) {
                     $carsOnMap += 1;
+                    if ($car->type === Car::TYPES['Легковые ТС']) {
+                        $carsLight++;
+                    }
+                    else if ($car->type === Car::TYPES['Грузовые ТС']) {
+                        $carsTruck++;
+                    }
+                    else if ($car->type === Car::TYPES['Автобусы']) {
+                        $carsBus++;
+                    }
+                    else if ($car->type === Car::TYPES['Спецтехника']) {
+                        $carsSpec++;
+                    }
                 }
-                if ($car->type === Car::TYPES['Легковые ТС']) {
-                    $carsLight++;
-                }
-                else if ($car->type === Car::TYPES['Грузовые ТС']) {
-                    $carsTruck++;
-                }
-                else if ($car->type === Car::TYPES['Автобусы']) {
-                    $carsBus++;
-                }
-                else if ($car->type === Car::TYPES['Спецтехника']) {
-                    $carsSpec++;
-                }
+
                 if ($car->status === Car::STATUSES['G']) {
                     $carsReady++;
                 }

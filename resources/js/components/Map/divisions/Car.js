@@ -11,6 +11,13 @@ import {
     setStructure
 } from "../../../actions";
 
+const statuses = {
+    0: 'G',
+    1: 'R',
+    2: 'TO'
+};
+
+
 class Car extends React.Component {
 
     constructor(props){
@@ -28,20 +35,20 @@ class Car extends React.Component {
                 this.setState({
                     template:
                         ymaps.templateLayoutFactory.createClass(
-                            '<div class="bb"><span class="' +
-                            ((this.props.status !== 'R' && this.props.status !== 'TO') ? 'bb-num-car' : 'bb-num-car-inline') +
+                            '<div class="bb" data-status="'+statuses[this.props.status]+'"><span class="' +
+                            ((statuses[parseInt(this.props.status)] !== 'R' && statuses[parseInt(this.props.status)] !== 'TO') ? 'bb-num-car' : 'bb-num-car-inline') +
                             '"><img src="' +
-                            (this.props.status !== 'R' && this.props.status !== 'TO' ?
+                            (statuses[parseInt(this.props.status)] !== 'R' && statuses[parseInt(this.props.status)] !== 'TO' ?
                                 '/img/auto_icon/point_blue_' + this.props.type + '.svg' :
                                 '/img/auto_icon/point_noIn_' + this.props.type + '.svg') +
                             '" alt="auto"></span></div>'
                         ),
                     templateClicked:
                         ymaps.templateLayoutFactory.createClass(
-                            '<div class="bb"><span class="' +
-                            ((this.props.status !== 'R' && this.props.status !== 'TO') ? 'bb-num-car-white' : 'bb-num-car-inline_checked') +
+                            '<div class="bb" data-status="'+statuses[this.props.status]+'"><span class="' +
+                            ((statuses[parseInt(this.props.status)] !== 'R' && statuses[parseInt(this.props.status)] !== 'TO') ? 'bb-num-car-white' : 'bb-num-car-inline_checked') +
                             '"><img src="' +
-                            (this.props.status !== 'R' && this.props.status !== 'TO' ?
+                            (statuses[parseInt(this.props.status)] !== 'R' && statuses[parseInt(this.props.status)] !== 'TO' ?
                                 '/img/auto_icon/point_' + this.props.type + '.svg' :
                                 '/img/auto_icon/point_noIn_check_' + this.props.type + '.svg') +
                             '" alt="auto"></span></div>'
@@ -107,7 +114,8 @@ class Car extends React.Component {
                     type: this.props.type,
                     model: this.props.model,
                     number: this.props.number,
-                    description: this.props.description
+                    description: this.props.description,
+                    status: this.props.status
                 }}
                 modules={[
                     "geoObject.addon.hint"

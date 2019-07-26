@@ -12,7 +12,6 @@ class ClustererBrigades extends React.Component {
             layout: null,
             balloonContentLayout: null
         };
-
         this.createTemplateLayoutFactory = (ymaps) => {
             if (ymaps && !this.state.template) {
                 this.setState({

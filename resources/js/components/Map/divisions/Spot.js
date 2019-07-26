@@ -26,7 +26,7 @@ class Spot extends React.Component{
             if (ymaps && !this.state.template) {
                 this.setState({
                     template: ymaps.templateLayoutFactory.createClass(
-                        '<div class="bb"><span class="bb-num-spot">'
+                        '<div class="bb" data-id="'+ this.props.id+ '"><span class="bb-num-spot">'
                         + this.props.carsNumber
                         + '</span> <span id="spot_name" class="bb-name">'
                         + this.props.name

@@ -5,7 +5,7 @@ import CircularProgressbar from 'react-circular-progressbar';
 import {store} from "../../../index";
 import {setCars} from "../../../actions";
 
-const images = {
+export const images = {
     active:{
         0: '/img/auto_icon/point_0.svg',
         1: '/img/auto_icon/point_1.svg',
@@ -107,6 +107,7 @@ class InfoDepartment extends React.Component{
                         <div className="ts-title">
                             <span className="img"><img src="/img/delivery-truck.svg" alt="deliveryTruck" className="span-yan/img-h3"/></span>
                             <span id="tranport-means" className="ts-text h3-main">Транспортные средства</span>
+
                         </div>
                         <div id="" className="item-info">
                             <span id="" className="trans-auto">Всего, шт.</span>
