@@ -42,6 +42,7 @@ class CarsCommand extends Command
      */
     public function handle()
     {
+        Car::where('id', '! =', null)->delete();
         ini_set('memory_limit', '1000M');
         ini_set('max_execution_time', '0');
         $client = app(Soap::class);
