@@ -85,6 +85,11 @@ class Statistic extends Model
         $resultStatistic = new self;
         foreach ($statistics as $statistic) {
             foreach ($statistic->getFillable() as $attribute) {
+                if ($attribute === 'applications_total') {
+                    if (in_array($statistic->organization_id, ['5bf99156-1539-11e3-bd30-00155d3dc105', 'a6a7a6c3-1a46-11e5-be74-00155dc6002b'])) {
+                        continue;
+                    }
+                }
                 $resultStatistic->$attribute += $statistic->$attribute;
             }
         }

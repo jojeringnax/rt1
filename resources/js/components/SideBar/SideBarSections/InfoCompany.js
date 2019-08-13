@@ -143,53 +143,53 @@ class InfoCompany extends React.Component{
     <span className="text">Показатели компании</span>
     </div>
     <div className="item-bar">
-    <div className="circle-block" >
-    <span id="comp_applications_ac_per" className="p-bar">
-    {
-    (this.state.statistic.applications_ac/this.state.statistic.applications_total).toFixed(2)*100
-    }%
-    </span>
-    {/*<div id="comp_applications_ac" className="circle"></div>*/}
-    <CircularProgressbar
-    percentage={
-    (this.state.statistic.applications_ac/this.state.statistic.applications_total).toFixed(2)*100
-    }
-    text={""}
-    styles={{
-    path: {
-    stroke: "#27AE60",
-    strokeLinecap: 'butt',
-    transition: 'stroke-dashoffset 3s ease 1s',
-    }
-    }}
-    />
-    </div>
-    <div className="div-bar-text">
-    <span id="filed" className="p-bar-text">Поданы через АС<br/>"Авто-Контроль", %</span>
-    </div>
+        <div className="circle-block" >
+            <span id="comp_applications_ac_per" className="p-bar">
+                {
+                    (this.state.statistic.applications_ac/this.state.statistic.applications_total).toFixed(2)*100
+                }%
+             </span>
+            {/*<div id="comp_applications_ac" className="circle"></div>*/}
+            <CircularProgressbar
+                percentage={
+                (this.state.statistic.applications_ac/this.state.statistic.applications_total).toFixed(2)*100
+                }
+                text={""}
+                styles={{
+                        path: {
+                        stroke: "#27AE60",
+                        strokeLinecap: 'butt',
+                        transition: 'stroke-dashoffset 3s ease 1s',
+                    }
+                }}
+            />
+        </div>
+        <div className="div-bar-text">
+            <span id="filed" className="p-bar-text">Подано через “Авто-Контроль” + МП, %</span>
+        </div>
     </div>
     <div className="item-bar">
-    <div className="circle-block" >
-    <span id="comp_waybills_total_per" className="p-bar">
-    {
-    (this.state.statistic.waybills_processed  === 0 && this.state.statistic.waybills_total === 0) ? 0 :
-    (this.state.statistic.waybills_processed/this.state.statistic.waybills_total).toFixed(2)*100
-    }%
-    </span>
-    <CircularProgressbar
-    percentage={
-    (this.state.statistic.waybills_processed  === 0 && this.state.statistic.waybills_total === 0) ? 0 :
-    (this.state.statistic.waybills_processed/this.state.statistic.waybills_total).toFixed(2)*100
-    }
-    text={""}
-    styles={{
-    path: {
-    stroke: "#27AE60",
-    strokeLinecap: 'butt',
-    transition: 'stroke-dashoffset 3s ease 1s',
-    }
-    }}
-    />
+        <div className="circle-block" >
+            <span id="comp_waybills_total_per" className="p-bar">
+                {
+                    (this.state.statistic.waybills_processed  === 0 && this.state.statistic.waybills_total === 0) ? 0 :
+                    (this.state.statistic.waybills_processed/this.state.statistic.waybills_total).toFixed(2)*100
+                }%
+            </span>
+            <CircularProgressbar
+                percentage={
+                    (this.state.statistic.waybills_processed  === 0 && this.state.statistic.waybills_total === 0) ? 0 :
+                    (this.state.statistic.waybills_processed/this.state.statistic.waybills_total).toFixed(2)*100
+                }
+                text={""}
+                styles={{
+                    path: {
+                    stroke: "#27AE60",
+                    strokeLinecap: 'butt',
+                    transition: 'stroke-dashoffset 3s ease 1s',
+                }
+                }}
+            />
     </div>
     <div className="div-bar-text">
     <span id="processed" className="p-bar-text-str">Обработано ПЛ, %</span>
