@@ -146,13 +146,13 @@ class InfoCompany extends React.Component{
         <div className="circle-block" >
             <span id="comp_applications_ac_per" className="p-bar">
                 {
-                    (this.state.statistic.applications_ac/this.state.statistic.applications_total).toFixed(2)*100
+                    ((this.state.statistic.applications_ac + this.state.statistic.applications_mp)/this.state.statistic.applications_total).toFixed(2)*100
                 }%
              </span>
             {/*<div id="comp_applications_ac" className="circle"></div>*/}
             <CircularProgressbar
                 percentage={
-                (this.state.statistic.applications_ac/this.state.statistic.applications_total).toFixed(2)*100
+                    ((this.state.statistic.applications_ac + this.state.statistic.applications_mp)/this.state.statistic.applications_total).toFixed(2)*100
                 }
                 text={""}
                 styles={{

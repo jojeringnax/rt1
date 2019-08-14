@@ -236,11 +236,11 @@ class InfoDepartment extends React.Component{
                         <div className="ilia" >
                             <span id="applications_ac_per" className="p-bar">
                                 {
-                                    Math.round(((this.props.statistic.applications_ac/this.props.statistic.applications_total).toFixed(2))*100)
+                                    Math.round(((this.props.statistic.applications_ac + this.props.statistic.applications_mp)/this.props.statistic.applications_total).toFixed(2)*100)
                                 }%
                             </span>
                             <CircularProgressbar
-                                percentage={(this.props.statistic.applications_ac/this.props.statistic.applications_total).toFixed(2)*100}
+                                percentage={((this.props.statistic.applications_ac + this.props.statistic.applications_mp)/this.props.statistic.applications_total).toFixed(2)*100}
                                 text={""}
                                 styles={{
                                     path: {
