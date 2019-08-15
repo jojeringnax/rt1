@@ -87,6 +87,7 @@ class Car extends React.Component {
                 });
             })
             .catch(err => {
+                alert("Данных по машине нет");
                 store.dispatch(setAminationSideBar(false));
                 store.dispatch(setAminationMap(false));
             })
