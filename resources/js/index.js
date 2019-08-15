@@ -6,7 +6,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
-import {setOrganizationsPreload, resetApp, setCars} from "./actions";
+import {setOrganizationsPreload, resetApp, setCars, setAminationSideBar, setAminationMap} from "./actions";
 import axios from "axios";
 
 
@@ -38,6 +38,7 @@ window.resetCars = () => {
     let level = store.getState().level.level !== "badSpot" ? store.getState().level.level : "bad_spot";
     let id = store.getState().level.id;
     const structure = store.getState().structure;
+
     if (level === "car") {
         console.log("User has chosen a car, so we need to take the level before");
         if (structure.spot.id !== null) {
@@ -53,6 +54,8 @@ window.resetCars = () => {
     axios.get(url)
         .then(res => {
             console.log('---res', res, res.data)
+            store.dispatch(setAminationSideBar(false));
+            store.dispatch(setAminationMap(false));
             if (typeof res.data === "object") {
                 store.dispatch(setCars([], false));
 
