@@ -35,6 +35,8 @@ window.onclick = {
 
 
 window.resetCars = () => {
+    store.dispatch(setAminationSideBar(false));
+    store.dispatch(setAminationMap(false));
     let level = store.getState().level.level !== "badSpot" ? store.getState().level.level : "bad_spot";
     let id = store.getState().level.id;
     const structure = store.getState().structure;
@@ -54,8 +56,7 @@ window.resetCars = () => {
     axios.get(url)
         .then(res => {
             console.log('---res', res, res.data)
-            store.dispatch(setAminationSideBar(false));
-            store.dispatch(setAminationMap(false));
+
             if (typeof res.data === "object") {
                 store.dispatch(setCars([], false));
 
