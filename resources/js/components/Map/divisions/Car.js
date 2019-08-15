@@ -87,7 +87,7 @@ class Car extends React.Component {
                 });
             })
             .catch(err => {
-                alert("Данных по машине нет");
+                alert("Навигационный терминал в данном ТС временно недоступен");
                 store.dispatch(setAminationSideBar(false));
                 store.dispatch(setAminationMap(false));
             })
@@ -96,7 +96,6 @@ class Car extends React.Component {
 
     componentDidMount() {
         window.onclick.car[this.props.id] = this.handleClick;
-
     }
 
     render() {

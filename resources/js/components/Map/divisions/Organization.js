@@ -6,6 +6,7 @@ import {
     setOrganizations,
     setBadSpots,
     setLevel,
+    setSpots,
     setStatisticDepartment, setStructure, setAminationSideBar, setAminationMap, setCars, setBrigades
 } from "../../../actions";
 import {store} from "../../../index";
@@ -46,12 +47,14 @@ class Organization extends React.Component {
             alert('Нет ни автоколонн, ни участков у данной организации');
             return false;
         }
+
         store.dispatch(setAminationMap(true));
         store.dispatch(setAminationSideBar(true));
         store.dispatch(setStructure('organization', this.props.id, this.props.description));
         store.dispatch(setOrganizations({divisions:[]}));
         store.dispatch(setBrigades({divisions:[]}));
         store.dispatch(setBounds(this.state.bounds));
+        store.dispatch(setSpots({divisions:[]}));
         store.dispatch(setBadSpots({divisions: this.state.children.badSpots}));
         store.dispatch(setAutocolumns({divisions: this.state.children.autocolumns}));
         store.dispatch(setStatisticDepartment(this.state.statistic));
@@ -67,6 +70,7 @@ class Organization extends React.Component {
 
     componentDidMount() {
         window.onclick.organization[this.props.id] = this.handleClick;
+
         axios.get('/api/organization/' + this.props.id + '/children')
             .then(res => {
                 this.setState({

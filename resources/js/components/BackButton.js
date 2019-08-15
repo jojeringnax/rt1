@@ -80,7 +80,7 @@ class BackButton extends React.Component{
         store.dispatch(setCarClicked(false));
         store.dispatch(setCars([]));
         store.dispatch(setStructure(currentLevel, null, 'Нет имени'));
-        return window.onclick[elementNeeded][idNeeded]();A
+        return window.onclick[elementNeeded][idNeeded]();
     };
 
     render() {
