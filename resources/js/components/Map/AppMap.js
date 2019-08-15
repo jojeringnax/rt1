@@ -100,6 +100,7 @@ class MapApp extends React.Component{
                     version={"2.1"}
                     >
                     <div className="app-map">
+                        <div className={(this.props.animationSideBar ? '' : 'hide') + ' overlay_block_car'}> </div>
                         <div className={(this.props.animationMap ? '' : 'hide')+ " overlay_block"}></div>
                         <div className={(this.props.animationMap ? 'loading_process' : '')} style={{position:"relative"}}>
                             {this.props.level.level !== "company" ? <BackButton /> : <></>}
