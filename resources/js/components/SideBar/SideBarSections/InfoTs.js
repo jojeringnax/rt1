@@ -203,20 +203,21 @@ class InfoTs extends React.Component{
 
                     <div className="dada-ts-2">
                         <div className="row-1 d-flex flex-row item-ts-data">
-                            <div className="dada-ts-item d-flex" >
-                                <div className="icon-ts">
-                                    <img src='/img/info_auto_icon/percentage-discount.svg' alt="percentageDiscount_icon"/>
-                                </div>
-                                <div className="d-flex flex-column align-items-start ts-car-data item-ts-text">
-                                    <span className="title-ts-text">Процент рентабельности за прошлый месяц:</span>
-                                    <span id="profitability" className="text-ts">
-                                    {
-                                        this.props.statistic.profitability ? this.props.statistic.profitability : "Н/Д"
-                                    }
-                                    </span>
-                                </div>
-                            </div>
+                            {/*<div className="dada-ts-item d-flex" >*/}
+                            {/*    <div className="icon-ts">*/}
+                            {/*        <img src='/img/info_auto_icon/percentage-discount.svg' alt="percentageDiscount_icon"/>*/}
+                            {/*    </div>*/}
+                            {/*    <div className="d-flex flex-column align-items-start ts-car-data item-ts-text">*/}
+                            {/*        <span className="title-ts-text">Процент рентабельности за прошлый месяц:</span>*/}
+                            {/*        <span id="profitability" className="text-ts">*/}
+                            {/*        {*/}
+                            {/*            this.props.statistic.profitability ? this.props.statistic.profitability : "Н/Д"*/}
+                            {/*        }*/}
+                            {/*        </span>*/}
+                            {/*    </div>*/}
+                            {/*</div>*/}
                         </div>
+                        
                         <div className="row-2 d-flex flex-row item-ts-data">
                             <div className="dada-ts-item d-flex">
                                 <div className="icon-ts">
