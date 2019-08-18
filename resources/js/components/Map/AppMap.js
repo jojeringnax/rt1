@@ -1,6 +1,6 @@
 import React from 'react';
 import { YMaps, Map } from 'react-yandex-maps';
-import {setAminationMap, setAminationSideBar, setBounds} from "../../actions";
+import {setAminationMap, setAminationSideBar, setBounds, setCars} from "../../actions";
 import SideBar from "../SideBar/SideBar";
 import {store} from "../../index";
 import Organization from "./divisions/Organization";
@@ -18,16 +18,12 @@ class MapApp extends React.Component{
         super(props);
         this.state = {
             template: null,
-            clickedCar: false
+            clickedCar: false,
+            interval: false
         };
     }
 
     componentDidMount() {
-        // let url = '/api/car/' + 'f04d953e-e2fe-4d12-86c6-7cb1519ef038';
-        //     axios.get(url)
-        //         .then(res => {
-        //             console.log('--x_pos y_pos', res.data)
-        //         });
         axios.get('/api/cars')
             .then(res => {
                 // console.log(res.data);
@@ -76,6 +72,7 @@ class MapApp extends React.Component{
                 //
                 // console.log(carsFromRT.length - (doubles.length));
             });
+
         window.addEventListener('load', () => {
             store.dispatch(setAminationMap(false));
             store.dispatch(setAminationSideBar(false));
@@ -86,7 +83,6 @@ class MapApp extends React.Component{
     handleBoundsChange = (event) => {
         store.dispatch(setBounds(event.get('newBounds')));
     };
-
 
 
     render() {

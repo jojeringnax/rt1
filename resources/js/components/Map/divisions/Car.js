@@ -87,9 +87,14 @@ class Car extends React.Component {
                 });
             })
             .catch(err => {
-                alert("Навигационный терминал в данном ТС временно недоступен");
+                this.setState({
+                    clicked: false
+                });
+                store.dispatch(setCarClicked(false));
                 store.dispatch(setAminationSideBar(false));
                 store.dispatch(setAminationMap(false));
+                alert("Навигационный терминал в данном ТС временно недоступен");
+
             })
 
     };
