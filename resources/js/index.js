@@ -6,7 +6,14 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
-import {setOrganizationsPreload, resetApp, setCars, setAminationSideBar, setAminationMap} from "./actions";
+import {
+    setOrganizationsPreload,
+    resetApp,
+    setCars,
+    setAminationSideBar,
+    setAminationMap,
+    setCarClicked
+} from "./actions";
 import axios from "axios";
 
 
@@ -74,9 +81,13 @@ window.resetCars = () => {
             } else {
                 console.warn("Via reset_cars-method we have got a " + typeof res.data);
             }
+            store.dispatch(setAminationSideBar(false));
+            store.dispatch(setAminationMap(false));
         })
         .catch(err => {
             console.log('---err', err)
+            store.dispatch(setAminationSideBar(false));
+            store.dispatch(setAminationMap(false));
         })
 };
 
