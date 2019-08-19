@@ -74,7 +74,7 @@ class Car extends React.Component {
         this.setState({
             clicked: true
         });
-        axios.get('/api/car/' + this.props.id + '/data', {timeout: 100})
+        axios.get('/api/car/' + this.props.id + '/data', {timeout: 5000})
             .then(res => {
                 this.setState({
                     statistic: res.data
