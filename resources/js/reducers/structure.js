@@ -1,6 +1,6 @@
 
 const structure = (state = {
-    company: {id: 113, name: 'ООО Ресурс Транс'},
+    company: {id: 113, name: 'ООО РесурсТранс'},
     organization: {id: null, name: 'Нет имени'},
     autocolumn: {id: null, name: 'Нет имени'},
     badSpot: {id: null, name: 'Нет имени'},
@@ -12,7 +12,7 @@ const structure = (state = {
     switch(action.type) {
         case 'RESET_APP':
             return state = {
-                company: {id: 113, name: 'ООО Ресурс Транс'},
+                company: {id: 113, name: 'ООО РесурсТранс'},
                 organization: {id: null, name: 'Нет имени'},
                 autocolumn: {id: null, name: 'Нет имени'},
                 badSpot: {id: null, name: 'Нет имени'},

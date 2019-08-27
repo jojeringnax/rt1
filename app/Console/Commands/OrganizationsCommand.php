@@ -43,7 +43,7 @@ class OrganizationsCommand extends Command
         $company = Company::firstOrNew(['id' => '113']);
         if ($company->name === null) {
             $company->id = '113';
-            $company->name = 'ООО Ресурс Транс';
+            $company->name = 'ООО РесурсТранс';
             $company->save();
             $this->info('Company has been created');
         } else {
